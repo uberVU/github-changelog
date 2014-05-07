@@ -1,0 +1,26 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+.main {
+  max-width: 1200px;
+  margin: 100px auto 0;
+}
+.changelog-wrapper {
+  position: relative;
+}
+.changelog-wrapper .btn,
+.changelog-wrapper .btn-link {
+  color: red;
+}
+.changelog-wrapper .badge {
+  positio: absolute;
+}
+.changelog-wrapper ul {
+  position: absolute;
+  list-style: none;
+}
+
+/* This beautiful CSS-File has been crafted with LESS (lesscss.org) and compiled by simpLESS (wearekiss.com/simpless) */
