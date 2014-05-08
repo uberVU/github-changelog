@@ -5,22 +5,100 @@ html {
   font-family: sans-serif;
 }
 .main {
-  max-width: 1200px;
+  max-width: 600px;
   margin: 100px auto 0;
+  position: relative;
 }
 .changelog-wrapper {
   position: relative;
+  display: inline-block;
+  padding: 10px;
+  background-color: lightgray;
 }
-.changelog-wrapper .btn,
+.changelog-wrapper .btn {
+  color: red;
+  display: inline-block;
+}
 .changelog-wrapper .btn-link {
   color: red;
+  display: inline-block;
+  background-color: transparent;
+  border: none;
 }
 .changelog-wrapper .badge {
-  positio: absolute;
+  position: absolute;
 }
 .changelog-wrapper ul {
+  background-color: #bababa;
   position: absolute;
   list-style: none;
+  margin: 0;
+  padding: 0;
+  min-width: 25em;
 }
-
-/* This beautiful CSS-File has been crafted with LESS (lesscss.org) and compiled by simpLESS (wearekiss.com/simpless) */
+.changelog-wrapper .top {
+  top: 0;
+}
+.changelog-wrapper .top.middle {
+  left: 50%;
+  transform: translate(-50%, -100%);
+}
+.changelog-wrapper .top.left {
+  left: 0;
+  transform: translate(-100%, -100%);
+  margin-left: 100%;
+}
+.changelog-wrapper .top.right {
+  right: 0;
+  transform: translate(100%, -100%);
+  margin-right: 100%;
+}
+.changelog-wrapper .bottom {
+  bottom: 0;
+}
+.changelog-wrapper .bottom.middle {
+  left: 50%;
+  transform: translate(-50%, 100%);
+}
+.changelog-wrapper .bottom.left {
+  left: 0;
+  transform: translate(-100%, 100%);
+  margin-left: 100%;
+}
+.changelog-wrapper .bottom.right {
+  right: 0;
+  transform: translate(100%, 100%);
+  margin-right: 100%;
+}
+.changelog-wrapper ul li {
+  display: block;
+}
+.align-h-middle {
+  left: 50%;
+}
+.align-h-left {
+  left: 0;
+}
+.align-h-right {
+  right: 0;
+}
+.align-v-top {
+  top: 0;
+}
+.align-v-bottom {
+  bottom: 0;
+}
+.changelog-wrapper:nth-child(2) {
+  position: absolute;
+  right: 0;
+}
+.changelog-wrapper:nth-child(3) {
+  position: absolute;
+  left: 0;
+  top: 300px;
+}
+.changelog-wrapper:nth-child(4) {
+  position: absolute;
+  right: 0;
+  top: 300px;
+}
