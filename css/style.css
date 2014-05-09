@@ -1,137 +1,68 @@
-/* BASE */
-body,
-html {
+* {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
 }
-.main {
-  max-width: 600px;
-  margin: 100px auto 0;
-  position: relative;
+body {
+  width: 960px;
+  margin: 200px auto;
+  font: 16px/1.5em normal Arial, sans-serif;
 }
-/* MODULES */
-/* changelog */
+.text-none {
+  text-decoration: none;
+}
 .changelog-wrapper {
   position: relative;
   display: inline-block;
-  padding: 7px 5px;
-  background-color: lightgray;
 }
-.changelog-wrapper .btn {
-  display: inline-block;
-  color: #fff;
-  background-color: #000;
-  padding: 10px 5px;
-}
-.changelog-wrapper .btn-link {
-  display: inline-block;
-  color: #fff;
-  background-color: #000;
-  padding: 10px 5px;
-  background-color: transparent;
-  border: none;
-}
-.changelog-wrapper .badge {
+.badge {
   position: absolute;
-  color: #fff;
-  background-color: #f00;
-  padding: 0 3px;
+  background: #003333;
+  display: block;
+  -webkit-transform: translate(50%, -50%);
+  -moz-transform: translate(50%, -50%);
+  -ms-transform: translate(50%, -50%);
+  -o-transform: translate(50%, -50%);
+  transform: translate(50%, -50%);
+  top: 0;
+  right: 0;
   border-radius: 50%;
+  min-width: 20px;
+  max-height: 20px;
+  line-height: 20px;
+  text-align: center;
 }
-.changelog-wrapper .badge.square {
-  border-radius: 0;
+.btn {
+  display: inline-block;
+  position: relative;
+  padding: 15px 20px;
+  background: #fa8072;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
 }
-.changelog-wrapper .top {
+.btn:hover {
+  background: #f97363;
+}
+ul {
+  list-style: none;
+  background-color: #003333;
+  color: #ffffff;
+  padding: 15px 20px;
+  border-radius: 5px;
+  position: absolute;
+  max-width: 100%;
+}
+.top {
+  bottom: 100%;
+}
+.left {
+  right: 100%;
   top: 0;
 }
-.changelog-wrapper .top.middle {
-  left: 50%;
-  transform: translate(-50%, 0);
+.right {
+  left: 100%;
+  top: 0;
 }
-.changelog-wrapper .top.left {
-  left: 0;
-}
-.changelog-wrapper .top.right {
-  right: 0;
-}
-.changelog-wrapper .bottom {
-  bottom: 0;
-}
-.changelog-wrapper .bottom.middle {
-  left: 50%;
-  transform: translate(-50%, 0);
-}
-.changelog-wrapper .bottom.left {
-  left: 0;
-}
-.changelog-wrapper .bottom.right {
-  right: 0;
-}
-.changelog-wrapper ul {
-  background-color: #bababa;
-  position: absolute;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  min-width: 25em;
-}
-.changelog-wrapper ul.top.middle {
-  transform: translate(-50%, -100%);
-}
-.changelog-wrapper ul.top.left {
-  transform: translate(-100%, -100%);
-  margin-left: 100%;
-}
-.changelog-wrapper ul.top.right {
-  transform: translate(100%, -100%);
-  margin-right: 100%;
-}
-.changelog-wrapper ul.bottom.middle {
-  transform: translate(-50%, 100%);
-}
-.changelog-wrapper ul.bottom.left {
-  transform: translate(-100%, 100%);
-  margin-left: 100%;
-}
-.changelog-wrapper ul.bottom.right {
-  transform: translate(100%, 100%);
-  margin-right: 100%;
-}
-.changelog-wrapper ul li {
-  display: block;
-}
-.changelog-wrapper ul li .label {
-  padding: 3px 5px;
-  background-color: #fff;
-  color: #000;
-  border-radius: 0.3em;
-}
-.changelog-wrapper ul li .label.square {
-  border-radius: 0;
-}
-/* HELPERS */
-/* positioning */
-.align-h-middle {
-  left: 50%;
-  transform: translate(-50%, 0);
-}
-/* shape */
-.square {
-  border-radius: 0;
-}
-/* MULTIPLE CHANGELOGS FOR TESTING PURPOSES */
-.changelog-wrapper:nth-child(2) {
-  position: absolute;
-  right: 0;
-}
-.changelog-wrapper:nth-child(3) {
-  position: absolute;
-  left: 0;
-  top: 300px;
-}
-.changelog-wrapper:nth-child(4) {
-  position: absolute;
-  right: 0;
-  top: 300px;
+.bottom {
+  top: 100%;
 }
