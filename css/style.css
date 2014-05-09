@@ -1,3 +1,4 @@
+/* BASE */
 body,
 html {
   margin: 0;
@@ -9,24 +10,63 @@ html {
   margin: 100px auto 0;
   position: relative;
 }
+/* MODULES */
+/* changelog */
 .changelog-wrapper {
   position: relative;
   display: inline-block;
-  padding: 10px;
+  padding: 7px 5px;
   background-color: lightgray;
 }
 .changelog-wrapper .btn {
-  color: red;
   display: inline-block;
+  color: #fff;
+  background-color: #000;
+  padding: 10px 5px;
 }
 .changelog-wrapper .btn-link {
-  color: red;
   display: inline-block;
+  color: #fff;
+  background-color: #000;
+  padding: 10px 5px;
   background-color: transparent;
   border: none;
 }
 .changelog-wrapper .badge {
   position: absolute;
+  color: #fff;
+  background-color: #f00;
+  padding: 0 3px;
+  border-radius: 50%;
+}
+.changelog-wrapper .badge.square {
+  border-radius: 0;
+}
+.changelog-wrapper .top {
+  top: 0;
+}
+.changelog-wrapper .top.middle {
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+.changelog-wrapper .top.left {
+  left: 0;
+}
+.changelog-wrapper .top.right {
+  right: 0;
+}
+.changelog-wrapper .bottom {
+  bottom: 0;
+}
+.changelog-wrapper .bottom.middle {
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+.changelog-wrapper .bottom.left {
+  left: 0;
+}
+.changelog-wrapper .bottom.right {
+  right: 0;
 }
 .changelog-wrapper ul {
   background-color: #bababa;
@@ -36,58 +76,51 @@ html {
   padding: 0;
   min-width: 25em;
 }
-.changelog-wrapper .top {
-  top: 0;
-}
-.changelog-wrapper .top.middle {
-  left: 50%;
+.changelog-wrapper ul.top.middle {
   transform: translate(-50%, -100%);
 }
-.changelog-wrapper .top.left {
-  left: 0;
+.changelog-wrapper ul.top.left {
   transform: translate(-100%, -100%);
   margin-left: 100%;
 }
-.changelog-wrapper .top.right {
-  right: 0;
+.changelog-wrapper ul.top.right {
   transform: translate(100%, -100%);
   margin-right: 100%;
 }
-.changelog-wrapper .bottom {
-  bottom: 0;
-}
-.changelog-wrapper .bottom.middle {
-  left: 50%;
+.changelog-wrapper ul.bottom.middle {
   transform: translate(-50%, 100%);
 }
-.changelog-wrapper .bottom.left {
-  left: 0;
+.changelog-wrapper ul.bottom.left {
   transform: translate(-100%, 100%);
   margin-left: 100%;
 }
-.changelog-wrapper .bottom.right {
-  right: 0;
+.changelog-wrapper ul.bottom.right {
   transform: translate(100%, 100%);
   margin-right: 100%;
 }
 .changelog-wrapper ul li {
   display: block;
 }
+.changelog-wrapper ul li .label {
+  padding: 3px 5px;
+  background-color: #fff;
+  color: #000;
+  border-radius: 0.3em;
+}
+.changelog-wrapper ul li .label.square {
+  border-radius: 0;
+}
+/* HELPERS */
+/* positioning */
 .align-h-middle {
   left: 50%;
+  transform: translate(-50%, 0);
 }
-.align-h-left {
-  left: 0;
+/* shape */
+.square {
+  border-radius: 0;
 }
-.align-h-right {
-  right: 0;
-}
-.align-v-top {
-  top: 0;
-}
-.align-v-bottom {
-  bottom: 0;
-}
+/* MULTIPLE CHANGELOGS FOR TESTING PURPOSES */
 .changelog-wrapper:nth-child(2) {
   position: absolute;
   right: 0;
