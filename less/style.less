@@ -1,157 +1,119 @@
-/* BASE */
-body,
-html {
+// Reset @mironcatalin :)
+
+* {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
 }
-.main {
-  max-width: 600px;
-  margin: 100px auto 0;
-  position: relative;
+body {
+  width: 960px;
+  margin: 200px auto;
+  font: 16px/1.5em normal Arial, sans-serif;
 }
 
-/* MODULES */
-/* changelog */
+// Default variables
+
+@main-color: salmon;
+@default-bg-color: @main-color;
+@default-color: lighten(@default-bg-color, 80%);
+@default-padding: 15px 20px;
+
+// utility classes
+
+.p-bottom(@x) {
+  bottom: @x;
+}
+
+.p-top(@x) {
+  top: @x;
+}
+
+.p-left(@x) {
+  left: @x;
+}
+
+.p-right(@x) {
+  right: @x;
+}
+.text-none {
+  text-decoration: none;
+}
+
+
+// @mixins
+
+.border-radius(@x:5px) {
+  border-radius: @x;
+}
+.perfect-square(@x) {
+  width: @x;
+  height: @x;
+}
+
+// container style
 .changelog-wrapper {
-  position:  relative;
+  position: relative;
   display: inline-block;
-  padding: 7px 5px;
-  background-color: lightgray;
-  .btn{
-    display: inline-block;
-    color: #fff;
-    background-color: #000;
-    padding: 10px 5px;
-  }
-  .btn-link{
-    .btn();
-    background-color: transparent;
-    border: none;
-  }
-  .badge{
-    position: absolute;
-    color: #fff;
-    background-color: #f00;
-    padding: 0 3px;
-    .round();
-    &.square{
-      .square();
-    }
-  }
-  .top {
-    .align-v-top();
-    &.middle{
-      .align-h-middle();
-    }
-    &.left {
-      .align-h-left();
-    }
-    &.right {
-      .align-h-right();
-    }
-  }
-  .bottom {
-    .align-v-bottom();
-    &.middle{
-      .align-h-middle();
-    }
-    &.left {
-      .align-h-left();
-    }
-    &.right {
-      .align-h-right();
-    }
-  }
-  ul {
-    background-color: darken(lightgray, 10%);
-    position: absolute;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    min-width: 25em;
-    &.top{
-      &.middle {
-        transform: translate(-50%, -100%);
-      }
-      &.left {
-        transform: translate(-100%, -100%);
-        margin-left: 100%;
-      }
-      &.right {
-        transform: translate(100%, -100%);
-        margin-right: 100%;
-      }
-    }
-    &.bottom {
-      &.middle {
-        transform: translate(-50%, 100%);
-      }
-      &.left {
-        transform: translate(-100%, 100%);
-        margin-left: 100%;
-      }
-      &.right {
-        transform: translate(100%, 100%);
-        margin-right: 100%;
-      }
-    }
-    li{
-      display: block;
-      .label{
-        padding: 3px 5px;
-        background-color: #fff;
-        color: #000;
-        .round(.3em);
-        &.square{
-          .square();
-        }
-      }
-    }
-  }
-
-}
-
-/* HELPERS */
-/* positioning */
-.align-h-middle {
-  left: 50%;
-  transform: translate(-50%, 0);
-}
-.align-h-left(@left:0) {
-  left: @left;
-}
-.align-h-right(@right:0) {
-  right: @right;
-}
-.align-v-top(@top:0) {
-  top: @top;
-}
-.align-v-bottom(@bottom:0) {
-  bottom: @bottom;
-}
-
-/* shape */
-.round(@radius:50%){
-  border-radius: @radius;
-}
-.square{
-  border-radius: 0;
 }
 
 
-/* MULTIPLE CHANGELOGS FOR TESTING PURPOSES */
-.changelog-wrapper:nth-child(2) {
+.badge {
   position: absolute;
-  right: 0;
+  background: darken(@default-color, 90%);
+  display: block;
+  .inset(50%, -50%);
+  .p-top(0);
+  .p-right(0);
+  .border-radius(50%);
+  min-width: 20px;
+  max-height: 20px;
+  line-height: 20px;
+  text-align: center;
 }
-.changelog-wrapper:nth-child(3) {
-  position: absolute;
-  left: 0;
-  top: 300px;
+.btn {
+  display: inline-block;
+  position: relative;
+  padding: @default-padding;
+  background: @default-bg-color;
+  color: @default-color;
+  .text-none();
+  .border-radius();
+  // remove me
+  &:hover{
+    background: darken(@default-bg-color, 3%)
+  }
 }
-.changelog-wrapper:nth-child(4) {
+ul {
+  list-style: none;
+  background-color: darken(@default-color, 90%);
+  color: lighten(@default-color, 10%);
+  padding: @default-padding;
+  .border-radius();
   position: absolute;
-  right: 0;
-  top: 300px;
+  max-width: 100%;
+
+}
+.inset(@x:-50%,@y:-50%){
+  -webkit-transform: translate(@x, @y);
+  -moz-transform: translate(@x, @y);
+  -ms-transform: translate(@x, @y);
+  -o-transform: translate(@x, @y);
+  transform: translate(@x, @y);
+
+}
+
+// Let's position this
+
+.top {
+  .p-bottom(100%);
+}
+.left {
+  .p-right(100%);
+  top: 0;
+}
+.right {
+  .p-left(100%);
+  top: 0;
+}
+.bottom {
+  .p-top(100%);
 }
