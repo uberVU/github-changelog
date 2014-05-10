@@ -1,119 +1,111 @@
-// Reset :)
-
+// === Reset :) ===
 * {
   margin: 0;
   padding: 0;
 }
-body {
-  width: 960px;
-  margin: 200px auto;
-  font: 16px/1.5em normal Arial, sans-serif;
-}
 
-// Default variables
 
+// === Variables ===
 @main-color: salmon;
 @default-bg-color: @main-color;
 @default-color: lighten(@default-bg-color, 80%);
 @default-padding: 15px 20px;
+@default-border-radius: 50%;
 
-// utility classes
 
+// === Mixins ===
+// positioning
 .p-bottom(@x) {
   bottom: @x;
 }
-
 .p-top(@x) {
   top: @x;
 }
-
 .p-left(@x) {
   left: @x;
 }
-
 .p-right(@x) {
   right: @x;
 }
+// utility
 .text-none {
   text-decoration: none;
-}
-
-
-// @mixins
-
-.border-radius(@x:5px) {
-  border-radius: @x;
 }
 .perfect-square(@x) {
   width: @x;
   height: @x;
 }
-
-// container style
-.changelog-wrapper {
-  position: relative;
-  display: inline-block;
-}
-
-
-.badge {
-  position: absolute;
-  background: darken(@default-color, 90%);
-  display: block;
-  .inset(50%, -50%);
-  .p-top(0);
-  .p-right(0);
-  .border-radius(50%);
-  min-width: 20px;
-  max-height: 20px;
-  line-height: 20px;
-  text-align: center;
-}
-.btn {
-  display: inline-block;
-  position: relative;
-  padding: @default-padding;
-  background: @default-bg-color;
-  color: @default-color;
-  .text-none();
-  .border-radius();
-  // remove me
-  &:hover{
-    background: darken(@default-bg-color, 3%)
-  }
-}
-ul {
-  list-style: none;
-  background-color: darken(@default-color, 90%);
-  color: lighten(@default-color, 10%);
-  padding: @default-padding;
-  .border-radius();
-  position: absolute;
-  max-width: 100%;
-
-}
-.inset(@x:-50%,@y:-50%){
+// cross-browser
+.translate(@x:0, @y:0) {
   -webkit-transform: translate(@x, @y);
   -moz-transform: translate(@x, @y);
   -ms-transform: translate(@x, @y);
   -o-transform: translate(@x, @y);
   transform: translate(@x, @y);
-
 }
 
-// Let's position this
 
-.top {
-  .p-bottom(100%);
+// === Base ===
+body {
+  font: 16px/1.5em normal Arial, sans-serif;
 }
-.left {
-  .p-right(100%);
-  top: 0;
+.main{
+  width: 960px;
+  margin: 200px auto;
 }
-.right {
-  .p-left(100%);
-  top: 0;
-}
-.bottom {
-  .p-top(100%);
+
+
+// === Changelog ===
+.changelog-wrapper {
+  position: relative;
+  display: inline-block;
+  .badge {
+    position: absolute;
+    background: darken(@default-color, 90%);
+    display: block;
+    .p-top(0);
+    .p-right(0);
+    min-width: 20px;
+    max-height: 20px;
+    line-height: 20px;
+    text-align: center;
+    border-radius: @default-border-radius;
+  }
+  .btn {
+    display: inline-block;
+    position: relative;
+    padding: @default-padding;
+    background: @default-bg-color;
+    color: @default-color;
+    border-radius: 5px;
+    .text-none();
+    // remove me
+    &:hover{
+      background: darken(@default-bg-color, 3%)
+    }
+  }
+  .changelog-list {
+    list-style: none;
+    background-color: darken(@default-color, 90%);
+    color: lighten(@default-color, 10%);
+    padding: @default-padding;
+    position: absolute;
+  }
+  .changelog-list li{
+    display: block;
+  }
+  .top {
+    .p-bottom(100%);
+  }
+  .left {
+    .p-right(100%);
+    top: 0;
+  }
+  .right {
+    .p-left(100%);
+    top: 0;
+  }
+  .bottom {
+    .p-top(100%);
+  }
 }
