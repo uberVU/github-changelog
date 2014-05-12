@@ -22,14 +22,17 @@ body {
 .changelog-wrapper .badge {
   position: absolute;
   background: #003333;
+  color: #ffffff;
   display: block;
   top: -0.3em;
   right: -0.3em;
   line-height: 1;
   text-align: center;
-  border-radius: .8em;
   padding: 0.2em 0.4em;
   font-size: .8em;
+  -webkit-border-radius: 0.8em;
+  -moz-border-radius: 0.8em;
+  border-radius: 0.8em;
 }
 .changelog-wrapper .btn {
   display: inline-block;
@@ -37,9 +40,11 @@ body {
   padding: 0.9em 1.2em;
   background: #fa8072;
   color: #ffffff;
-  border-radius: .4em;
   max-height: 1em;
   line-height: 1;
+  -webkit-border-radius: 0.4em;
+  -moz-border-radius: 0.4em;
+  border-radius: 0.4em;
   text-decoration: none;
 }
 .changelog-wrapper .btn:hover {
@@ -55,20 +60,24 @@ body {
   list-style: none;
   background-color: #003333;
   color: #ffffff;
+  border: 1px solid #003333;
+  padding: .5em 0;
+  overflow-y: auto;
+  -webkit-border-radius: 0.4em;
+  -moz-border-radius: 0.4em;
+  border-radius: 0.4em;
   -webkit-box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
   box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
-  border: 1px solid #003333;
-  border-radius: .4em;
-  padding: .5em 0;
-  overflow-y: auto;
 }
 .changelog-wrapper .changelog-list::-webkit-scrollbar {
   width: 9px;
 }
 .changelog-wrapper .changelog-list::-webkit-scrollbar-thumb {
-  border-radius: 10px;
   background-color: #fa8072;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
 }
 .changelog-wrapper .changelog-list li {
   display: block;
@@ -106,36 +115,43 @@ body {
   float: left;
   width: 30% ;
   padding: 3px 5px;
-  background-color: #ffffff;
+  background-color: #428bca;
   color: #000;
-  border-radius: .3em;
   text-align: center;
+  -webkit-border-radius: 0.3em;
+  -moz-border-radius: 0.3em;
+  border-radius: 0.3em;
   -ms-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 .changelog-wrapper .label.square {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
   border-radius: 0;
 }
 .changelog-wrapper .label.bug {
-  background-color: #ff0000;
+  background-color: #d9534f;
+  color: #fff;
 }
 .changelog-wrapper .label.feature {
-  background-color: #00ff00;
+  background-color: #5cb85c;
+  color: #fff;
 }
 .changelog-wrapper .label.enhancement {
-  background-color: #0000ff;
+  background-color: #5bc0de;
+  color: #fff;
 }
 .changelog-wrapper .top {
   bottom: 100%;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  transform: translateX(-50%);
   padding: 0 0 0.5em 0;
   margin-left: 50%;
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  -o-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
 }
 .changelog-wrapper .top:before {
   content: '';
@@ -148,8 +164,8 @@ body {
   left: 50%;
   -webkit-transform: translate(-50%, 50%);
   -moz-transform: translate(-50%, 50%);
-  -ms-transform: translate(-50%, 50%);
   -o-transform: translate(-50%, 50%);
+  -ms-transform: translate(-50%, 50%);
   transform: translate(-50%, 50%);
 }
 .changelog-wrapper .left {
@@ -169,8 +185,8 @@ body {
   right: 0;
   -webkit-transform: translate(50%, 0);
   -moz-transform: translate(50%, 0);
-  -ms-transform: translate(50%, 0);
   -o-transform: translate(50%, 0);
+  -ms-transform: translate(50%, 0);
   transform: translate(50%, 0);
 }
 .changelog-wrapper .right {
@@ -190,19 +206,19 @@ body {
   left: 0em;
   -webkit-transform: translate(-50%, 0);
   -moz-transform: translate(-50%, 0);
-  -ms-transform: translate(-50%, 0);
   -o-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
   transform: translate(-50%, 0);
 }
 .changelog-wrapper .bottom {
   top: 100%;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  transform: translateX(-50%);
   padding: 0.5em 0 0 0;
   margin-left: 50%;
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  -o-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
 }
 .changelog-wrapper .bottom:before {
   content: '';
@@ -215,11 +231,7 @@ body {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-}
-.changelog-wrapper .bottom.right,
-.changelog-wrapper .bottom.left {
-  top: auto;
 }

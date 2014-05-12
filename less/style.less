@@ -1,4 +1,5 @@
 @import "mixins/elements.less";
+@import "mixins/utility.less";
 
 // === Reset :) ===
 *{
@@ -11,21 +12,25 @@
 //general
 @main-color: salmon;
 @default-bg-color: @main-color;
-@default-color: lighten(@default-bg-color, 80%);
+@default-color: #fff;
 @default-padding: .9em 1.2em;
 
 //list
-@list-bg-color: darken(@default-color, 90%);
+@list-bg-color: #003333;
 
 //labels
-@label-bg-color: #fff;
-@label-bug-bg-color: #f00;
-@label-feature-bg-color: #0f0;
-@label-enhancement-bg-color: #00f;
+@label-bg-color: #428bca;
+@label-bug-bg-color: #d9534f;
+@label-feature-bg-color: #5cb85c;
+@label-enhancement-bg-color: #5bc0de;
 
 //caret
 @caret-color: @list-bg-color;
 @caret-width: 0.5em;
+
+//badge
+@badge-bg-color: @list-bg-color;
+@badge-color: @default-color;
 
 
 // === Mixins ===
@@ -92,7 +97,8 @@ body {
 
   .badge {
     position: absolute;
-    background: @list-bg-color;
+    background: @badge-bg-color;
+    color: @badge-color;
     display: block;
     top: -0.3em;
     right: -0.3em;
@@ -127,7 +133,7 @@ body {
     max-height: 10em;
     list-style: none;
     background-color: @list-bg-color;
-    color: lighten(@default-color, 10%);
+    color: @default-color;
     border: 1px solid @list-bg-color;
     padding: .5em 0;
     overflow-y: auto;
@@ -180,12 +186,15 @@ body {
     }
     &.bug{
       background-color: @label-bug-bg-color;
+      color: #fff;
     }
     &.feature{
       background-color: @label-feature-bg-color;
+      color: #fff;
     }
     &.enhancement{
       background-color: @label-enhancement-bg-color;
+      color: #fff;
     }
   }
   // changelog list positioning
@@ -193,7 +202,7 @@ body {
     bottom: 100%;
     padding: 0 0 0.5em 0;
     margin-left: 50%;
-    .translateX(-50%);
+    .translate(-50%, 0);
     .set-caret('top');
   }
   .left {
@@ -214,7 +223,7 @@ body {
     top: 100%;
     padding: 0.5em 0 0 0;
     margin-left: 50%;
-    .translateX(-50%);
+    .translate(-50%, 0);
     .set-caret('bottom');
   }
 }
