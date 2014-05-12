@@ -1,5 +1,5 @@
 // === Reset :) ===
-* {
+*{
   margin: 0;
   padding: 0;
 }
@@ -9,7 +9,7 @@
 @main-color: salmon;
 @default-bg-color: @main-color;
 @default-color: lighten(@default-bg-color, 80%);
-@default-padding: 15px 20px;
+@default-padding: .9em 1.2em;
 @default-border-radius: 50%;
 
 
@@ -34,6 +34,22 @@
 .perfect-square(@x) {
   width: @x;
   height: @x;
+}
+.clearfix() {
+  zoom: 1;
+  &:before {
+    content: '';
+    display: block;
+  }
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+.box-sizing{
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
 // cross-browser
 .translate(@x:0, @y:0) {
@@ -88,11 +104,53 @@ body {
     list-style: none;
     background-color: darken(@default-color, 90%);
     color: lighten(@default-color, 10%);
-    padding: @default-padding;
     position: absolute;
+    min-width: 25em;
+    max-height: 10em;
+    border-radius: .3em;
+    overflow: hidden;
+    padding: .5em;
+    overflow-y: auto;
+    &::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    }
+    &::-webkit-scrollbar {
+      width: 9px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: @default-bg-color;;
+    }
   }
-  .changelog-list li{
+  .changelog-list li {
     display: block;
+    border-bottom: 1px solid darken(@default-color, 70%);
+    margin-bottom: .5em;
+    .clearfix();
+    &:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    p {
+      float: left;
+      width: 70%;
+      padding-left: 1em;
+      .box-sizing();
+    }
+  }
+  .label{
+    display: block;
+    float: left;
+    width: 30% ;
+    padding: 3px 5px;
+    background-color: #fff;
+    color: #000;
+    border-radius: .3em;
+    text-align: center;
+    .box-sizing();
+    &.square{
+      border-radius: 0;
+    }
   }
   .top {
     .p-bottom(100%);

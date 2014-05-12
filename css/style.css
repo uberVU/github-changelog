@@ -1,1 +1,123 @@
-*{margin:0;padding:0}.text-none{text-decoration:none}body{font:16px/1.5em normal Arial,sans-serif}.main{width:960px;margin:200px auto}.changelog-wrapper{position:relative;display:inline-block}.changelog-wrapper .badge{position:absolute;background:#033;display:block;top:0;right:0;min-width:20px;max-height:20px;line-height:20px;text-align:center;border-radius:50%}.changelog-wrapper .btn{display:inline-block;position:relative;padding:15px 20px;background:salmon;color:#fff;border-radius:5px;text-decoration:none}.changelog-wrapper .btn:hover{background:#f97363}.changelog-wrapper .changelog-list{list-style:none;background-color:#033;color:#fff;padding:15px 20px;position:absolute}.changelog-wrapper .changelog-list li{display:block}.changelog-wrapper .top{bottom:100%}.changelog-wrapper .left{right:100%;top:0}.changelog-wrapper .right{left:100%;top:0}.changelog-wrapper .bottom{top:100%}
+* {
+  margin: 0;
+  padding: 0;
+}
+.text-none {
+  text-decoration: none;
+}
+.box-sizing {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+body {
+  font: 16px/1.5em normal Arial, sans-serif;
+}
+.main {
+  width: 960px;
+  margin: 200px auto;
+}
+.changelog-wrapper {
+  position: relative;
+  display: inline-block;
+}
+.changelog-wrapper .badge {
+  position: absolute;
+  background: #003333;
+  display: block;
+  top: 0;
+  right: 0;
+  min-width: 20px;
+  max-height: 20px;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 50%;
+}
+.changelog-wrapper .btn {
+  display: inline-block;
+  position: relative;
+  padding: 0.9em 1.2em;
+  background: #fa8072;
+  color: #ffffff;
+  border-radius: 5px;
+  text-decoration: none;
+}
+.changelog-wrapper .btn:hover {
+  background: #f97363;
+}
+.changelog-wrapper .changelog-list {
+  list-style: none;
+  background-color: #003333;
+  color: #ffffff;
+  position: absolute;
+  min-width: 25em;
+  max-height: 10em;
+  border-radius: .3em;
+  overflow: hidden;
+  padding: .5em;
+  overflow-y: auto;
+}
+.changelog-wrapper .changelog-list::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+.changelog-wrapper .changelog-list::-webkit-scrollbar {
+  width: 9px;
+}
+.changelog-wrapper .changelog-list::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #fa8072;
+}
+.changelog-wrapper .changelog-list li {
+  display: block;
+  border-bottom: 1px solid #009999;
+  margin-bottom: .5em;
+  zoom: 1;
+}
+.changelog-wrapper .changelog-list li:before {
+  content: '';
+  display: block;
+}
+.changelog-wrapper .changelog-list li:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+.changelog-wrapper .changelog-list li:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+.changelog-wrapper .changelog-list li p {
+  float: left;
+  width: 70%;
+  padding-left: 1em;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+.changelog-wrapper .label {
+  display: block;
+  float: left;
+  width: 30% ;
+  padding: 3px 5px;
+  background-color: #fff;
+  color: #000;
+  border-radius: .3em;
+  text-align: center;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+.changelog-wrapper .label.square {
+  border-radius: 0;
+}
+.changelog-wrapper .top {
+  bottom: 100%;
+}
+.changelog-wrapper .left {
+  right: 100%;
+  top: 0;
+}
+.changelog-wrapper .right {
+  left: 100%;
+  top: 0;
+}
+.changelog-wrapper .bottom {
+  top: 100%;
+}
