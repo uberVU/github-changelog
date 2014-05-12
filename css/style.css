@@ -67,7 +67,7 @@ body {
   color: #ffffff;
   box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
   border-radius: .4em;
-  padding: .5em;
+  padding: .5em 0;
   overflow-y: auto;
 }
 .changelog-wrapper .changelog-list::-webkit-scrollbar-track {
@@ -82,8 +82,11 @@ body {
 }
 .changelog-wrapper .changelog-list li {
   display: block;
-  border-bottom: 1px solid #009999;
+  border-bottom: 1px solid #fa8072;
   margin-bottom: .5em;
+  padding: 0 .5em .5em;
+  font-size: 0.9em;
+  line-height: 1.4;
   zoom: 1;
 }
 .changelog-wrapper .changelog-list li:before {
