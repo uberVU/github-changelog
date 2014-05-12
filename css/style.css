@@ -17,13 +17,13 @@ body {
   position: absolute;
   background: #003333;
   display: block;
-  top: 0;
-  right: 0;
-  min-width: 20px;
-  max-height: 20px;
-  line-height: 20px;
+  top: -0.3em;
+  right: -0.3em;
+  line-height: 1;
   text-align: center;
-  border-radius: 50%;
+  border-radius: .8em;
+  padding: 0.2em 0.4em;
+  font-size: .8em;
 }
 .changelog-wrapper .btn {
   display: inline-block;
