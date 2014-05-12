@@ -13,6 +13,9 @@
 @default-padding: .9em 1.2em;
 @default-border-radius: 50%;
 
+//list
+@list-bg-color: darken(@default-color, 90%);
+
 //labels
 @label-bg-color: #fff;
 @label-bug-bg-color: #f00;
@@ -20,7 +23,7 @@
 @label-enhancement-bg-color: #00f;
 
 //caret
-@caret-color: darken(@default-color, 90%);
+@caret-color: @list-bg-color;
 @caret-width: 0.5em;
 
 
@@ -147,7 +150,7 @@ body {
   display: inline-block;
   .badge {
     position: absolute;
-    background: darken(@default-color, 90%);
+    background: @list-bg-color;
     display: block;
     .p-top(-0.3em);
     .p-right(-0.3em);
@@ -181,9 +184,10 @@ body {
     min-width: 25em;
     max-height: 10em;
     list-style: none;
-    background-color: darken(@default-color, 90%);
+    background-color: @list-bg-color;
     color: lighten(@default-color, 10%);
     box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
+    border: 1px solid @list-bg-color;
     border-radius: .4em;
     padding: .5em 0;
     overflow-y: auto;

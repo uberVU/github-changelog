@@ -50,6 +50,7 @@ body {
   background-color: #003333;
   color: #ffffff;
   box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
+  border: 1px solid #003333;
   border-radius: .4em;
   padding: .5em 0;
   overflow-y: auto;
