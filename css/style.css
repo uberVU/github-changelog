@@ -2,13 +2,6 @@
   margin: 0;
   padding: 0;
 }
-.text-none {
-  text-decoration: none;
-}
-.box-sizing {
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-}
 body {
   font: 16px/1.5em normal Arial, sans-serif;
 }
