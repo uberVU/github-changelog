@@ -32,6 +32,8 @@ body {
   background: #fa8072;
   color: #ffffff;
   border-radius: .4em;
+  max-height: 1em;
+  line-height: 1;
   text-decoration: none;
 }
 .changelog-wrapper .btn:hover {
@@ -40,24 +42,6 @@ body {
 .changelog-wrapper .changelog-list-wrapper {
   position: absolute;
   padding-top: .5em;
-}
-.changelog-wrapper .changelog-list-wrapper:before {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 0;
-  top: 0;
-  bottom: auto;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  transform: translateX(-50%);
-  border-top: 0;
-  border-bottom: 0.5em solid #003333;
-  border-left: .5em solid transparent;
-  border-right: .5em solid transparent;
 }
 .changelog-wrapper .changelog-list {
   min-width: 25em;
@@ -135,31 +119,28 @@ body {
 }
 .changelog-wrapper .top {
   bottom: 100%;
-  padding: 0 0 0.5em 0;
-  margin-left: 50%;
   -webkit-transform: translateX(-50%);
   -moz-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
+  padding: 0 0 0.5em 0;
+  margin-left: 50%;
 }
 .changelog-wrapper .top:before {
   content: '';
   position: absolute;
   width: 0;
   height: 0;
-  top: auto;
+  border: 0.5em solid transparent;
+  border-top: 0.5em solid #003333;
   bottom: 0;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  transform: translateX(-50%);
-  border-top: 0.5em solid #003333;
-  border-bottom: 0;
-  border-left: .5em solid transparent;
-  border-right: .5em solid transparent;
+  -webkit-transform: translate(-50%, 50%);
+  -moz-transform: translate(-50%, 50%);
+  -ms-transform: translate(-50%, 50%);
+  -o-transform: translate(-50%, 50%);
+  transform: translate(-50%, 50%);
 }
 .changelog-wrapper .left {
   right: 100%;
@@ -172,14 +153,15 @@ body {
   position: absolute;
   width: 0;
   height: 0;
-  top: 10%;
-  bottom: auto;
-  right: -0.3em;
-  left: auto;
-  border-top: .5em solid transparent;
-  border-right: 0;
-  border-bottom: .5em solid transparent;
+  border: 0.5em solid transparent;
   border-left: 0.5em solid #003333;
+  top: .9em;
+  right: 0;
+  -webkit-transform: translate(50%, 0);
+  -moz-transform: translate(50%, 0);
+  -ms-transform: translate(50%, 0);
+  -o-transform: translate(50%, 0);
+  transform: translate(50%, 0);
 }
 .changelog-wrapper .right {
   left: 100%;
@@ -192,41 +174,40 @@ body {
   position: absolute;
   width: 0;
   height: 0;
-  top: 10%;
-  bottom: auto;
-  left: .3em;
-  border-top: .5em solid transparent;
-  border-left: 0;
-  border-bottom: .5em solid transparent;
+  border: 0.5em solid transparent;
   border-right: 0.5em solid #003333;
+  top: .9em;
+  left: 0em;
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  -o-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
 }
 .changelog-wrapper .bottom {
   top: 100%;
-  padding: 0.5em 0 0 0;
-  margin-left: 50%;
   -webkit-transform: translateX(-50%);
   -moz-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
+  padding: 0.5em 0 0 0;
+  margin-left: 50%;
 }
 .changelog-wrapper .bottom:before {
   content: '';
   position: absolute;
   width: 0;
   height: 0;
-  top: 0;
-  bottom: auto;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  transform: translateX(-50%);
-  border-top: 0;
+  border: 0.5em solid transparent;
   border-bottom: 0.5em solid #003333;
-  border-left: .5em solid transparent;
-  border-right: .5em solid transparent;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 .changelog-wrapper .bottom.right,
 .changelog-wrapper .bottom.left {
