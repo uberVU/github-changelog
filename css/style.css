@@ -6,7 +6,7 @@ body {
   font: 16px/1.5em normal Arial, sans-serif;
 }
 .main {
-  width: 960px;
+  width: 100px;
   margin: 200px auto;
 }
 .changelog-wrapper {
@@ -31,21 +31,42 @@ body {
   padding: 0.9em 1.2em;
   background: #fa8072;
   color: #ffffff;
-  border-radius: 5px;
+  border-radius: .4em;
   text-decoration: none;
 }
 .changelog-wrapper .btn:hover {
   background: #f97363;
 }
+.changelog-wrapper .changelog-list-wrapper {
+  position: absolute;
+  padding-top: .5em;
+}
+.changelog-wrapper .changelog-list-wrapper:before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 0;
+  bottom: auto;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  border-top: 0;
+  border-bottom: 0.5em solid #003333;
+  border-left: .5em solid transparent;
+  border-right: .5em solid transparent;
+}
 .changelog-wrapper .changelog-list {
+  min-width: 25em;
+  max-height: 10em;
   list-style: none;
   background-color: #003333;
   color: #ffffff;
-  position: absolute;
-  min-width: 25em;
-  max-height: 10em;
-  border-radius: .3em;
-  overflow: hidden;
+  box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
+  border-radius: .4em;
   padding: .5em;
   overflow-y: auto;
 }
@@ -90,7 +111,7 @@ body {
   float: left;
   width: 30% ;
   padding: 3px 5px;
-  background-color: #fff;
+  background-color: #ffffff;
   color: #000;
   border-radius: .3em;
   text-align: center;
@@ -100,17 +121,111 @@ body {
 .changelog-wrapper .label.square {
   border-radius: 0;
 }
+.changelog-wrapper .label.bug {
+  background-color: #ff0000;
+}
+.changelog-wrapper .label.feature {
+  background-color: #00ff00;
+}
+.changelog-wrapper .label.enhancement {
+  background-color: #0000ff;
+}
 .changelog-wrapper .top {
   bottom: 100%;
+  padding: 0 0 0.5em 0;
+  margin-left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.changelog-wrapper .top:before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: auto;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  border-top: 0.5em solid #003333;
+  border-bottom: 0;
+  border-left: .5em solid transparent;
+  border-right: .5em solid transparent;
 }
 .changelog-wrapper .left {
   right: 100%;
+  padding: 0 0.5em 0 0;
+  margin-right: 0;
   top: 0;
+}
+.changelog-wrapper .left:before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 10%;
+  bottom: auto;
+  right: -0.3em;
+  left: auto;
+  border-top: .5em solid transparent;
+  border-right: 0;
+  border-bottom: .5em solid transparent;
+  border-left: 0.5em solid #003333;
 }
 .changelog-wrapper .right {
   left: 100%;
+  padding: 0 0 0 0.5em;
+  margin-left: 0;
   top: 0;
+}
+.changelog-wrapper .right:before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 10%;
+  bottom: auto;
+  left: .3em;
+  border-top: .5em solid transparent;
+  border-left: 0;
+  border-bottom: .5em solid transparent;
+  border-right: 0.5em solid #003333;
 }
 .changelog-wrapper .bottom {
   top: 100%;
+  padding: 0.5em 0 0 0;
+  margin-left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.changelog-wrapper .bottom:before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 0;
+  bottom: auto;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  border-top: 0;
+  border-bottom: 0.5em solid #003333;
+  border-left: .5em solid transparent;
+  border-right: .5em solid transparent;
+}
+.changelog-wrapper .bottom.right,
+.changelog-wrapper .bottom.left {
+  top: auto;
 }
