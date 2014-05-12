@@ -9,7 +9,6 @@ This is what shows up by default, before the user has had a chance to interact w
 **Behaviour**
 - when no unread notifications are present its styling should reflect this, possibly grayed out or with some default coloring.
 - when new notifications are received the icon styling changes to a different, brighter color. Possibly with a glow effect. In addition, a counter will show up displaying the number of new notifications.
-- the counter should be able to show up one of 7 predefined spots on the icon([see below](#notification-counter)) according to it's CSS class.
 
 ### Notification list ###
 This list shows the notification area, it will contain number of notification items.
@@ -17,7 +16,7 @@ This list shows the notification area, it will contain number of notification it
 **Behaviour**
 - hidden by default, it can be shown or hidden by pressing the *notification icon*.
 - if it's visible, it will become hidden if the user interacts with any other part of the page
-- it should be able to show up in one of 7 predefined spots in relation to the *notification icon*([see below](#notification-list-1)) according to its CSS class.
+- it should be able to show up in one of 4 predefined spots in relation to the *notification icon*([see below](#notification-list-1)) according to its CSS class.
 
 ### Notification item ###
 One element of the notification list.
@@ -46,23 +45,23 @@ The widget is contained within an element with the class `.changelog-wrapper`
 Config options via class attribute
 - Appearance: as a button `.btn` or a link `.btn-link`. Link appearance won't have border and background color.
 - Size: `.small`, `.medium` or `.large`
-- Color: to be determined
 
 ### Notification counter ###
 Contained within the notification icon
 ```html
-<span class="badge top right">2</span>
+<span class="badge round">2</span>
 ```
 Config options via class attribute
-- Position: verticaly with `.top`, `.middle` and `.bottom`. Horizontally with `.left`, `.middle` and `.right`
 - Shape: `.round`(default) or `.square`
-- Color: to be determined
 
 ### Notification list ###
 ```html
-<ul class="bottom middle">
-...
-</ul>
+<!-- List position: (top | bottom | left | right) -->
+<div class="top changelog-list-wrapper">
+	<ul class="changelog-list">
+	...
+	</ul>
+</div>
 ```
 ### Notification item ###
 Contained within the notification list
@@ -71,9 +70,8 @@ Contained within the notification list
   <p>
     <!-- #LABEL -->
     <!-- Label type: round (default) | square -->
-    <!-- Label color: xxx -->
     <span class="label">featured</span>
-    Lorem ipsum dolor sit amet, consectetur.
+    <p>Lorem ipsum dolor sit amet, consectetur.</p>
   </p>
 </li>
 ```
