@@ -1,3 +1,9 @@
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
 * {
   margin: 0;
   padding: 0;
@@ -49,14 +55,13 @@ body {
   list-style: none;
   background-color: #003333;
   color: #ffffff;
+  -webkit-box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
   box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
   border: 1px solid #003333;
   border-radius: .4em;
   padding: .5em 0;
   overflow-y: auto;
-}
-.changelog-wrapper .changelog-list::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 .changelog-wrapper .changelog-list::-webkit-scrollbar {
   width: 9px;
@@ -91,8 +96,10 @@ body {
   float: left;
   width: 70%;
   padding-left: 1em;
-  box-sizing: border-box;
+  -ms-box-sizing: border-box;
   -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .changelog-wrapper .label {
   display: block;
@@ -103,8 +110,10 @@ body {
   color: #000;
   border-radius: .3em;
   text-align: center;
-  box-sizing: border-box;
+  -ms-box-sizing: border-box;
   -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .changelog-wrapper .label.square {
   border-radius: 0;

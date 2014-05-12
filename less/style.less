@@ -1,3 +1,5 @@
+@import "mixins/elements.less";
+
 // === Reset :) ===
 *{
   margin: 0;
@@ -11,7 +13,6 @@
 @default-bg-color: @main-color;
 @default-color: lighten(@default-bg-color, 80%);
 @default-padding: .9em 1.2em;
-@default-border-radius: 50%;
 
 //list
 @list-bg-color: darken(@default-color, 90%);
@@ -28,19 +29,6 @@
 
 
 // === Mixins ===
-// positioning
-.p-bottom(@x) {
-  bottom: @x;
-}
-.p-top(@x) {
-  top: @x;
-}
-.p-left(@x) {
-  left: @x;
-}
-.p-right(@x) {
-  right: @x;
-}
 // caret
 .set-caret-common(){
   content: '';
@@ -49,7 +37,7 @@
   height: 0;
   border: @caret-width solid transparent;
 }
-.set-caret(@dir) when (@dir = 'top'){
+.set-caret(@dir) when (@dir = 'top') {
   &:before{
     .set-caret-common();
     border-top: @caret-width solid @caret-color;
@@ -58,7 +46,7 @@
     .translate(-50%, 50%);
   }
 }
-.set-caret(@dir) when (@dir = 'bottom'){
+.set-caret(@dir) when (@dir = 'bottom') {
   &:before{
     .set-caret-common();
     border-bottom: @caret-width solid @caret-color;
@@ -67,7 +55,7 @@
     .translate(-50%, -50%);
   }
 }
-.set-caret(@dir) when (@dir = 'left'){
+.set-caret(@dir) when (@dir = 'left') {
   &:before{
     .set-caret-common();
     border-left: @caret-width solid @caret-color;
@@ -76,7 +64,7 @@
     .translate(50%, 0);
   }
 }
-.set-caret(@dir) when (@dir = 'right'){
+.set-caret(@dir) when (@dir = 'right') {
   &:before{
     .set-caret-common();
     border-right: @caret-width solid @caret-color;
@@ -84,53 +72,6 @@
     left: 0em;
     .translate(-50%, 0);
   }
-}
-// utility
-.text-none() {
-  text-decoration: none;
-}
-.perfect-square(@x) {
-  width: @x;
-  height: @x;
-}
-.clearfix() {
-  zoom: 1;
-  &:before {
-    content: '';
-    display: block;
-  }
-  &:after {
-    content: '';
-    display: table;
-    clear: both;
-  }
-}
-.box-sizing() {
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-}
-
-// cross-browser
-.translate(@x:0, @y:0) {
-  -webkit-transform: translate(@x, @y);
-  -moz-transform: translate(@x, @y);
-  -ms-transform: translate(@x, @y);
-  -o-transform: translate(@x, @y);
-  transform: translate(@x, @y);
-}
-.translateX(@x:0){
-  -webkit-transform: translateX(@x);
-  -moz-transform: translateX(@x);
-  -ms-transform: translateX(@x);
-  -o-transform: translateX(@x);
-  transform: translateX(@x);
-}
-.translateY(@y:0){
-  -webkit-transform: translateY(@y);
-  -moz-transform: translateY(@y);
-  -ms-transform: translateY(@y);
-  -o-transform: translateY(@y);
-  transform: translateY(@y);
 }
 
 
@@ -148,17 +89,18 @@ body {
 .changelog-wrapper {
   position: relative;
   display: inline-block;
+
   .badge {
     position: absolute;
     background: @list-bg-color;
     display: block;
-    .p-top(-0.3em);
-    .p-right(-0.3em);
+    top: -0.3em;
+    right: -0.3em;
     line-height: 1;
     text-align: center;
-    border-radius: .8em;
     padding: 0.2em 0.4em;
     font-size: .8em;
+    .rounded(.8em);
   }
   .btn {
     display: inline-block;
@@ -166,17 +108,17 @@ body {
     padding: @default-padding;
     background: @default-bg-color;
     color: @default-color;
-    border-radius: .4em;
     max-height: 1em;
     line-height: 1;
+    .rounded(.4em);
     .text-none();
-    // remove me
+
     &:hover{
       background: darken(@default-bg-color, 3%)
     }
   }
   // wrapper so we can have caret above it and still use overflow-y (otherwise it gets hidden)
-  .changelog-list-wrapper{
+  .changelog-list-wrapper {
     position: absolute;
     padding-top: .5em;
   }
@@ -186,21 +128,19 @@ body {
     list-style: none;
     background-color: @list-bg-color;
     color: lighten(@default-color, 10%);
-    box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
     border: 1px solid @list-bg-color;
-    border-radius: .4em;
     padding: .5em 0;
     overflow-y: auto;
+    .rounded(.4em);
+    .drop-shadow(1px, 3px, 7px, 0.1);
+
     //style scrollbar
-    &::-webkit-scrollbar-track {
-      box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    }
     &::-webkit-scrollbar {
       width: 9px;
     }
     &::-webkit-scrollbar-thumb {
-      border-radius: 10px;
       background-color: @default-bg-color;
+      .rounded(10px);
     }
   }
   .changelog-list li {
@@ -211,6 +151,7 @@ body {
     font-size: 0.9em;
     line-height: 1.4;
     .clearfix();
+
     &:last-child {
       border-bottom: none;
       margin-bottom: 0;
@@ -229,11 +170,13 @@ body {
     padding: 3px 5px;
     background-color: @label-bg-color;
     color: #000;
-    border-radius: .3em;
     text-align: center;
+    .rounded(.3em);
     .box-sizing();
+
+    //label types
     &.square{
-      border-radius: 0;
+      .rounded(0);
     }
     &.bug{
       background-color: @label-bug-bg-color;
@@ -245,35 +188,33 @@ body {
       background-color: @label-enhancement-bg-color;
     }
   }
+  // changelog list positioning
   .top {
-    .p-bottom(100%);
-    .set-caret('top');
-    .translateX(-50%);
+    bottom: 100%;
     padding: 0 0 0.5em 0;
     margin-left: 50%;
+    .translateX(-50%);
+    .set-caret('top');
   }
   .left {
-    .p-right(100%);
-    .set-caret('left');
+    right: 100%;
     padding: 0 0.5em 0 0;
     margin-right: 0;
     top: 0;
+    .set-caret('left');
   }
   .right {
-    .p-left(100%);
-    .set-caret('right');
+    left: 100%;
     padding: 0 0 0 0.5em;
     margin-left: 0;
     top: 0;
+    .set-caret('right');
   }
   .bottom {
-    .p-top(100%);
-    .set-caret('bottom');
-    .translateX(-50%);
+    top: 100%;
     padding: 0.5em 0 0 0;
     margin-left: 50%;
-    &.right, &.left{
-      top: auto;
-    }
+    .translateX(-50%);
+    .set-caret('bottom');
   }
 }

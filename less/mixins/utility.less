@@ -1,0 +1,19 @@
+.text-none() {
+  text-decoration: none;
+}
+.perfect-square(@x) {
+  width: @x;
+  height: @x;
+}
+.clearfix() {
+  zoom: 1;
+  &:before {
+    content: '';
+    display: block;
+  }
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
