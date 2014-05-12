@@ -34,7 +34,8 @@ body {
   -moz-border-radius: 0.8em;
   border-radius: 0.8em;
 }
-.changelog-wrapper .btn {
+.changelog-wrapper .btn,
+.changelog-wrapper .btn-link {
   display: inline-block;
   position: relative;
   padding: 0.9em 1.2em;
@@ -49,6 +50,11 @@ body {
 }
 .changelog-wrapper .btn:hover {
   background: #f97363;
+}
+.changelog-wrapper .btn-link {
+  background-color: transparent;
+  color: #003333;
+  padding: 0.3em 0.8em;
 }
 .changelog-wrapper .changelog-list-wrapper {
   position: absolute;

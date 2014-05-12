@@ -13,10 +13,11 @@
 @main-color: salmon;
 @default-bg-color: @main-color;
 @default-color: #fff;
+@default-color-dark: #003333;
 @default-padding: .9em 1.2em;
 
 //list
-@list-bg-color: #003333;
+@list-bg-color: @default-color-dark;
 
 //labels
 @label-bg-color: #428bca;
@@ -122,6 +123,12 @@ body {
     &:hover{
       background: darken(@default-bg-color, 3%)
     }
+  }
+  .btn-link {
+    &:extend(.changelog-wrapper .btn);
+    background-color: transparent;
+    color: @default-color-dark;
+    padding: 0.3em 0.8em;
   }
   // wrapper so we can have caret above it and still use overflow-y (otherwise it gets hidden)
   .changelog-list-wrapper {
