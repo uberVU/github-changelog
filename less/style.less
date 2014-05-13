@@ -1,12 +1,19 @@
-@import "mixins/elements.less";
-@import "mixins/utility.less";
-
 // === Reset :) ===
 *{
   margin: 0;
   padding: 0;
 }
+// === Base ===
+body {
+  font: 16px/1.5em normal Arial, sans-serif;
+}
+.main {
+  width: 100px;
+  margin: 250px auto;
+}
 
+// === Import Mixins ===
+@import "mixins.less";
 
 // === Variables ===
 //general
@@ -85,16 +92,6 @@
 }
 
 
-// === Base ===
-body {
-  font: 16px/1.5em normal Arial, sans-serif;
-}
-.main {
-  width: 100px;
-  margin: 200px auto;
-}
-
-
 // === Changelog ===
 .changelog-wrapper {
   position: relative;
@@ -148,6 +145,18 @@ body {
   .changelog-list-wrapper {
     position: absolute;
     padding-top: .5em;
+  }
+  .changelog-list-head{
+    padding: .5em .6em;
+    background-color: @default-bg-color;
+    color: @default-color;
+    line-height: 1em;
+    .border-radius(.4em, 0, 0, .4em);
+    .drop-shadow(1px, 3px, 7px, 0.1);
+
+    & + .changelog-list{
+      .border-radius(0, .4em, .4em, 0);
+    }
   }
   .changelog-list {
     min-width: 25em;
