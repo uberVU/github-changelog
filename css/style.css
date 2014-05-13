@@ -1,42 +1,14 @@
-/*
-  TODO's
-
-  // components.less
-
-  // XXX
-  @import "components/reset.less";
-
-  // XXX
-  @import "components/variables.less"; // colors ?
-  @import "components/mixins.less";
-  @import "components/utility.less";
-
-  // XXX
-  @import "components/buttons.less";
-  @import "components/list.less";
-  @import "components/labels.less";
-
-
-  // style.less
-
-  // import all custom components
-  @import "components.less";
-
-  // main styling for our demo / app
-  @import "main.less";
-
-*/
+* {
+  margin: 0;
+  padding: 0;
+}
 body {
   font: 16px/1.5em normal Arial, sans-serif;
 }
 .main {
   width: 960px;
-  text-align: center;
   margin: 10% auto;
-}
-* {
-  margin: 0;
-  padding: 0;
+  text-align: center;
 }
 /*---------------------------------------------------
     LESS Elements 0.9
@@ -44,6 +16,13 @@ body {
     A set of useful LESS mixins
     More info at: http://lesselements.com
   ---------------------------------------------------*/
+.caret-defaults {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 0.5em solid transparent;
+}
 .btn,
 .btn-link {
   display: inline-block;
@@ -62,20 +41,20 @@ body {
 .btn-link:hover {
   background: #008ebd;
 }
-.btn.btn-small,
-.btn-link.btn-small {
+.btn.small,
+.btn-link.small {
   font-size: .7em;
 }
-.btn.btn-medium,
-.btn-link.btn-medium {
+.btn.medium,
+.btn-link.medium {
   font-size: 1em;
 }
-.btn.btn-large,
-.btn-link.btn-large {
+.btn.large,
+.btn-link.large {
   font-size: 1.4em;
 }
-.btn.btn-notify,
-.btn-link.btn-notify {
+.btn.notify,
+.btn-link.notify {
   color: #66d9ff;
 }
 .btn .badge,
@@ -92,7 +71,7 @@ body {
   min-width: 1.5em;
   height: 1.5em;
   line-height: 1.5em;
-  padding: 0 0.375em;
+  padding: 0 1.5em;
   -webkit-transform: translate(-50%, 50%);
   -moz-transform: translate(-50%, 50%);
   -o-transform: translate(-50%, 50%);
@@ -111,52 +90,8 @@ body {
   position: relative;
   display: inline-block;
 }
-.changelog-wrapper .changelog-list-wrapper {
+.changelog-wrapper ul {
   position: absolute;
-}
-.changelog-wrapper .changelog-list-wrapper .changelog-list-head {
-  padding: .5em .6em;
-  background-color: #0099cc;
-  color: #ffffff;
-  text-align: left;
-  line-height: 1em;
-  -webkit-border-top-right-radius: 0.4em;
-  -webkit-border-bottom-right-radius: 0;
-  -webkit-border-bottom-left-radius: 0;
-  -webkit-border-top-left-radius: 0.4em;
-  -moz-border-radius-topright: 0.4em;
-  -moz-border-radius-bottomright: 0;
-  -moz-border-radius-bottomleft: 0;
-  -moz-border-radius-topleft: 0.4em;
-  border-top-right-radius: 0.4em;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0.4em;
-  -moz-background-clip: padding-box;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-  -webkit-box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
-  box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
-}
-.changelog-wrapper .changelog-list-wrapper .changelog-list-head + .changelog-list {
-  -webkit-border-top-right-radius: 0;
-  -webkit-border-bottom-right-radius: 0.4em;
-  -webkit-border-bottom-left-radius: 0.4em;
-  -webkit-border-top-left-radius: 0;
-  -moz-border-radius-topright: 0;
-  -moz-border-radius-bottomright: 0.4em;
-  -moz-border-radius-bottomleft: 0.4em;
-  -moz-border-radius-topleft: 0;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0.4em;
-  border-bottom-left-radius: 0.4em;
-  border-top-left-radius: 0;
-  -moz-background-clip: padding-box;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-}
-.changelog-wrapper .changelog-list-wrapper .changelog-list {
   min-width: 25em;
   max-height: 10em;
   list-style: none;
@@ -172,45 +107,30 @@ body {
   -moz-box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
   box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
 }
-.changelog-wrapper .changelog-list-wrapper .changelog-list::-webkit-scrollbar {
-  width: 9px;
-}
-.changelog-wrapper .changelog-list-wrapper .changelog-list::-webkit-scrollbar-thumb {
-  background-color: #0099cc;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-}
-.changelog-wrapper .changelog-list-wrapper .changelog-list li {
+.changelog-wrapper ul li {
   display: block;
   border-bottom: 1px solid #006666;
-  margin-bottom: 0.5em;
-  padding: 0 0.5em 0.5em;
-  font-size: 0.9em;
-  line-height: 1.4;
   zoom: 1;
 }
-.changelog-wrapper .changelog-list-wrapper .changelog-list li:before {
+.changelog-wrapper ul li:before {
   content: '';
   display: block;
 }
-.changelog-wrapper .changelog-list-wrapper .changelog-list li:after {
+.changelog-wrapper ul li:after {
   content: '';
   display: table;
   clear: both;
 }
-.changelog-wrapper .changelog-list-wrapper .changelog-list li:last-child {
+.changelog-wrapper ul li:last-child {
   border-bottom: none;
-  margin-bottom: 0;
 }
-.changelog-wrapper .changelog-list-wrapper .changelog-list li .label {
-  display: block;
+.changelog-wrapper ul li .label {
   float: left;
-  width: 30%;
-  margin-top: .2em;
+  font-size: .75em;
+  font-weight: bold;
+  text-transform: uppercase;
   background-color: #428bca;
   color: #ffffff;
-  text-align: center;
   -webkit-border-radius: 0.3em;
   -moz-border-radius: 0.3em;
   border-radius: 0.3em;
@@ -218,29 +138,29 @@ body {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  width: 30%;
 }
-.changelog-wrapper .changelog-list-wrapper .changelog-list li .label.square {
+.changelog-wrapper ul li .label.square {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
 }
-.changelog-wrapper .changelog-list-wrapper .changelog-list li .label.bug {
+.changelog-wrapper ul li .label.bug {
   background-color: #d9534f;
   color: #ffffff;
 }
-.changelog-wrapper .changelog-list-wrapper .changelog-list li .label.feature {
+.changelog-wrapper ul li .label.feature {
   background-color: #5cb85c;
   color: #ffffff;
 }
-.changelog-wrapper .changelog-list-wrapper .changelog-list li .label.enhancement {
+.changelog-wrapper ul li .label.enhancement {
   background-color: #5bc0de;
   color: #ffffff;
 }
-.changelog-wrapper .changelog-list-wrapper .changelog-list li .label + p {
-  width: 70%;
+.changelog-wrapper ul li .label + p {
+  margin-left: 30%;
 }
-.changelog-wrapper .changelog-list-wrapper .changelog-list li p {
-  float: left;
+.changelog-wrapper ul li p {
   text-align: left;
   padding-left: 1em;
   -ms-box-sizing: border-box;
@@ -248,7 +168,16 @@ body {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.changelog-wrapper.top .changelog-list-wrapper {
+.changelog-wrapper ul::-webkit-scrollbar {
+  width: 9px;
+}
+.changelog-wrapper ul::-webkit-scrollbar-thumb {
+  background-color: #0099cc;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+.changelog-wrapper.top ul {
   bottom: 100%;
   left: 50%;
   -webkit-transform: translate(-50%, 0);
@@ -256,7 +185,7 @@ body {
   -o-transform: translate(-50%, 0);
   -ms-transform: translate(-50%, 0);
   transform: translate(-50%, 0);
-  padding-bottom: 0.5em;
+  margin-bottom: 0.5em;
 }
 .changelog-wrapper.top .btn:before,
 .changelog-wrapper.top .btn-link:before {
@@ -268,16 +197,16 @@ body {
   border-top: 0.5em solid #003333;
   bottom: 100%;
   left: 50%;
-  -webkit-transform: translate(-50%, 50%);
-  -moz-transform: translate(-50%, 50%);
-  -o-transform: translate(-50%, 50%);
-  -ms-transform: translate(-50%, 50%);
-  transform: translate(-50%, 50%);
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  -o-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
 }
-.changelog-wrapper.left .changelog-list-wrapper {
+.changelog-wrapper.left ul {
   top: 0;
   right: 100%;
-  padding-right: 0.5em;
+  margin-right: 0.5em;
 }
 .changelog-wrapper.left .btn:before,
 .changelog-wrapper.left .btn-link:before {
@@ -289,16 +218,16 @@ body {
   border-left: 0.5em solid #003333;
   right: 100%;
   top: 50%;
-  -webkit-transform: translate(50%, -50%);
-  -moz-transform: translate(50%, -50%);
-  -o-transform: translate(50%, -50%);
-  -ms-transform: translate(50%, -50%);
-  transform: translate(50%, -50%);
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
 }
-.changelog-wrapper.right .changelog-list-wrapper {
+.changelog-wrapper.right ul {
   top: 0;
   left: 100%;
-  padding-left: 0.5em;
+  margin-left: 0.5em;
 }
 .changelog-wrapper.right .btn:before,
 .changelog-wrapper.right .btn-link:before {
@@ -310,13 +239,13 @@ body {
   border-right: 0.5em solid #003333;
   left: 100%;
   top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
 }
-.changelog-wrapper.bottom .changelog-list-wrapper {
+.changelog-wrapper.bottom ul {
   top: 100%;
   left: 50%;
   -webkit-transform: translate(-50%, 0);
@@ -324,7 +253,7 @@ body {
   -o-transform: translate(-50%, 0);
   -ms-transform: translate(-50%, 0);
   transform: translate(-50%, 0);
-  padding-top: 0.5em;
+  margin-top: 0.5em;
 }
 .changelog-wrapper.bottom .btn:before,
 .changelog-wrapper.bottom .btn-link:before {
@@ -336,9 +265,9 @@ body {
   border-bottom: 0.5em solid #003333;
   top: 100%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  -o-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
 }

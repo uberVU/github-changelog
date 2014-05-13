@@ -1,42 +1,13 @@
-/*
-  TODO's
+@import "components/reset.less";
 
-  // components.less
+// Core variables and mixins
+@import "components/variables.less";
+@import "components/utility.less";
+@import "components/mixins.less";
 
-  // XXX
-  @import "components/reset.less";
+// CSS components
+@import "components/label.less";
+@import "components/button.less";
+@import "components/list.less";
 
-  // XXX
-  @import "components/variables.less"; // colors ?
-  @import "components/mixins.less";
-  @import "components/utility.less";
-
-  // XXX
-  @import "components/buttons.less";
-  @import "components/list.less";
-  @import "components/labels.less";
-
-
-  // style.less
-
-  // import all custom components
-  @import "components.less";
-
-  // main styling for our demo / app
-  @import "main.less";
-
-*/
-
-// === Base ===
-body {
-  font: 16px/1.5em normal Arial, sans-serif;
-}
-.main {
-  width: 960px;
-  text-align: center;
-  margin: 10% auto;
-}
-
-// === Import Main ===
-@import "main.less";
-
+// Todo: add an empty .less file for further customisations
