@@ -13,83 +13,7 @@ body {
 }
 
 // === Import Mixins ===
-@import "mixins.less";
-
-// === Variables ===
-//general
-@main-color: salmon;
-@default-bg-color: @main-color;
-@default-color: #fff;
-@default-color-dark: #003333;
-@default-padding: .9em 1.2em;
-
-//list
-@list-bg-color: @default-color-dark;
-
-//labels
-@label-bg-color: #428bca;
-@label-bug-bg-color: #d9534f;
-@label-feature-bg-color: #5cb85c;
-@label-enhancement-bg-color: #5bc0de;
-
-//caret
-@caret-color: @list-bg-color;
-@caret-width: 0.5em;
-
-//badge
-@badge-bg-color: @list-bg-color;
-@badge-color: @default-color;
-
-
-// === Mixins ===
-// caret
-.set-caret-common(){
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 0;
-  border: @caret-width solid transparent;
-}
-.set-caret(@dir) when (@dir = 'top') {
-  padding: 0 0 @caret-width 0;
-  &:before{
-    .set-caret-common();
-    border-top: @caret-width solid @caret-color;
-    bottom: 0;
-    left: 50%;
-    .translate(-50%, 50%);
-  }
-}
-.set-caret(@dir) when (@dir = 'bottom') {
-  padding: @caret-width 0 0 0;
-  &:before{
-    .set-caret-common();
-    border-bottom: @caret-width solid @caret-color;
-    top: 0;
-    left: 50%;
-    .translate(-50%, -50%);
-  }
-}
-.set-caret(@dir) when (@dir = 'left') {
-  padding: 0 @caret-width 0 0;
-  &:before{
-    .set-caret-common();
-    border-left: @caret-width solid @caret-color;
-    top: .9em;
-    right: 0;
-    .translate(50%, 0);
-  }
-}
-.set-caret(@dir) when (@dir = 'right') {
-  padding: 0 0 0 @caret-width;
-  &:before{
-    .set-caret-common();
-    border-right: @caret-width solid @caret-color;
-    top: .9em;
-    left: 0em;
-    .translate(-50%, 0);
-  }
-}
+@import "changelog.less";
 
 
 // === Changelog ===
@@ -140,6 +64,9 @@ body {
   }
   .btn-large {
     font-size: 1.4em;
+  }
+  .btn-notify{
+    color: deepskyblue;
   }
   // wrapper so we can have caret above it and still use overflow-y (otherwise it gets hidden)
   .changelog-list-wrapper {
@@ -192,68 +119,42 @@ body {
       border-bottom: none;
       margin-bottom: 0;
     }
+    .label {
+      .label(30%);
+       & + p{
+        width: 70%;
+      }
+    }
     p {
       float: left;
       padding-left: 1em;
       .box-sizing();
     }
-    .label {
-      display: block;
-      float: left;
-      width: 30% ;
-      padding: .2em .3em;
-      //align label with text
-      margin-top: .2em;
-      background-color: @label-bg-color;
-      color: #000;
-      text-align: center;
-      .rounded(.3em);
-      .box-sizing();
-      // add different width to p in case when label exists
-      & + p{
-        width: 70%;
-      }
-      //label types
-      &.square{
-        .rounded(0);
-      }
-      &.bug{
-        background-color: @label-bug-bg-color;
-        color: #fff;
-      }
-      &.feature{
-        background-color: @label-feature-bg-color;
-        color: #fff;
-      }
-      &.enhancement{
-        background-color: @label-enhancement-bg-color;
-        color: #fff;
-      }
-    }
+    // add different width to p in case when label exists
   }
   // changelog list positioning
   .top {
     bottom: 100%;
     margin-left: 50%;
     .translate(-50%, 0);
-    .set-caret('top');
+    .set-caret('top', @caret-width, @caret-color);
   }
   .left {
     right: 100%;
     margin-right: 0;
     top: 0;
-    .set-caret('left');
+    .set-caret('left', @caret-width, @caret-color);
   }
   .right {
     left: 100%;
     margin-left: 0;
     top: 0;
-    .set-caret('right');
+    .set-caret('right', @caret-width, @caret-color);
   }
   .bottom {
     top: 100%;
     margin-left: 50%;
     .translate(-50%, 0);
-    .set-caret('bottom');
+    .set-caret('bottom', @caret-width, @caret-color);
   }
 }
