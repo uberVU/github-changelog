@@ -10,7 +10,7 @@
     .set-caret-common();
     border-top: @width solid @color;
     bottom: 100%;
-    .align-h();
+    .align-h(50%);
   }
 }
 .set-caret(@dir, @width, @color) when (@dir = 'bottom') {
@@ -18,7 +18,7 @@
     .set-caret-common();
     border-bottom: @width solid @color;
     top: 100%;
-    .align-h();
+    .align-h(-50%);
   }
 }
 .set-caret(@dir, @width, @color) when (@dir = 'left') {
@@ -26,7 +26,7 @@
     .set-caret-common();
     border-left: @width solid @color;
     right: 100%;
-    .align-v();
+    .align-v(50%);
   }
 }
 .set-caret(@dir, @width, @color) when (@dir = 'right') {
@@ -34,6 +34,6 @@
     .set-caret-common();
     border-right: @width solid @color;
     left: 100%;
-    .align-v();
+    .align-v(-50%);
   }
 }

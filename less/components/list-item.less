@@ -1,0 +1,27 @@
+.list-item() {
+  display: block;
+  border-bottom: 1px solid lighten(@list-bg-color, 10%);
+  margin-bottom: @list-item-padding;
+  padding: 0 @list-item-padding @list-item-padding;
+  font-size: @list-item-font-size;
+  line-height: 1.4;
+  .clearfix();
+
+  &:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+  .label {
+    // add different width to p in case when label exists
+    .label(@label-width);
+     & + p{
+      width: 100% - @label-width;
+    }
+  }
+  p {
+    float: left;
+    text-align: left;
+    padding-left: 1em;
+    .box-sizing();
+  }
+}

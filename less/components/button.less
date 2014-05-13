@@ -24,6 +24,23 @@
   &.btn-notify{
     color: lighten(@default-bg-color, 30%);
   }
+  .badge {
+    position: absolute;
+    background: @badge-bg-color;
+    color: @badge-color;
+    display: block;
+    bottom: 100%;
+    left: 100%;
+    line-height: 1;
+    font-size: @badge-font-size;
+    text-align: center;
+    min-width: @badge-size;
+    height: @badge-size;
+    line-height: @badge-size;
+    padding: 0 @badge-size/4;
+    .translate(-50%, 50%);
+    .rounded(@badge-size);
+  }
 }
 .btn-link {
   &:extend(.btn all);

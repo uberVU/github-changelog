@@ -1,0 +1,84 @@
+// wrapper so we can have caret above it and still use overflow-y (otherwise it gets hidden)
+.changelog-list-wrapper(){
+  position: absolute;
+}
+
+.changelog-list-head(){
+  padding: .5em .6em;
+  background-color: @default-bg-color;
+  color: @default-color;
+  text-align: left;
+  line-height: 1em;
+  .border-radius(.4em, 0, 0, .4em);
+  .drop-shadow(1px, 3px, 7px, 0.1);
+
+  & + .changelog-list{
+    .border-radius(0, .4em, .4em, 0);
+  }
+}
+
+.changelog-list() {
+  min-width: @list-min-width;
+  max-height: @list-max-height;
+  list-style: none;
+  background-color: @list-bg-color;
+  color: @default-color;
+  border: 1px solid @list-bg-color;
+  padding: .5em 0 0;
+  overflow-y: auto;
+  .rounded(.4em);
+  .drop-shadow(1px, 3px, 7px, 0.1);
+
+  //style scrollbar
+  &::-webkit-scrollbar {
+    width: 9px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: @default-bg-color;
+    .rounded(10px);
+  }
+}
+
+// changelog list positioning
+.changelog-list-positioning(){
+  &.top {
+    .changelog-list-wrapper{
+      bottom: 100%;
+      .align-h();
+      padding-bottom: @caret-width;
+    }
+    .btn {
+      .set-caret('top', @caret-width, @caret-color);
+    }
+  }
+  &.left {
+    .changelog-list-wrapper{
+      top: 0;
+      right: 100%;
+      padding-right: @caret-width;
+    }
+    .btn {
+      .set-caret('left', @caret-width, @caret-color);
+    }
+  }
+  &.right {
+    .changelog-list-wrapper{
+      top: 0;
+      left: 100%;
+      padding-left: @caret-width;
+    }
+    .btn{
+      .set-caret('right', @caret-width, @caret-color);
+    }
+  }
+  &.bottom {
+    .changelog-list-wrapper{
+      top: 100%;
+      .align-h();
+      padding-top: @caret-width;
+    }
+    .btn {
+      .set-caret('bottom', @caret-width, @caret-color);
+    }
+  }
+}

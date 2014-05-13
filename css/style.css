@@ -26,17 +26,17 @@
   @import "main.less";
 
 */
-* {
-  margin: 0;
-  padding: 0;
-}
 body {
-  font: 12px/1.5em normal Arial, sans-serif;
+  font: 16px/1.5em normal Arial, sans-serif;
 }
 .main {
   width: 960px;
   text-align: center;
   margin: 10% auto;
+}
+* {
+  margin: 0;
+  padding: 0;
 }
 /*---------------------------------------------------
     LESS Elements 0.9
@@ -44,31 +44,6 @@ body {
     A set of useful LESS mixins
     More info at: http://lesselements.com
   ---------------------------------------------------*/
-.align-h {
-  left: 50%;
-  -webkit-transform: translate(-50%, 0);
-  -moz-transform: translate(-50%, 0);
-  -o-transform: translate(-50%, 0);
-  -ms-transform: translate(-50%, 0);
-  transform: translate(-50%, 0);
-}
-.align-v {
-  top: 50%;
-  -webkit-transform: translate(0, -50%);
-  -moz-transform: translate(0, -50%);
-  -o-transform: translate(0, -50%);
-  -ms-transform: translate(0, -50%);
-  transform: translate(0, -50%);
-}
-.align-hv {
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
 .btn,
 .btn-link {
   display: inline-block;
@@ -103,6 +78,30 @@ body {
 .btn-link.btn-notify {
   color: #66d9ff;
 }
+.btn .badge,
+.btn-link .badge {
+  position: absolute;
+  background: #003333;
+  color: #ffffff;
+  display: block;
+  bottom: 100%;
+  left: 100%;
+  line-height: 1;
+  font-size: 0.75em;
+  text-align: center;
+  min-width: 1.5em;
+  height: 1.5em;
+  line-height: 1.5em;
+  padding: 0 0.375em;
+  -webkit-transform: translate(-50%, 50%);
+  -moz-transform: translate(-50%, 50%);
+  -o-transform: translate(-50%, 50%);
+  -ms-transform: translate(-50%, 50%);
+  transform: translate(-50%, 50%);
+  -webkit-border-radius: 1.5em;
+  -moz-border-radius: 1.5em;
+  border-radius: 1.5em;
+}
 .btn-link {
   background-color: transparent;
   color: #003333;
@@ -112,39 +111,14 @@ body {
   position: relative;
   display: inline-block;
 }
-.changelog-wrapper .badge {
-  position: absolute;
-  background: #003333;
-  color: #ffffff;
-  display: block;
-  bottom: 100%;
-  left: 100%;
-  -webkit-transform: translate(-50%, 50%);
-  -moz-transform: translate(-50%, 50%);
-  -o-transform: translate(-50%, 50%);
-  -ms-transform: translate(-50%, 50%);
-  transform: translate(-50%, 50%);
-  line-height: 1;
-  font-size: 0.75em;
-  text-align: center;
-  min-width: 1.5em;
-  height: 1.5em;
-  line-height: 1.5em;
-  -webkit-border-radius: 1.5em;
-  -moz-border-radius: 1.5em;
-  border-radius: 1.5em;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  padding: 0 0.375em;
-}
 .changelog-wrapper .changelog-list-wrapper {
   position: absolute;
 }
-.changelog-wrapper .changelog-list-head {
+.changelog-wrapper .changelog-list-wrapper .changelog-list-head {
   padding: .5em .6em;
   background-color: #0099cc;
   color: #ffffff;
+  text-align: left;
   line-height: 1em;
   -webkit-border-top-right-radius: 0.4em;
   -webkit-border-bottom-right-radius: 0;
@@ -165,7 +139,7 @@ body {
   -moz-box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
   box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
 }
-.changelog-wrapper .changelog-list-head + .changelog-list {
+.changelog-wrapper .changelog-list-wrapper .changelog-list-head + .changelog-list {
   -webkit-border-top-right-radius: 0;
   -webkit-border-bottom-right-radius: 0.4em;
   -webkit-border-bottom-left-radius: 0.4em;
@@ -182,7 +156,7 @@ body {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
 }
-.changelog-wrapper .changelog-list {
+.changelog-wrapper .changelog-list-wrapper .changelog-list {
   min-width: 25em;
   max-height: 10em;
   list-style: none;
@@ -198,38 +172,38 @@ body {
   -moz-box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
   box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
 }
-.changelog-wrapper .changelog-list::-webkit-scrollbar {
+.changelog-wrapper .changelog-list-wrapper .changelog-list::-webkit-scrollbar {
   width: 9px;
 }
-.changelog-wrapper .changelog-list::-webkit-scrollbar-thumb {
+.changelog-wrapper .changelog-list-wrapper .changelog-list::-webkit-scrollbar-thumb {
   background-color: #0099cc;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
 }
-.changelog-wrapper .changelog-list li {
+.changelog-wrapper .changelog-list-wrapper .changelog-list li {
   display: block;
   border-bottom: 1px solid #006666;
-  margin-bottom: .5em;
-  padding: 0 .5em .5em;
+  margin-bottom: 0.5em;
+  padding: 0 0.5em 0.5em;
   font-size: 0.9em;
   line-height: 1.4;
   zoom: 1;
 }
-.changelog-wrapper .changelog-list li:before {
+.changelog-wrapper .changelog-list-wrapper .changelog-list li:before {
   content: '';
   display: block;
 }
-.changelog-wrapper .changelog-list li:after {
+.changelog-wrapper .changelog-list-wrapper .changelog-list li:after {
   content: '';
   display: table;
   clear: both;
 }
-.changelog-wrapper .changelog-list li:last-child {
+.changelog-wrapper .changelog-list-wrapper .changelog-list li:last-child {
   border-bottom: none;
   margin-bottom: 0;
 }
-.changelog-wrapper .changelog-list li .label {
+.changelog-wrapper .changelog-list-wrapper .changelog-list li .label {
   display: block;
   float: left;
   width: 30%;
@@ -245,35 +219,36 @@ body {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.changelog-wrapper .changelog-list li .label.square {
+.changelog-wrapper .changelog-list-wrapper .changelog-list li .label.square {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
 }
-.changelog-wrapper .changelog-list li .label.bug {
+.changelog-wrapper .changelog-list-wrapper .changelog-list li .label.bug {
   background-color: #d9534f;
   color: #ffffff;
 }
-.changelog-wrapper .changelog-list li .label.feature {
+.changelog-wrapper .changelog-list-wrapper .changelog-list li .label.feature {
   background-color: #5cb85c;
   color: #ffffff;
 }
-.changelog-wrapper .changelog-list li .label.enhancement {
+.changelog-wrapper .changelog-list-wrapper .changelog-list li .label.enhancement {
   background-color: #5bc0de;
   color: #ffffff;
 }
-.changelog-wrapper .changelog-list li .label + p {
+.changelog-wrapper .changelog-list-wrapper .changelog-list li .label + p {
   width: 70%;
 }
-.changelog-wrapper .changelog-list li p {
+.changelog-wrapper .changelog-list-wrapper .changelog-list li p {
   float: left;
+  text-align: left;
   padding-left: 1em;
   -ms-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.top .changelog-list-wrapper {
+.changelog-wrapper.top .changelog-list-wrapper {
   bottom: 100%;
   left: 50%;
   -webkit-transform: translate(-50%, 0);
@@ -281,10 +256,10 @@ body {
   -o-transform: translate(-50%, 0);
   -ms-transform: translate(-50%, 0);
   transform: translate(-50%, 0);
-  padding-bottom: 1em;
+  padding-bottom: 0.5em;
 }
-.top .btn:before,
-.top .btn-link:before {
+.changelog-wrapper.top .btn:before,
+.changelog-wrapper.top .btn-link:before {
   content: '';
   position: absolute;
   width: 0;
@@ -293,19 +268,19 @@ body {
   border-top: 0.5em solid #003333;
   bottom: 100%;
   left: 50%;
-  -webkit-transform: translate(-50%, 0);
-  -moz-transform: translate(-50%, 0);
-  -o-transform: translate(-50%, 0);
-  -ms-transform: translate(-50%, 0);
-  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 50%);
+  -moz-transform: translate(-50%, 50%);
+  -o-transform: translate(-50%, 50%);
+  -ms-transform: translate(-50%, 50%);
+  transform: translate(-50%, 50%);
 }
-.left .changelog-list-wrapper {
+.changelog-wrapper.left .changelog-list-wrapper {
   top: 0;
   right: 100%;
-  padding-right: 1em;
+  padding-right: 0.5em;
 }
-.left .btn:before,
-.left .btn-link:before {
+.changelog-wrapper.left .btn:before,
+.changelog-wrapper.left .btn-link:before {
   content: '';
   position: absolute;
   width: 0;
@@ -314,19 +289,19 @@ body {
   border-left: 0.5em solid #003333;
   right: 100%;
   top: 50%;
-  -webkit-transform: translate(0, -50%);
-  -moz-transform: translate(0, -50%);
-  -o-transform: translate(0, -50%);
-  -ms-transform: translate(0, -50%);
-  transform: translate(0, -50%);
+  -webkit-transform: translate(50%, -50%);
+  -moz-transform: translate(50%, -50%);
+  -o-transform: translate(50%, -50%);
+  -ms-transform: translate(50%, -50%);
+  transform: translate(50%, -50%);
 }
-.right .changelog-list-wrapper {
+.changelog-wrapper.right .changelog-list-wrapper {
   top: 0;
   left: 100%;
-  padding-left: 1em;
+  padding-left: 0.5em;
 }
-.right .btn:before,
-.right .btn-link:before {
+.changelog-wrapper.right .btn:before,
+.changelog-wrapper.right .btn-link:before {
   content: '';
   position: absolute;
   width: 0;
@@ -335,13 +310,13 @@ body {
   border-right: 0.5em solid #003333;
   left: 100%;
   top: 50%;
-  -webkit-transform: translate(0, -50%);
-  -moz-transform: translate(0, -50%);
-  -o-transform: translate(0, -50%);
-  -ms-transform: translate(0, -50%);
-  transform: translate(0, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
-.bottom .changelog-list-wrapper {
+.changelog-wrapper.bottom .changelog-list-wrapper {
   top: 100%;
   left: 50%;
   -webkit-transform: translate(-50%, 0);
@@ -349,10 +324,10 @@ body {
   -o-transform: translate(-50%, 0);
   -ms-transform: translate(-50%, 0);
   transform: translate(-50%, 0);
-  padding-top: 1em;
+  padding-top: 0.5em;
 }
-.bottom .btn:before,
-.bottom .btn-link:before {
+.changelog-wrapper.bottom .btn:before,
+.changelog-wrapper.bottom .btn-link:before {
   content: '';
   position: absolute;
   width: 0;
@@ -361,9 +336,9 @@ body {
   border-bottom: 0.5em solid #003333;
   top: 100%;
   left: 50%;
-  -webkit-transform: translate(-50%, 0);
-  -moz-transform: translate(-50%, 0);
-  -o-transform: translate(-50%, 0);
-  -ms-transform: translate(-50%, 0);
-  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
