@@ -44,6 +44,7 @@
   border: @caret-width solid transparent;
 }
 .set-caret(@dir) when (@dir = 'top') {
+  padding: 0 0 @caret-width 0;
   &:before{
     .set-caret-common();
     border-top: @caret-width solid @caret-color;
@@ -53,6 +54,7 @@
   }
 }
 .set-caret(@dir) when (@dir = 'bottom') {
+  padding: @caret-width 0 0 0;
   &:before{
     .set-caret-common();
     border-bottom: @caret-width solid @caret-color;
@@ -62,6 +64,7 @@
   }
 }
 .set-caret(@dir) when (@dir = 'left') {
+  padding: 0 @caret-width 0 0;
   &:before{
     .set-caret-common();
     border-left: @caret-width solid @caret-color;
@@ -71,6 +74,7 @@
   }
 }
 .set-caret(@dir) when (@dir = 'right') {
+  padding: 0 0 0 @caret-width;
   &:before{
     .set-caret-common();
     border-right: @caret-width solid @caret-color;
@@ -115,12 +119,12 @@ body {
     padding: @default-padding;
     background: @default-bg-color;
     color: @default-color;
-    max-height: 1em;
+    font-size: 1em;
     line-height: 1;
     .rounded(.4em);
     .text-none();
 
-    &:hover{
+    &:hover {
       background: darken(@default-bg-color, 3%)
     }
   }
@@ -129,6 +133,16 @@ body {
     background-color: transparent;
     color: @default-color-dark;
     padding: 0.3em 0.8em;
+  }
+  //button sizes
+  .btn-small {
+    font-size: .7em;
+  }
+  .btn-medium {
+    font-size: 1em;
+  }
+  .btn-large {
+    font-size: 1.4em;
   }
   // wrapper so we can have caret above it and still use overflow-y (otherwise it gets hidden)
   .changelog-list-wrapper {
@@ -142,7 +156,7 @@ body {
     background-color: @list-bg-color;
     color: @default-color;
     border: 1px solid @list-bg-color;
-    padding: .5em 0;
+    padding: .5em 0 0;
     overflow-y: auto;
     .rounded(.4em);
     .drop-shadow(1px, 3px, 7px, 0.1);
@@ -158,7 +172,7 @@ body {
   }
   .changelog-list li {
     display: block;
-    border-bottom: 1px solid @default-bg-color;
+    border-bottom: 1px solid lighten(@list-bg-color, 10%);
     margin-bottom: .5em;
     padding: 0 .5em .5em;
     font-size: 0.9em;
@@ -171,64 +185,64 @@ body {
     }
     p {
       float: left;
-      width: 70%;
       padding-left: 1em;
       .box-sizing();
     }
-  }
-  .label {
-    display: block;
-    float: left;
-    width: 30% ;
-    padding: 3px 5px;
-    background-color: @label-bg-color;
-    color: #000;
-    text-align: center;
-    .rounded(.3em);
-    .box-sizing();
-
-    //label types
-    &.square{
-      .rounded(0);
-    }
-    &.bug{
-      background-color: @label-bug-bg-color;
-      color: #fff;
-    }
-    &.feature{
-      background-color: @label-feature-bg-color;
-      color: #fff;
-    }
-    &.enhancement{
-      background-color: @label-enhancement-bg-color;
-      color: #fff;
+    .label {
+      display: block;
+      float: left;
+      width: 30% ;
+      padding: .2em .3em;
+      //align label with text
+      margin-top: .2em;
+      background-color: @label-bg-color;
+      color: #000;
+      text-align: center;
+      .rounded(.3em);
+      .box-sizing();
+      // add different width to p in case when label exists
+      & + p{
+        width: 70%;
+      }
+      //label types
+      &.square{
+        .rounded(0);
+      }
+      &.bug{
+        background-color: @label-bug-bg-color;
+        color: #fff;
+      }
+      &.feature{
+        background-color: @label-feature-bg-color;
+        color: #fff;
+      }
+      &.enhancement{
+        background-color: @label-enhancement-bg-color;
+        color: #fff;
+      }
     }
   }
   // changelog list positioning
   .top {
     bottom: 100%;
-    padding: 0 0 0.5em 0;
     margin-left: 50%;
     .translate(-50%, 0);
     .set-caret('top');
   }
   .left {
     right: 100%;
-    padding: 0 0.5em 0 0;
     margin-right: 0;
     top: 0;
     .set-caret('left');
   }
   .right {
     left: 100%;
-    padding: 0 0 0 0.5em;
     margin-left: 0;
     top: 0;
     .set-caret('right');
   }
   .bottom {
     top: 100%;
-    padding: 0.5em 0 0 0;
     margin-left: 50%;
     .translate(-50%, 0);
     .set-caret('bottom');

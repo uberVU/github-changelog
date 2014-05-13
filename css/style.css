@@ -41,7 +41,7 @@ body {
   padding: 0.9em 1.2em;
   background: #fa8072;
   color: #ffffff;
-  max-height: 1em;
+  font-size: 1em;
   line-height: 1;
   -webkit-border-radius: 0.4em;
   -moz-border-radius: 0.4em;
@@ -56,6 +56,15 @@ body {
   color: #003333;
   padding: 0.3em 0.8em;
 }
+.changelog-wrapper .btn-small {
+  font-size: .7em;
+}
+.changelog-wrapper .btn-medium {
+  font-size: 1em;
+}
+.changelog-wrapper .btn-large {
+  font-size: 1.4em;
+}
 .changelog-wrapper .changelog-list-wrapper {
   position: absolute;
   padding-top: .5em;
@@ -67,7 +76,7 @@ body {
   background-color: #003333;
   color: #ffffff;
   border: 1px solid #003333;
-  padding: .5em 0;
+  padding: .5em 0 0;
   overflow-y: auto;
   -webkit-border-radius: 0.4em;
   -moz-border-radius: 0.4em;
@@ -87,7 +96,7 @@ body {
 }
 .changelog-wrapper .changelog-list li {
   display: block;
-  border-bottom: 1px solid #fa8072;
+  border-bottom: 1px solid #006666;
   margin-bottom: .5em;
   padding: 0 .5em .5em;
   font-size: 0.9em;
@@ -109,18 +118,18 @@ body {
 }
 .changelog-wrapper .changelog-list li p {
   float: left;
-  width: 70%;
   padding-left: 1em;
   -ms-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.changelog-wrapper .label {
+.changelog-wrapper .changelog-list li .label {
   display: block;
   float: left;
   width: 30% ;
-  padding: 3px 5px;
+  padding: .2em .3em;
+  margin-top: .2em;
   background-color: #428bca;
   color: #000;
   text-align: center;
@@ -132,32 +141,35 @@ body {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.changelog-wrapper .label.square {
+.changelog-wrapper .changelog-list li .label + p {
+  width: 70%;
+}
+.changelog-wrapper .changelog-list li .label.square {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
 }
-.changelog-wrapper .label.bug {
+.changelog-wrapper .changelog-list li .label.bug {
   background-color: #d9534f;
   color: #fff;
 }
-.changelog-wrapper .label.feature {
+.changelog-wrapper .changelog-list li .label.feature {
   background-color: #5cb85c;
   color: #fff;
 }
-.changelog-wrapper .label.enhancement {
+.changelog-wrapper .changelog-list li .label.enhancement {
   background-color: #5bc0de;
   color: #fff;
 }
 .changelog-wrapper .top {
   bottom: 100%;
-  padding: 0 0 0.5em 0;
   margin-left: 50%;
   -webkit-transform: translate(-50%, 0);
   -moz-transform: translate(-50%, 0);
   -o-transform: translate(-50%, 0);
   -ms-transform: translate(-50%, 0);
   transform: translate(-50%, 0);
+  padding: 0 0 0.5em 0;
 }
 .changelog-wrapper .top:before {
   content: '';
@@ -176,9 +188,9 @@ body {
 }
 .changelog-wrapper .left {
   right: 100%;
-  padding: 0 0.5em 0 0;
   margin-right: 0;
   top: 0;
+  padding: 0 0.5em 0 0;
 }
 .changelog-wrapper .left:before {
   content: '';
@@ -197,9 +209,9 @@ body {
 }
 .changelog-wrapper .right {
   left: 100%;
-  padding: 0 0 0 0.5em;
   margin-left: 0;
   top: 0;
+  padding: 0 0 0 0.5em;
 }
 .changelog-wrapper .right:before {
   content: '';
@@ -218,13 +230,13 @@ body {
 }
 .changelog-wrapper .bottom {
   top: 100%;
-  padding: 0.5em 0 0 0;
   margin-left: 50%;
   -webkit-transform: translate(-50%, 0);
   -moz-transform: translate(-50%, 0);
   -o-transform: translate(-50%, 0);
   -ms-transform: translate(-50%, 0);
   transform: translate(-50%, 0);
+  padding: 0.5em 0 0 0;
 }
 .changelog-wrapper .bottom:before {
   content: '';
