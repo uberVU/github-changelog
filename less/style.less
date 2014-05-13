@@ -1,3 +1,32 @@
+/*
+  TODO's
+
+  // components.less
+
+  // XXX
+  @import "components/reset.less";
+
+  // XXX
+  @import "components/variables.less"; // colors ?
+  @import "components/mixins.less";
+  @import "components/utility.less";
+
+  // XXX
+  @import "components/buttons.less";
+  @import "components/list.less";
+  @import "components/labels.less";
+
+
+  // style.less
+
+  // import all custom components
+  @import "components.less";
+
+  // main styling for our demo / app
+  @import "main.less";
+
+*/
+
 // === Reset :) ===
 *{
   margin: 0;
@@ -5,11 +34,12 @@
 }
 // === Base ===
 body {
-  font: 16px/1.5em normal Arial, sans-serif;
+  font: 12px/1.5em normal Arial, sans-serif;
 }
 .main {
-  width: 100px;
-  margin: 250px auto;
+  width: 960px;
+  text-align: center;
+  margin: 10% auto;
 }
 
 // === Import Mixins ===
@@ -26,52 +56,24 @@ body {
     background: @badge-bg-color;
     color: @badge-color;
     display: block;
-    top: -0.3em;
-    right: -0.3em;
+    bottom: 100%;
+    left: 100%;
+    .translate(-50%, 50%);
     line-height: 1;
+    font-size: @badge-font-size;
     text-align: center;
-    padding: 0.2em 0.4em;
-    font-size: .8em;
-    .rounded(.8em);
-  }
-  .btn {
-    display: inline-block;
-    position: relative;
-    padding: @default-padding;
-    background: @default-bg-color;
-    color: @default-color;
-    font-size: 1em;
-    line-height: 1;
-    .rounded(.4em);
-    .text-none();
-
-    &:hover {
-      background: darken(@default-bg-color, 3%)
-    }
-  }
-  .btn-link {
-    &:extend(.changelog-wrapper .btn);
-    background-color: transparent;
-    color: @default-color-dark;
-    padding: 0.3em 0.8em;
-  }
-  //button sizes
-  .btn-small {
-    font-size: .7em;
-  }
-  .btn-medium {
-    font-size: 1em;
-  }
-  .btn-large {
-    font-size: 1.4em;
-  }
-  .btn-notify{
-    color: deepskyblue;
+    min-width: @badge-size;
+    height: @badge-size;
+    line-height: @badge-size;
+    .rounded(@badge-size);
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 @badge-size/4;
   }
   // wrapper so we can have caret above it and still use overflow-y (otherwise it gets hidden)
   .changelog-list-wrapper {
     position: absolute;
-    padding-top: .5em;
   }
   .changelog-list-head{
     padding: .5em .6em;
@@ -132,29 +134,45 @@ body {
     }
     // add different width to p in case when label exists
   }
+}
   // changelog list positioning
   .top {
-    bottom: 100%;
-    margin-left: 50%;
-    .translate(-50%, 0);
-    .set-caret('top', @caret-width, @caret-color);
+    .changelog-list-wrapper{
+      bottom: 100%;
+      .align-h();
+      padding-bottom: @caret-width*2;
+    }
+    .btn {
+      .set-caret('top', @caret-width, @caret-color);
+    }
   }
   .left {
-    right: 100%;
-    margin-right: 0;
-    top: 0;
-    .set-caret('left', @caret-width, @caret-color);
+    .changelog-list-wrapper{
+      top: 0;
+      right: 100%;
+      padding-right: @caret-width*2;
+    }
+    .btn {
+      .set-caret('left', @caret-width, @caret-color);
+    }
   }
   .right {
-    left: 100%;
-    margin-left: 0;
-    top: 0;
-    .set-caret('right', @caret-width, @caret-color);
+    .changelog-list-wrapper{
+      top: 0;
+      left: 100%;
+      padding-left: @caret-width*2;
+    }
+    .btn{
+      .set-caret('right', @caret-width, @caret-color);
+    }
   }
   .bottom {
-    top: 100%;
-    margin-left: 50%;
-    .translate(-50%, 0);
-    .set-caret('bottom', @caret-width, @caret-color);
+    .changelog-list-wrapper{
+      top: 100%;
+      .align-h();
+      padding-top: @caret-width*2;
+    }
+    .btn {
+      .set-caret('bottom', @caret-width, @caret-color);
+    }
   }
-}

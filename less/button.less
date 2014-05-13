@@ -1,0 +1,33 @@
+.btn {
+  display: inline-block;
+  position: relative;
+  padding: @default-padding;
+  background: @default-bg-color;
+  color: @default-color;
+  font-size: 1em;
+  line-height: 1;
+  .rounded(.4em);
+  .text-none();
+  &:hover {
+    background: darken(@default-bg-color, 3%)
+  }
+  //button sizes
+  &.btn-small {
+    font-size: .7em;
+  }
+  &.btn-medium {
+    font-size: 1em;
+  }
+  &.btn-large {
+    font-size: 1.4em;
+  }
+  &.btn-notify{
+    color: lighten(@default-bg-color, 30%);
+  }
+}
+.btn-link {
+  &:extend(.btn all);
+  background-color: transparent;
+  color: @default-color-dark;
+  padding: 0.3em 0.8em;
+}

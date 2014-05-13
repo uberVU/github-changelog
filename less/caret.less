@@ -6,42 +6,34 @@
   border: @caret-width solid transparent;
 }
 .set-caret(@dir, @width, @color) when (@dir = 'top') {
-  padding: 0 0 @width 0;
   &:before{
     .set-caret-common();
     border-top: @width solid @color;
-    bottom: 0;
-    left: 50%;
-    .translate(-50%, 50%);
+    bottom: 100%;
+    .align-h();
   }
 }
 .set-caret(@dir, @width, @color) when (@dir = 'bottom') {
-  padding: @width 0 0 0;
   &:before{
     .set-caret-common();
     border-bottom: @width solid @color;
-    top: 0;
-    left: 50%;
-    .translate(-50%, -50%);
+    top: 100%;
+    .align-h();
   }
 }
 .set-caret(@dir, @width, @color) when (@dir = 'left') {
-  padding: 0 @width 0 0;
   &:before{
     .set-caret-common();
     border-left: @width solid @color;
-    top: .9em;
-    right: 0;
-    .translate(50%, 0);
+    right: 100%;
+    .align-v();
   }
 }
 .set-caret(@dir, @width, @color) when (@dir = 'right') {
-  padding: 0 0 0 @width;
   &:before{
     .set-caret-common();
     border-right: @width solid @color;
-    top: .9em;
-    left: 0em;
-    .translate(-50%, 0);
+    left: 100%;
+    .align-v();
   }
 }
