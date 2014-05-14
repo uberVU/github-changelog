@@ -68,18 +68,17 @@ body {
   line-height: 1;
   font-size: 0.75em;
   text-align: center;
-  min-width: 1.5em;
   height: 1.5em;
   line-height: 1.5em;
-  padding: 0 1.5em;
+  padding: 0 0.5em;
   -webkit-transform: translate(-50%, 50%);
   -moz-transform: translate(-50%, 50%);
   -o-transform: translate(-50%, 50%);
   -ms-transform: translate(-50%, 50%);
   transform: translate(-50%, 50%);
-  -webkit-border-radius: 1.5em;
-  -moz-border-radius: 1.5em;
-  border-radius: 1.5em;
+  -webkit-border-radius: 0.75em;
+  -moz-border-radius: 0.75em;
+  border-radius: 0.75em;
 }
 .btn-link {
   background-color: transparent;
