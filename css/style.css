@@ -185,7 +185,7 @@ body {
   -o-transform: translate(-50%, 0);
   -ms-transform: translate(-50%, 0);
   transform: translate(-50%, 0);
-  margin-bottom: 0.5em;
+  margin-bottom: 1em;
 }
 .changelog-wrapper.top .btn:before,
 .changelog-wrapper.top .btn-link:before {
@@ -206,7 +206,7 @@ body {
 .changelog-wrapper.left ul {
   top: 0;
   right: 100%;
-  margin-right: 0.5em;
+  margin-right: 1em;
 }
 .changelog-wrapper.left .btn:before,
 .changelog-wrapper.left .btn-link:before {
@@ -227,7 +227,7 @@ body {
 .changelog-wrapper.right ul {
   top: 0;
   left: 100%;
-  margin-left: 0.5em;
+  margin-left: 1em;
 }
 .changelog-wrapper.right .btn:before,
 .changelog-wrapper.right .btn-link:before {
@@ -253,7 +253,7 @@ body {
   -o-transform: translate(-50%, 0);
   -ms-transform: translate(-50%, 0);
   transform: translate(-50%, 0);
-  margin-top: 0.5em;
+  margin-top: 1em;
 }
 .changelog-wrapper.bottom .btn:before,
 .changelog-wrapper.bottom .btn-link:before {
