@@ -2,8 +2,16 @@
 .changelog-wrapper {
   position: relative;
   display: inline-block;
-  ul{
+  .changelog{
     position: absolute;
+  }
+  .changelog-footer{
+    background-color: @default-bg-color;
+    color: @default-color;
+    .border-radius(0, .4em, .4em, 0);
+    .drop-shadow(1px, 3px, 7px, 0.1);
+  }
+  ul{
     min-width: @list-min-width;
     max-height: @list-max-height;
     list-style: none;
@@ -12,8 +20,13 @@
     border: 1px solid @list-bg-color;
     padding: .5em 0 0;
     overflow-y: auto;
-    .rounded(.4em);
+    .border-radius(.4em, 0, 0, .4em);
     .drop-shadow(1px, 3px, 7px, 0.1);
+
+    // rounded corners when no footer is present
+    &:only-child{
+      .rounded(.4em);
+    }
 
     li {
       display: block;
@@ -50,7 +63,7 @@
           background-color: @label-enhancement-bg-color;
           color: @label-enhancement-color;
         }
-         & + p{
+        & + p{
           margin-left: @label-width;
         }
       }
@@ -71,7 +84,7 @@
   }
   // positioning list according
   &.top {
-    ul{
+    .changelog{
       bottom: 100%;
       .align-h();
       margin-bottom: @caret-width*2;
@@ -81,7 +94,7 @@
     }
   }
   &.left {
-    ul{
+    .changelog{
       top: 0;
       right: 100%;
       margin-right: @caret-width*2;
@@ -91,7 +104,7 @@
     }
   }
   &.right {
-    ul{
+    .changelog{
       top: 0;
       left: 100%;
       margin-left: @caret-width*2;
@@ -101,7 +114,7 @@
     }
   }
   &.bottom {
-    ul{
+    .changelog{
       top: 100%;
       .align-h();
       margin-top: @caret-width*2;
@@ -111,19 +124,20 @@
     }
   }
   &.pull-top{
-    ul{
+    .changelog{
       top: auto;
       bottom: 0;
     }
   }
   &.pull-right{
-    ul{
+    .changelog{
+      right: auto;
       left: 0;
       .translate(0, 0);
     }
   }
   &.pull-left{
-    ul{
+    .changelog{
       left: auto;
       right: 0;
       .translate(0, 0);
