@@ -53,10 +53,6 @@ body {
 .btn-link.large {
   font-size: 1.4em;
 }
-.btn.notify,
-.btn-link.notify {
-  color: #66d9ff;
-}
 .btn .badge,
 .btn-link .badge {
   position: absolute;
