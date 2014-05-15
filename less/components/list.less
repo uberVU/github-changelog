@@ -110,4 +110,23 @@
       .set-caret('bottom', @caret-width, @caret-color);
     }
   }
+  &.pull-top{
+    ul{
+      top: auto;
+      bottom: 0;
+    }
+  }
+  &.pull-right{
+    ul{
+      left: 0;
+      .translate(0, 0);
+    }
+  }
+  &.pull-left{
+    ul{
+      left: auto;
+      right: 0;
+      .translate(0, 0);
+    }
+  }
 }

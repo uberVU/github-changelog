@@ -271,3 +271,24 @@ body {
   -ms-transform: translate(-50%, 0);
   transform: translate(-50%, 0);
 }
+.changelog-wrapper.pull-top ul {
+  top: auto;
+  bottom: 0;
+}
+.changelog-wrapper.pull-right ul {
+  left: 0;
+  -webkit-transform: translate(0, 0);
+  -moz-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.changelog-wrapper.pull-left ul {
+  left: auto;
+  right: 0;
+  -webkit-transform: translate(0, 0);
+  -moz-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
