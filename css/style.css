@@ -224,8 +224,8 @@ body {
   transform: translate(-50%, 0);
   margin-bottom: 1em;
 }
-.changelog-wrapper.top .btn:before,
-.changelog-wrapper.top .btn-link:before {
+.changelog-wrapper.top > .btn:before,
+.changelog-wrapper.top > .btn-link:before {
   content: '';
   position: absolute;
   width: 0;
@@ -245,8 +245,8 @@ body {
   right: 100%;
   margin-right: 1em;
 }
-.changelog-wrapper.left .btn:before,
-.changelog-wrapper.left .btn-link:before {
+.changelog-wrapper.left > .btn:before,
+.changelog-wrapper.left > .btn-link:before {
   content: '';
   position: absolute;
   width: 0;
@@ -266,8 +266,8 @@ body {
   left: 100%;
   margin-left: 1em;
 }
-.changelog-wrapper.right .btn:before,
-.changelog-wrapper.right .btn-link:before {
+.changelog-wrapper.right > .btn:before,
+.changelog-wrapper.right > .btn-link:before {
   content: '';
   position: absolute;
   width: 0;
@@ -292,8 +292,8 @@ body {
   transform: translate(-50%, 0);
   margin-top: 1em;
 }
-.changelog-wrapper.bottom .btn:before,
-.changelog-wrapper.bottom .btn-link:before {
+.changelog-wrapper.bottom > .btn:before,
+.changelog-wrapper.bottom > .btn-link:before {
   content: '';
   position: absolute;
   width: 0;
