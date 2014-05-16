@@ -2,12 +2,14 @@
 .changelog-wrapper {
   position: relative;
   display: inline-block;
+  text-align: left;
   .changelog{
     position: absolute;
   }
   .changelog-footer{
     background-color: @default-bg-color;
     color: @default-color;
+    text-align: center;
     .border-radius(0, .4em, .4em, 0);
     .drop-shadow(1px, 3px, 7px, 0.1);
   }
@@ -40,6 +42,7 @@
         font-size: .75em;
         font-weight: bold;
         text-transform: uppercase;
+        text-align: center;
         background-color: @label-bg-color;
         color: @label-color;
         .rounded(.3em);

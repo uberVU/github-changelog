@@ -84,6 +84,7 @@ body {
 .changelog-wrapper {
   position: relative;
   display: inline-block;
+  text-align: left;
 }
 .changelog-wrapper .changelog {
   position: absolute;
@@ -91,6 +92,7 @@ body {
 .changelog-wrapper .changelog-footer {
   background-color: #0099cc;
   color: #ffffff;
+  text-align: center;
   -webkit-border-top-right-radius: 0;
   -webkit-border-bottom-right-radius: 0.4em;
   -webkit-border-bottom-left-radius: 0.4em;
@@ -165,6 +167,7 @@ body {
   font-size: .75em;
   font-weight: bold;
   text-transform: uppercase;
+  text-align: center;
   background-color: #428bca;
   color: #ffffff;
   -webkit-border-radius: 0.3em;
