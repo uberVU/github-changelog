@@ -6,8 +6,9 @@ body {
   font: 16px/1.5em normal Arial, sans-serif;
 }
 .main {
-  width: 100px;
-  margin: 250px auto;
+  width: 960px;
+  margin: 10% auto;
+  text-align: center;
 }
 /*---------------------------------------------------
     LESS Elements 0.9
@@ -15,31 +16,19 @@ body {
     A set of useful LESS mixins
     More info at: http://lesselements.com
   ---------------------------------------------------*/
-.changelog-wrapper {
-  position: relative;
-  display: inline-block;
-}
-.changelog-wrapper .badge {
+.caret-defaults {
+  content: '';
   position: absolute;
-  background: #003333;
-  color: #ffffff;
-  display: block;
-  top: -0.3em;
-  right: -0.3em;
-  line-height: 1;
-  text-align: center;
-  padding: 0.2em 0.4em;
-  font-size: .8em;
-  -webkit-border-radius: 0.8em;
-  -moz-border-radius: 0.8em;
-  border-radius: 0.8em;
+  width: 0;
+  height: 0;
+  border: 0.5em solid transparent;
 }
-.changelog-wrapper .btn,
-.changelog-wrapper .btn-link {
+.btn,
+.btn-link {
   display: inline-block;
   position: relative;
   padding: 0.9em 1.2em;
-  background: #fa8072;
+  background: #0099cc;
   color: #ffffff;
   font-size: 1em;
   line-height: 1;
@@ -48,32 +37,90 @@ body {
   border-radius: 0.4em;
   text-decoration: none;
 }
-.changelog-wrapper .btn:hover {
-  background: #f97363;
+.btn:hover,
+.btn-link:hover {
+  background: #008ebd;
 }
-.changelog-wrapper .btn-link {
+.btn.small,
+.btn-link.small {
+  font-size: .7em;
+}
+.btn.medium,
+.btn-link.medium {
+  font-size: 1em;
+}
+.btn.large,
+.btn-link.large {
+  font-size: 1.4em;
+}
+.btn .badge,
+.btn-link .badge {
+  position: absolute;
+  background: #003333;
+  color: #ffffff;
+  display: block;
+  bottom: 100%;
+  left: 100%;
+  line-height: 1;
+  font-size: 0.75em;
+  text-align: center;
+  height: 1.5em;
+  line-height: 1.5em;
+  padding: 0 0.5em;
+  -webkit-transform: translate(-50%, 50%);
+  -moz-transform: translate(-50%, 50%);
+  -o-transform: translate(-50%, 50%);
+  -ms-transform: translate(-50%, 50%);
+  transform: translate(-50%, 50%);
+  -webkit-border-radius: 0.75em;
+  -moz-border-radius: 0.75em;
+  border-radius: 0.75em;
+}
+.btn-link {
   background-color: transparent;
   color: #003333;
   padding: 0.3em 0.8em;
 }
-.changelog-wrapper .btn-small {
-  font-size: .7em;
+.changelog-wrapper {
+  position: relative;
+  display: inline-block;
+  text-align: left;
 }
-.changelog-wrapper .btn-medium {
-  font-size: 1em;
-}
-.changelog-wrapper .btn-large {
-  font-size: 1.4em;
-}
-.changelog-wrapper .changelog-list-wrapper {
+.changelog-wrapper .changelog {
   position: absolute;
-  padding-top: .5em;
 }
-.changelog-wrapper .changelog-list-head {
-  padding: .5em .6em;
-  background-color: #fa8072;
+.changelog-wrapper .changelog-footer {
+  background-color: #0099cc;
   color: #ffffff;
-  line-height: 1em;
+  text-align: center;
+  -webkit-border-top-right-radius: 0;
+  -webkit-border-bottom-right-radius: 0.4em;
+  -webkit-border-bottom-left-radius: 0.4em;
+  -webkit-border-top-left-radius: 0;
+  -moz-border-radius-topright: 0;
+  -moz-border-radius-bottomright: 0.4em;
+  -moz-border-radius-bottomleft: 0.4em;
+  -moz-border-radius-topleft: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0.4em;
+  border-bottom-left-radius: 0.4em;
+  border-top-left-radius: 0;
+  -moz-background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
+}
+.changelog-wrapper ul {
+  min-width: 25em;
+  max-height: 10em;
+  list-style: none;
+  background-color: #003333;
+  color: #ffffff;
+  border: 1px solid #003333;
+  padding: .5em 0 0;
+  overflow-y: auto;
   -webkit-border-top-right-radius: 0.4em;
   -webkit-border-bottom-right-radius: 0;
   -webkit-border-bottom-left-radius: 0;
@@ -93,87 +140,36 @@ body {
   -moz-box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
   box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
 }
-.changelog-wrapper .changelog-list-head + .changelog-list {
-  -webkit-border-top-right-radius: 0;
-  -webkit-border-bottom-right-radius: 0.4em;
-  -webkit-border-bottom-left-radius: 0.4em;
-  -webkit-border-top-left-radius: 0;
-  -moz-border-radius-topright: 0;
-  -moz-border-radius-bottomright: 0.4em;
-  -moz-border-radius-bottomleft: 0.4em;
-  -moz-border-radius-topleft: 0;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0.4em;
-  border-bottom-left-radius: 0.4em;
-  border-top-left-radius: 0;
-  -moz-background-clip: padding-box;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-}
-.changelog-wrapper .changelog-list {
-  min-width: 25em;
-  max-height: 10em;
-  list-style: none;
-  background-color: #003333;
-  color: #ffffff;
-  border: 1px solid #003333;
-  padding: .5em 0 0;
-  overflow-y: auto;
+.changelog-wrapper ul:only-child {
   -webkit-border-radius: 0.4em;
   -moz-border-radius: 0.4em;
   border-radius: 0.4em;
-  -webkit-box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
-  box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
 }
-.changelog-wrapper .changelog-list::-webkit-scrollbar {
-  width: 9px;
-}
-.changelog-wrapper .changelog-list::-webkit-scrollbar-thumb {
-  background-color: #fa8072;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-}
-.changelog-wrapper .changelog-list li {
+.changelog-wrapper ul li {
   display: block;
   border-bottom: 1px solid #006666;
-  margin-bottom: .5em;
-  padding: 0 .5em .5em;
-  font-size: 0.9em;
-  line-height: 1.4;
   zoom: 1;
 }
-.changelog-wrapper .changelog-list li:before {
+.changelog-wrapper ul li:before {
   content: '';
   display: block;
 }
-.changelog-wrapper .changelog-list li:after {
+.changelog-wrapper ul li:after {
   content: '';
   display: table;
   clear: both;
 }
-.changelog-wrapper .changelog-list li:last-child {
+.changelog-wrapper ul li:last-child {
   border-bottom: none;
-  margin-bottom: 0;
 }
-.changelog-wrapper .changelog-list li p {
+.changelog-wrapper ul li .label {
   float: left;
-  padding-left: 1em;
-  -ms-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.changelog-wrapper .changelog-list li .label {
-  display: block;
-  float: left;
-  width: 30% ;
-  padding: .2em .3em;
-  margin-top: .2em;
-  background-color: #428bca;
-  color: #000;
+  font-size: .75em;
+  font-weight: bold;
+  text-transform: uppercase;
   text-align: center;
+  background-color: #428bca;
+  color: #ffffff;
   -webkit-border-radius: 0.3em;
   -moz-border-radius: 0.3em;
   border-radius: 0.3em;
@@ -181,116 +177,159 @@ body {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  width: 30%;
+  margin-top: .4em;
 }
-.changelog-wrapper .changelog-list li .label + p {
-  width: 70%;
-}
-.changelog-wrapper .changelog-list li .label.square {
+.changelog-wrapper ul li .label.square {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
 }
-.changelog-wrapper .changelog-list li .label.bug {
+.changelog-wrapper ul li .label.bug {
   background-color: #d9534f;
-  color: #fff;
+  color: #ffffff;
 }
-.changelog-wrapper .changelog-list li .label.feature {
+.changelog-wrapper ul li .label.feature {
   background-color: #5cb85c;
-  color: #fff;
+  color: #ffffff;
 }
-.changelog-wrapper .changelog-list li .label.enhancement {
+.changelog-wrapper ul li .label.enhancement {
   background-color: #5bc0de;
-  color: #fff;
+  color: #ffffff;
 }
-.changelog-wrapper .top {
+.changelog-wrapper ul li .label + p {
+  margin-left: 30%;
+}
+.changelog-wrapper ul li p {
+  text-align: left;
+  padding-left: 1em;
+  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.changelog-wrapper ul::-webkit-scrollbar {
+  width: 9px;
+}
+.changelog-wrapper ul::-webkit-scrollbar-thumb {
+  background-color: #0099cc;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+.changelog-wrapper.top .changelog {
   bottom: 100%;
-  margin-left: 50%;
+  left: 50%;
   -webkit-transform: translate(-50%, 0);
   -moz-transform: translate(-50%, 0);
   -o-transform: translate(-50%, 0);
   -ms-transform: translate(-50%, 0);
   transform: translate(-50%, 0);
-  padding: 0 0 0.5em 0;
+  margin-bottom: 1em;
 }
-.changelog-wrapper .top:before {
+.changelog-wrapper.top > .btn:before,
+.changelog-wrapper.top > .btn-link:before {
   content: '';
   position: absolute;
   width: 0;
   height: 0;
   border: 0.5em solid transparent;
   border-top: 0.5em solid #003333;
-  bottom: 0;
+  bottom: 100%;
   left: 50%;
-  -webkit-transform: translate(-50%, 50%);
-  -moz-transform: translate(-50%, 50%);
-  -o-transform: translate(-50%, 50%);
-  -ms-transform: translate(-50%, 50%);
-  transform: translate(-50%, 50%);
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  -o-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
 }
-.changelog-wrapper .left {
-  right: 100%;
-  margin-right: 0;
+.changelog-wrapper.left .changelog {
   top: 0;
-  padding: 0 0.5em 0 0;
+  right: 100%;
+  margin-right: 1em;
 }
-.changelog-wrapper .left:before {
+.changelog-wrapper.left > .btn:before,
+.changelog-wrapper.left > .btn-link:before {
   content: '';
   position: absolute;
   width: 0;
   height: 0;
   border: 0.5em solid transparent;
   border-left: 0.5em solid #003333;
-  top: .9em;
-  right: 0;
-  -webkit-transform: translate(50%, 0);
-  -moz-transform: translate(50%, 0);
-  -o-transform: translate(50%, 0);
-  -ms-transform: translate(50%, 0);
-  transform: translate(50%, 0);
+  right: 100%;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
 }
-.changelog-wrapper .right {
-  left: 100%;
-  margin-left: 0;
+.changelog-wrapper.right .changelog {
   top: 0;
-  padding: 0 0 0 0.5em;
+  left: 100%;
+  margin-left: 1em;
 }
-.changelog-wrapper .right:before {
+.changelog-wrapper.right > .btn:before,
+.changelog-wrapper.right > .btn-link:before {
   content: '';
   position: absolute;
   width: 0;
   height: 0;
   border: 0.5em solid transparent;
   border-right: 0.5em solid #003333;
-  top: .9em;
-  left: 0em;
-  -webkit-transform: translate(-50%, 0);
-  -moz-transform: translate(-50%, 0);
-  -o-transform: translate(-50%, 0);
-  -ms-transform: translate(-50%, 0);
-  transform: translate(-50%, 0);
+  left: 100%;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
 }
-.changelog-wrapper .bottom {
+.changelog-wrapper.bottom .changelog {
   top: 100%;
-  margin-left: 50%;
+  left: 50%;
   -webkit-transform: translate(-50%, 0);
   -moz-transform: translate(-50%, 0);
   -o-transform: translate(-50%, 0);
   -ms-transform: translate(-50%, 0);
   transform: translate(-50%, 0);
-  padding: 0.5em 0 0 0;
+  margin-top: 1em;
 }
-.changelog-wrapper .bottom:before {
+.changelog-wrapper.bottom > .btn:before,
+.changelog-wrapper.bottom > .btn-link:before {
   content: '';
   position: absolute;
   width: 0;
   height: 0;
   border: 0.5em solid transparent;
   border-bottom: 0.5em solid #003333;
-  top: 0;
+  top: 100%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  -o-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+}
+.changelog-wrapper.pull-top .changelog {
+  top: auto;
+  bottom: 0;
+}
+.changelog-wrapper.pull-right .changelog {
+  right: auto;
+  left: 0;
+  -webkit-transform: translate(0, 0);
+  -moz-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.changelog-wrapper.pull-left .changelog {
+  left: auto;
+  right: 0;
+  -webkit-transform: translate(0, 0);
+  -moz-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
 }

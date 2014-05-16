@@ -154,3 +154,46 @@
   -webkit-background-clip: @argument;
   background-clip: @argument;
 }
+
+// Caret mixin for positioning
+.caret-defaults{
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: @caret-width solid transparent;
+}
+.set-caret(@dir, @width, @color) when (@dir = 'top') {
+  &:before{
+    .caret-defaults();
+    border-top: @width solid @color;
+    bottom: 100%;
+    .align-h();
+  }
+}
+.set-caret(@dir, @width, @color) when (@dir = 'bottom') {
+  &:before{
+    .caret-defaults();
+    border-bottom: @width solid @color;
+    top: 100%;
+    .align-h();
+  }
+}
+.set-caret(@dir, @width, @color) when (@dir = 'left') {
+  &:before{
+    .caret-defaults();
+    border-left: @width solid @color;
+    right: 100%;
+    .align-v();
+  }
+}
+.set-caret(@dir, @width, @color) when (@dir = 'right') {
+  &:before{
+    .caret-defaults();
+    border-right: @width solid @color;
+    left: 100%;
+    .align-v();
+  }
+}
+
+

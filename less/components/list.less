@@ -1,0 +1,149 @@
+// wrapper so we can have caret above it and still use overflow-y (otherwise it gets hidden)
+.changelog-wrapper {
+  position: relative;
+  display: inline-block;
+  text-align: left;
+  .changelog{
+    position: absolute;
+  }
+  .changelog-footer{
+    background-color: @default-bg-color;
+    color: @default-color;
+    text-align: center;
+    .border-radius(0, .4em, .4em, 0);
+    .drop-shadow(1px, 3px, 7px, 0.1);
+  }
+  ul{
+    min-width: @list-min-width;
+    max-height: @list-max-height;
+    list-style: none;
+    background-color: @list-bg-color;
+    color: @default-color;
+    border: 1px solid @list-bg-color;
+    padding: .5em 0 0;
+    overflow-y: auto;
+    .border-radius(.4em, 0, 0, .4em);
+    .drop-shadow(1px, 3px, 7px, 0.1);
+
+    // rounded corners when no footer is present
+    &:only-child{
+      .rounded(.4em);
+    }
+
+    li {
+      display: block;
+      border-bottom: 1px solid lighten(@list-bg-color, 10%);
+      .clearfix();
+      &:last-child {
+        border-bottom: none;
+      }
+      .label{
+        float: left;
+        font-size: .75em;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-align: center;
+        background-color: @label-bg-color;
+        color: @label-color;
+        .rounded(.3em);
+        .box-sizing();
+        width: @label-width;
+        margin-top: .4em;
+
+        //label types
+        &.square{
+          .rounded(0);
+        }
+        &.bug{
+          background-color: @label-bug-bg-color;
+          color: @label-bug-color;
+        }
+        &.feature{
+          background-color: @label-feature-bg-color;
+          color: @label-feature-color;
+        }
+        &.enhancement{
+          background-color: @label-enhancement-bg-color;
+          color: @label-enhancement-color;
+        }
+        & + p{
+          margin-left: @label-width;
+        }
+      }
+      p {
+        text-align: left;
+        padding-left: 1em;
+        .box-sizing();
+      }
+    }
+    //style scrollbar
+    &::-webkit-scrollbar {
+      width: 9px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: @default-bg-color;
+      .rounded(10px);
+    }
+  }
+  // positioning list according
+  &.top {
+    .changelog{
+      bottom: 100%;
+      .align-h();
+      margin-bottom: @caret-width*2;
+    }
+    >.btn {
+      .set-caret('top', @caret-width, @caret-color);
+    }
+  }
+  &.left {
+    .changelog{
+      top: 0;
+      right: 100%;
+      margin-right: @caret-width*2;
+    }
+    >.btn {
+      .set-caret('left', @caret-width, @caret-color);
+    }
+  }
+  &.right {
+    .changelog{
+      top: 0;
+      left: 100%;
+      margin-left: @caret-width*2;
+    }
+    >.btn{
+      .set-caret('right', @caret-width, @caret-color);
+    }
+  }
+  &.bottom {
+    .changelog{
+      top: 100%;
+      .align-h();
+      margin-top: @caret-width*2;
+    }
+    >.btn {
+      .set-caret('bottom', @caret-width, @caret-color);
+    }
+  }
+  &.pull-top{
+    .changelog{
+      top: auto;
+      bottom: 0;
+    }
+  }
+  &.pull-right{
+    .changelog{
+      right: auto;
+      left: 0;
+      .translate(0, 0);
+    }
+  }
+  &.pull-left{
+    .changelog{
+      left: auto;
+      right: 0;
+      .translate(0, 0);
+    }
+  }
+}
