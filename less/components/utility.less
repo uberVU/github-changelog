@@ -1,0 +1,32 @@
+.text-none() {
+  text-decoration: none;
+}
+.perfect-square(@x) {
+  width: @x;
+  height: @x;
+}
+.clearfix() {
+  zoom: 1;
+  &:before {
+    content: '';
+    display: block;
+  }
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+.align-h() {
+  left: 50%;
+  .translate(-50%, 0);
+}
+.align-v() {
+  top: 50%;
+  .translate(0, -50%);
+}
+.align-hv() {
+  left: 50%;
+  top: 50%;
+  .translate(-50%, -50%);
+}

@@ -3,64 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <title>Github Changelog</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-<!-- Changelog Wrapper -->
-<div class="changelog-wrapper">
+<div class="main">
+  <!-- Changelog Wrapper -->
+  <!-- Default List Position -->
+  <div class="changelog-wrapper bottom pull-left">
 
-  <!-- #BUTTON -->
-  <!-- Button appearance: .btn | .btn-link -->
-  <!-- Button size: .small | .medium | .large -->
-  <!-- Button color: xxx -->
-  <a href="#">
-    Link
-    <!-- #BADGE -->
-    <!-- Badge position: (top | middle | bottom) & (left | middle | right) -->
-    <!-- Badge type: round (default) | square -->
-    <!-- Badge color: xxx -->
-    <span class="badge top right">2</span>
-  </a>
+    <!-- #BUTTON -->
+    <!-- Button appearance: .btn | .btn-link -->
+    <!-- Button size: .btn-small | .btn-medium | .btn-large -->
+    <a class="btn medium" href="#">
+      Link
+      <!-- #BADGE -->
+      <span class="badge">2</span>
+    </a>
 
-  <!-- #LIST -->
-  <!-- List position: (top | middle | bottom) & (left | middle | right) -->
-  <ul class="bottom middle">
-    <li>
-      <p>
-        <!-- #LABEL -->
-        <!-- Label type: round (default) | square -->
-        <!-- Label color: xxx -->
-        <span class="label">featured</span>
-        Lorem ipsum dolor sit amet, consectetur.
-      </p>
-    </li>
-    <li>
-      <p>
-        <span class="label">enhancement</span>
-        Lorem ipsum dolor sit amet, consectetur.
-      </p>
-    </li>
-    <li>
-      <p>
-        <span class="label">bug</span>
-        Lorem ipsum dolor sit amet, consectetur.
-      </p>
-    </li>
-    <li>
-      <p>
-        <span class="label">new</span>
-        Lorem ipsum dolor sit amet, consectetur.
-      </p>
-    </li>
-    <li>
-      <p>
-        <span class="label">project</span>
-        Lorem ipsum dolor sit amet, consectetur.
-      </p>
-    </li>
-  </ul>
-
-</div>
-
+    <!-- #LIST -->
+    <!-- List position: (top | bottom | left | right) -->
+    <div class="changelog">
+      <ul>
+        <li>
+          <!-- #LABEL -->
+          <!-- Label type: round (default) | square -->
+          <span class="label round">other</span>
+          <p>Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur.</p>
+        </li>
+        <li>
+          <span class="label bug round">bug</span>
+          <p>Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur.</p>
+        </li>
+        <li>
+          <span class="label feature square">feature</span>
+          <p>Lorem ipsum dolor sit amet, consectetur.</p>
+        </li>
+        <li>
+          <span class="label enhancement">enhancement</span>
+          <p>Lorem ipsum dolor sit amet, consectetur.</p>
+        </li>
+      </ul>
+      <div class="changelog-footer">Changelog (23) <a href="#" class="btn small">Reload</a></div>
+    </div>
+  </div>
+</div><!--end main-->
 </body>
 </html>
