@@ -1,6 +1,7 @@
 github-changelog
 ====
-A simple CSS widget for showing notifications.
+
+![changelog wireframe](https://dl.dropboxusercontent.com/u/42934143/images/changelog.png)
 
 ## Interface elements ##
 ### Notification icon ###
