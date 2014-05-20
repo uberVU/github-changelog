@@ -24,7 +24,11 @@ $.fn.changelog = function(opt){
   var defaults = {
     reloadText: 'Reload',
     iconText: 'Link',
-    footerTitle: 'Changelog'
+    footerTitle: 'Changelog',
+    reloadAction: function(e){
+      e.preventDefault();
+      console.log('reload button was pressed!');
+    }
   };
   var options = $.extend(defaults, opt);
   var notificationNum = data.length;
@@ -51,6 +55,11 @@ $.fn.changelog = function(opt){
       );
   
   var list = widget.find('ul');
+  var listWrapper = widget.find('.changelog');
+  var reloadButton = widget.find('.changelog-footer .btn');
+  var mainButton = widget.children('.btn').first();
+
+  // add widget to selector
   this.html(' ').append(widget);
 
   // populate list
@@ -68,4 +77,14 @@ $.fn.changelog = function(opt){
         )
     );      
   });
+
+  // set reload action
+  reloadButton.on('click', options.reloadAction);
+
+  // open/close the list
+  mainButton.on('click', function(e){
+    e.preventDefault();
+    listWrapper.toggle();
+  });
+
 }
