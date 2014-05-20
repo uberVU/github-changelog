@@ -8,45 +8,15 @@
 <body>
 
 <div class="main">
-  <!-- Changelog Wrapper -->
-  <!-- Default List Position -->
-  <div class="changelog-wrapper bottom pull-left">
 
-    <!-- #BUTTON -->
-    <!-- Button appearance: .btn | .btn-link -->
-    <!-- Button size: .btn-small | .btn-medium | .btn-large -->
-    <a class="btn medium" href="#">
-      Link
-      <!-- #BADGE -->
-      <span class="badge">2</span>
-    </a>
+  <div class="demo"></div>
 
-    <!-- #LIST -->
-    <!-- List position: (top | bottom | left | right) -->
-    <div class="changelog">
-      <ul>
-        <li>
-          <!-- #LABEL -->
-          <!-- Label type: round (default) | square -->
-          <span class="label round">other</span>
-          <p>Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur.</p>
-        </li>
-        <li>
-          <span class="label bug round">bug</span>
-          <p>Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur.</p>
-        </li>
-        <li>
-          <span class="label feature square">feature</span>
-          <p>Lorem ipsum dolor sit amet, consectetur.</p>
-        </li>
-        <li>
-          <span class="label enhancement">enhancement</span>
-          <p>Lorem ipsum dolor sit amet, consectetur.</p>
-        </li>
-      </ul>
-      <div class="changelog-footer">Changelog (23) <a href="#" class="btn small">Reload</a></div>
-    </div>
-  </div>
-</div><!--end main-->
+</div>
+  <script src="js/jquery-1.11.1.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/changelog.js"></script>
+  <script>
+    $('.demo').changelog();
+  </script>
 </body>
 </html>
