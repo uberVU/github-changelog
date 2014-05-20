@@ -1,82 +1,45 @@
 github-changelog
 ====
-A simple CSS widget for showing notifications.
+
+Use GitHub issues to communicate app updates directly to your customers.
 
 ## Interface elements ##
+
+![changelog wireframe](https://dl.dropboxusercontent.com/u/42934143/images/changelog2.png)
+
 ### Notification icon ###
 This is what shows up by default, before the user has had a chance to interact with the widget.
 
 **Behaviour**
-- when no unread notifications are present its styling should reflect this, possibly grayed out or with some default coloring.
-- when new notifications are received the icon styling changes to a different, brighter color. Possibly with a glow effect. In addition, a counter will show up displaying the number of new notifications.
+- The icon won't be shown until updates are available.
+- In addition to the visible icon, a small counter will also pop up when updates arrive, displaying their count.
 
 ### Notification list ###
 This list shows the notification area, it will contain number of notification items.
 
 **Behaviour**
-- hidden by default, it can be shown or hidden by pressing the *notification icon*.
-- if it's visible, it will become hidden if the user interacts with any other part of the page
-- it should be able to show up in one of 4 predefined spots in relation to the *notification icon*([see below](#notification-list-1)) according to its CSS class.
+- Hidden by default, it can be shown or hidden by pressing the *notification icon*.
+- If it's visible, it will become hidden if the user interacts with any other part of the page
+- It can be positioned according with 4 main positions: `top`, `bottom`, `left` and `right`. Each of these positions can be modified by providing a second class: `pull-left` and `pull-right` for vertical positions and `pull-top` for horizontal positions. The purpose here is to make the list usable in any positioning scenario.
+
+**List Positioning**
+![list positioning](https://cloud.githubusercontent.com/assets/3300066/2999278/1407e078-dd14-11e3-941c-3cce9f10377c.png)
 
 ### Notification item ###
 One element of the notification list.
 
 **Behaviour**
-- composed of two elements, a label and text content.
-- the label can have different coloring according to its type. Supported types: *'feature'*, *'enhancement'*, *'bug'* 
+- Composed of two elements, a label and text content.
+- The label can have different coloring according to the label colors set on Github.
+
+### HTML ###
+**See the HTML Structure [wiki page](https://github.com/uberVU/github-changelog/wiki/HTML-Structure) to get an idea of how these elements will look in HTML**
+
+## Customization options ##
+We use LESS to generate the CSS files for the widget. The styles can be easily changed to match your design by tweaking `less/variables.less` and re-generating the CSS. [Grunt](http://gruntjs.com/) can help with [this](https://github.com/gruntjs/grunt-contrib-less).
 
 
-## HTML Elements ##
-### Changelog Wrapper ###
-The widget is contained within an element with the class `.changelog-wrapper`
-```html
-<div class="changelog-wrapper">
-...
-</div>
-```
 
-### Notification icon ###
-```html
-<a class="btn" href="#">
-  Link
-  <span class="badge top right">2</span>
-</a>
-```
-Config options via class attribute
-- Appearance: as a button `.btn` or a link `.btn-link`. Link appearance won't have border and background color.
-- Size: `.small`, `.medium` or `.large`
 
-### Notification counter ###
-Contained within the notification icon
-```html
-<span class="badge round">2</span>
-```
-Config options via class attribute
-- Shape: `.round`(default) or `.square`
-
-### Notification list ###
-```html
-<!-- List position: (top | bottom | left | right) -->
-<div class="top changelog-list-wrapper">
-	<ul class="changelog-list">
-	...
-	</ul>
-</div>
-```
-### Notification item ###
-Contained within the notification list
-```html
-<li>
-  <p>
-    <!-- #LABEL -->
-    <!-- Label type: round (default) | square -->
-    <span class="label">featured</span>
-    <p>Lorem ipsum dolor sit amet, consectetur.</p>
-  </p>
-</li>
-```
-Config options via class attribute
-- Shape: `.round`(default) or `square`
-- Color: via it's type, can be `feature`, `enhancement`, `bug`, etc.
 
 
