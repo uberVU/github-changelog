@@ -5,7 +5,7 @@ A widget that provides you with an easy way to send transparent status updates t
 
 ## Interface elements ##
 
-![changelog wireframe](https://dl.dropboxusercontent.com/u/42934143/images/changelog.png)
+![changelog wireframe](https://dl.dropboxusercontent.com/u/42934143/images/changelog2.png)
 
 ### Notification icon ###
 This is what shows up by default, before the user has had a chance to interact with the widget.
