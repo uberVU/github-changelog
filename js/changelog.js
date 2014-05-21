@@ -1,90 +1,97 @@
-  /*
-  var changelog = function(option){
+(function($){
 
-    var defaults = {};
-    var options = $.extend(defaults, option);
+  var Changelog = function(target, options){
 
-    $('.site-footer').html(" ").append($("<ul class='" + options.list_class + "'></ul>"));
+    // Defaults
+    this._options = $.extend(
+      {
+        reloadText: 'Reload',
+        iconText: 'Link',
+        footerTitle: 'Changelog'
+      }, options
+    );
 
-    // $.each(data, function(){
-    // $('.' + options.list_class).append(createItem(this.labels[0], this.title, this.issue_id));
-    // });
-
-    $.each(data, function(){
-      $('ul.' + options.list_class).append(
-        "<li class='item'> \
-           <strong style='font-weight:bold;color:" + this.label_color + "'>" + this.label + "</strong> \
-           <p>" + this.title + "</p> \
-         </li>");
-    });
-  }
-  */
-
-$.fn.changelog = function(opt){
-  var defaults = {
-    reloadText: 'Reload',
-    iconText: 'Link',
-    footerTitle: 'Changelog',
-    reloadAction: function(e){
-      e.preventDefault();
-      console.log('reload button was pressed!');
-    }
+    this._widget = null;
+    this._list = null;
+    this._listWrapper = null;
+    this._reloadButton = null;
+    this._mainButton = null;
+    this._currentTimestamp = Date.now();
+    this._target = target;
+    this._init(target, options);
+    return this;
   };
-  var options = $.extend(defaults, opt);
-  var notificationNum = data.length;
 
-  // build HTML for widget
-  var widget = 
-    $('<div class="changelog-wrapper bottom"></div>')
-      .append(
-        $('<a class="btn" href="#"></a>')
-          .text(options.iconText)
-          .append($('<span class="badge"></span>')
-            .text(notificationNum)
-          )
+  Changelog.prototype._updateTimestamp = function(){
+    this._currentTimestamp = Date.now();
+  };
+
+  Changelog.prototype._addListItem = function(title, label, labelColor){
+    this._list.append(
+      $('<li></li>')
+        .append(
+          $('<span class="label"></span>')
+            .text(label)
+            .css({'background-color': labelColor})
         )
-      .append(
-        $('<div class="changelog"></div>')
-          .append($('<ul></ul>'))
-          .append($('<div class="changelog-footer"></div>')
-            .text(options.footerTitle + ' (' + notificationNum + ')')
-            .append($('<a class="btn" href="#"></a>')
-              .text(options.reloadText)
+        .append(
+          $('<p></p>').text(title)
+        )
+    );
+  };
+
+  Changelog.prototype._buildList = function(){
+    var iconText = this._options.iconText;
+    this._widget = 
+      $('<div class="changelog-wrapper bottom"></div>')
+        .append(
+          $('<a class="btn" href="#"></a>')
+            .text(this._options.iconText)
+            .append($('<span class="badge"></span>')
+              .text(22)
             )
           )
-      );
-  
-  var list = widget.find('ul');
-  var listWrapper = widget.find('.changelog');
-  var reloadButton = widget.find('.changelog-footer .btn');
-  var mainButton = widget.children('.btn').first();
+        .append(
+          $('<div class="changelog"></div>')
+            .append($('<ul></ul>'))
+            .append($('<div class="changelog-footer"></div>')
+              .text(this._options.footerTitle + ' (' + 22 + ')')
+              .append($('<a class="btn" href="#"></a>')
+                .text(this._options.reloadText)
+              )
+            )
+        );
+    this._list = this._widget.find('ul');
+    this._listWrapper = this._widget.find('.changelog');
+    this._reloadButton = this._widget.find('.changelog-footer .btn');
+    this._mainButton = this._widget.children('.btn').first();
+    
+    // add widget to selector
+    this._target.html(' ').append(this._widget);
+  };
 
-  // add widget to selector
-  this.html(' ').append(widget);
+  Changelog.prototype._init = function(){
+    this._buildList();
+  };
 
-  // populate list
-  $.each(data, function(){
-    list.append(
-      $('<li></li>')
-        .append($('<span class="label"></span>')
-          .text(this.label)
-          .css({
-            'background-color': this.label_color
-          })
-        )
-        .append($('<p></p>')
-          .text(this.title)
-        )
-    );      
-  });
+  Changelog.prototype.checkForUpdates = function(){
+  };
 
-  // set reload action
-  reloadButton.on('click', options.reloadAction);
+  $.fn.changelog = function(options){
 
-  // open/close the list
-  mainButton.on('click', function(e){
-    e.preventDefault();
-    listWrapper.toggle();
-  });
+    var instance = this.data('changelog');
 
-}
+    if(instance && instance[options]){
+      return instance[options].apply(instance, Array.prototype.slice.call(arguments, 1));
+
+    }else if(typeof options === 'object' || !options){
+      instance = new Changelog(this, options);
+      this.data('changelog', instance );
+      return this;
+
+    }else{
+      $.error('Method ' +  options + ' does not exist');
+    }    
+  };
+
+})(jQuery);
