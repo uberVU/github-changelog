@@ -45,7 +45,7 @@ Opens up the list of updates when clicked. The button is hidden by default and w
 
 The text of the button defaults to "New updates!" and can be changed using the `buttonText` option. You can use HTML to insert an icon or any other child DOM elements.
 
-### Update counter
+#### Update counter
 
 An update counter is displayed along with the button when updates arrive. The number is incremented with each update.
 
@@ -54,8 +54,6 @@ An update counter is displayed along with the button when updates arrive. The nu
 ![update list](https://dl.dropboxusercontent.com/u/42934143/images/changelog-list.png)
 
 The list is shown when the user clicks on the [button](#button) (which is only visibile when updates are available) and hidden when clicking outside.
-
-The list can be positioned in 10 ways around the button, by combining 4 available CSS classes: `top`, `bottom`, `left` and `right`. The CSS class for the list will be set using the `listClass` jQuery option.
 
 The list is positioned around the button and can be placed on any side, using the `listPosition` jQuery option. It supports the following values: `top, top-left, top-right, bottom, bottom-left, bottom-right, left-top, left-bottom, right-top, right-bottom`
 
