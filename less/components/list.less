@@ -1,9 +1,9 @@
 // wrapper so we can have caret above it and still use overflow-y (otherwise it gets hidden)
-.changelog-wrapper {
+.github-changelog {
   position: relative;
   display: inline-block;
   text-align: left;
-  .changelog{
+  .changelog-list{
     position: absolute;
   }
   .changelog-footer{
@@ -12,6 +12,7 @@
     text-align: center;
     .border-radius(0, .4em, .4em, 0);
     .drop-shadow(1px, 3px, 7px, 0.1);
+    .clearfix();
   }
   ul{
     min-width: @list-min-width;
@@ -37,7 +38,7 @@
       &:last-child {
         border-bottom: none;
       }
-      .label{
+      .changelog-label{
         float: left;
         font-size: .75em;
         font-weight: bold;
@@ -51,9 +52,6 @@
         margin-top: .4em;
 
         //label types
-        &.square{
-          .rounded(0);
-        }
         &.bug{
           background-color: @label-bug-bg-color;
           color: @label-bug-color;
@@ -87,60 +85,60 @@
   }
   // positioning list according
   &.top {
-    .changelog{
+    .changelog-list{
       bottom: 100%;
       .align-h();
       margin-bottom: @caret-width*2;
     }
-    >.btn {
+    >.changelog-btn {
       .set-caret('top', @caret-width, @caret-color);
     }
   }
   &.left {
-    .changelog{
+    .changelog-list{
       top: 0;
       right: 100%;
       margin-right: @caret-width*2;
     }
-    >.btn {
+    >.changelog-btn {
       .set-caret('left', @caret-width, @caret-color);
     }
   }
   &.right {
-    .changelog{
+    .changelog-list{
       top: 0;
       left: 100%;
       margin-left: @caret-width*2;
     }
-    >.btn{
+    >.changelog-btn{
       .set-caret('right', @caret-width, @caret-color);
     }
   }
   &.bottom {
-    .changelog{
+    .changelog-list{
       top: 100%;
       .align-h();
       margin-top: @caret-width*2;
     }
-    >.btn {
+    >.changelog-btn {
       .set-caret('bottom', @caret-width, @caret-color);
     }
   }
   &.pull-top{
-    .changelog{
+    .changelog-list{
       top: auto;
       bottom: 0;
     }
   }
   &.pull-right{
-    .changelog{
+    .changelog-list{
       right: auto;
       left: 0;
       .translate(0, 0);
     }
   }
   &.pull-left{
-    .changelog{
+    .changelog-list{
       left: auto;
       right: 0;
       .translate(0, 0);
