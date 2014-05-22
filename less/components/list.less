@@ -3,6 +3,7 @@
   position: relative;
   display: inline-block;
   text-align: left;
+
   .github-changelog-list{
     position: absolute;
   }
@@ -87,7 +88,16 @@
       .rounded(10px);
     }
   }
-  // positioning list according
+  // list closed state
+  &.closed{
+    .github-changelog-list{
+      display: none;
+    }
+    .github-changelog-btn:before{
+      display: none;
+    }
+  }
+  // list positioning
   &.top {
     .github-changelog-list{
       bottom: 100%;

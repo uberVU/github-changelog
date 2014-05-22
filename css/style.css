@@ -212,6 +212,12 @@ body {
   -moz-border-radius: 10px;
   border-radius: 10px;
 }
+.github-changelog.closed .github-changelog-list {
+  display: none;
+}
+.github-changelog.closed .github-changelog-btn:before {
+  display: none;
+}
 .github-changelog.top .github-changelog-list {
   bottom: 100%;
   left: 50%;
