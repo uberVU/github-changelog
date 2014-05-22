@@ -43,7 +43,7 @@ The jQuery plugin generates all the DOM elements, you just need a DOM container 
 
 Opens up the list of updates when clicked. The button is hidden by default and won't be shown until updates are available.
 
-The text of the button defaults to "New updates!" can be changed using the `buttonText` option. You can use HTML to insert an icon or any other child DOM elements.
+The text of the button defaults to "New updates!" and can be changed using the `buttonText` option. You can use HTML to insert an icon or any other child DOM elements.
 
 ### Update counter
 
