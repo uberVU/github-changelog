@@ -3,10 +3,10 @@
   position: relative;
   display: inline-block;
   text-align: left;
-  .changelog-list{
+  .github-changelog-list{
     position: absolute;
   }
-  .changelog-footer{
+  .github-changelog-footer{
     background-color: @default-bg-color;
     color: @default-color;
     text-align: center;
@@ -41,7 +41,7 @@
       &:last-child {
         border-bottom: none;
       }
-      .changelog-label{
+      .github-changelog-label{
         float: left;
         font-size: .75em;
         font-weight: bold;
@@ -89,60 +89,60 @@
   }
   // positioning list according
   &.top {
-    .changelog-list{
+    .github-changelog-list{
       bottom: 100%;
       .align-h();
       margin-bottom: @caret-width*2;
     }
-    >.changelog-btn {
+    >.github-changelog-btn {
       .set-caret('top', @caret-width, @caret-color);
     }
   }
   &.left {
-    .changelog-list{
+    .github-changelog-list{
       top: 0;
       right: 100%;
       margin-right: @caret-width*2;
     }
-    >.changelog-btn {
+    >.github-changelog-btn {
       .set-caret('left', @caret-width, @caret-color);
     }
   }
   &.right {
-    .changelog-list{
+    .github-changelog-list{
       top: 0;
       left: 100%;
       margin-left: @caret-width*2;
     }
-    >.changelog-btn{
+    >.github-changelog-btn{
       .set-caret('right', @caret-width, @caret-color);
     }
   }
   &.bottom {
-    .changelog-list{
+    .github-changelog-list{
       top: 100%;
       .align-h();
       margin-top: @caret-width*2;
     }
-    >.changelog-btn {
+    >.github-changelog-btn {
       .set-caret('bottom', @caret-width, @caret-color);
     }
   }
   &.pull-top{
-    .changelog-list{
+    .github-changelog-list{
       top: auto;
       bottom: 0;
     }
   }
   &.pull-right{
-    .changelog-list{
+    .github-changelog-list{
       right: auto;
       left: 0;
       .translate(0, 0);
     }
   }
   &.pull-left{
-    .changelog-list{
+    .github-changelog-list{
       left: auto;
       right: 0;
       .translate(0, 0);
