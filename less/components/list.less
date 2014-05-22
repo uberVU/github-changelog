@@ -10,6 +10,9 @@
     background-color: @default-bg-color;
     color: @default-color;
     text-align: center;
+    border: @list-border;
+    border-top: none;
+    padding: @list-footer-padding;
     .border-radius(0, .4em, .4em, 0);
     .drop-shadow(1px, 3px, 7px, 0.1);
     .clearfix();
@@ -20,8 +23,7 @@
     list-style: none;
     background-color: @list-bg-color;
     color: @default-color;
-    border: 1px solid @list-bg-color;
-    padding: .5em 0 0;
+    border: @list-border;
     overflow-y: auto;
     .border-radius(.4em, 0, 0, .4em);
     .drop-shadow(1px, 3px, 7px, 0.1);
@@ -32,8 +34,9 @@
     }
 
     li {
+      padding: @list-item-padding;
       display: block;
-      border-bottom: 1px solid lighten(@list-bg-color, 10%);
+      border-bottom: 1px solid @list-item-border-color;
       .clearfix();
       &:last-child {
         border-bottom: none;
@@ -77,9 +80,10 @@
     //style scrollbar
     &::-webkit-scrollbar {
       width: 9px;
+      background-color: @scrollbar-bg-color;
     }
     &::-webkit-scrollbar-thumb {
-      background-color: @default-bg-color;
+      background-color: @scrollbar-thumb-color;
       .rounded(10px);
     }
   }

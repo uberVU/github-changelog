@@ -6,6 +6,7 @@
   color: @default-color;
   font-size: 1em;
   line-height: 1;
+  border: @button-border;
   .rounded(.4em);
   .text-none();
   &:hover {
@@ -24,10 +25,12 @@
     height: @badge-size * 2;
     line-height: @badge-size * 2;
     padding: 0 @badge-size / 1.5;
+    border: @badge-border;
     .translate(-50%, 50%);
     .rounded(@badge-size);
   }
   &.changelog-btn-reload {
     float: right;
+    padding: @button-reload-padding;
   }
 }
