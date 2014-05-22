@@ -26,7 +26,7 @@ The jQuery plugin generates all the DOM elements, you just need a DOM container 
   <div class="changelog-list">
     <ul>
       <li>
-        <span class="changelog-label"> ... </span>
+        <span class="changelog-label"> issue label </span>
         <p> issue title </p>
       </li>
     </ul>
