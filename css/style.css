@@ -23,41 +23,27 @@ body {
   height: 0;
   border: 0.5em solid transparent;
 }
-.btn,
-.btn-link {
+.github-changelog-btn {
   display: inline-block;
   position: relative;
-  padding: 0.9em 1.2em;
-  background: #0099cc;
-  color: #ffffff;
+  padding: 0.7em;
+  background: #ffffff;
+  color: #000000;
   font-size: 1em;
   line-height: 1;
+  border: 1px solid #000000;
   -webkit-border-radius: 0.4em;
   -moz-border-radius: 0.4em;
   border-radius: 0.4em;
   text-decoration: none;
 }
-.btn:hover,
-.btn-link:hover {
-  background: #008ebd;
+.github-changelog-btn:hover {
+  background: #f7f7f7;
 }
-.btn.small,
-.btn-link.small {
-  font-size: .7em;
-}
-.btn.medium,
-.btn-link.medium {
-  font-size: 1em;
-}
-.btn.large,
-.btn-link.large {
-  font-size: 1.4em;
-}
-.btn .badge,
-.btn-link .badge {
+.github-changelog-btn .github-changelog-badge {
   position: absolute;
-  background: #003333;
-  color: #ffffff;
+  background: #ffffff;
+  color: #000000;
   display: block;
   bottom: 100%;
   left: 100%;
@@ -67,6 +53,7 @@ body {
   height: 1.5em;
   line-height: 1.5em;
   padding: 0 0.5em;
+  border: 1px solid #000000;
   -webkit-transform: translate(-50%, 50%);
   -moz-transform: translate(-50%, 50%);
   -o-transform: translate(-50%, 50%);
@@ -76,23 +63,25 @@ body {
   -moz-border-radius: 0.75em;
   border-radius: 0.75em;
 }
-.btn-link {
-  background-color: transparent;
-  color: #003333;
-  padding: 0.3em 0.8em;
+.github-changelog-btn.github-changelog-btn-reload {
+  float: right;
+  padding: 0.5em;
 }
-.changelog-wrapper {
+.github-changelog {
   position: relative;
   display: inline-block;
   text-align: left;
 }
-.changelog-wrapper .changelog {
+.github-changelog .github-changelog-list {
   position: absolute;
 }
-.changelog-wrapper .changelog-footer {
-  background-color: #0099cc;
-  color: #ffffff;
+.github-changelog .github-changelog-footer {
+  background-color: #ffffff;
+  color: #000000;
   text-align: center;
+  border: 1px solid #000000;
+  border-top: none;
+  padding: 0.3em;
   -webkit-border-top-right-radius: 0;
   -webkit-border-bottom-right-radius: 0.4em;
   -webkit-border-bottom-left-radius: 0.4em;
@@ -111,15 +100,24 @@ body {
   -webkit-box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
   box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
+  zoom: 1;
 }
-.changelog-wrapper ul {
+.github-changelog .github-changelog-footer:before {
+  content: '';
+  display: block;
+}
+.github-changelog .github-changelog-footer:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+.github-changelog ul {
   min-width: 25em;
   max-height: 10em;
   list-style: none;
-  background-color: #003333;
-  color: #ffffff;
-  border: 1px solid #003333;
-  padding: .5em 0 0;
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #000000;
   overflow-y: auto;
   -webkit-border-top-right-radius: 0.4em;
   -webkit-border-bottom-right-radius: 0;
@@ -140,29 +138,30 @@ body {
   -moz-box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
   box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.1);
 }
-.changelog-wrapper ul:only-child {
+.github-changelog ul:only-child {
   -webkit-border-radius: 0.4em;
   -moz-border-radius: 0.4em;
   border-radius: 0.4em;
 }
-.changelog-wrapper ul li {
+.github-changelog ul li {
+  padding: 0.5em;
   display: block;
-  border-bottom: 1px solid #006666;
+  border-bottom: 1px solid #000000;
   zoom: 1;
 }
-.changelog-wrapper ul li:before {
+.github-changelog ul li:before {
   content: '';
   display: block;
 }
-.changelog-wrapper ul li:after {
+.github-changelog ul li:after {
   content: '';
   display: table;
   clear: both;
 }
-.changelog-wrapper ul li:last-child {
+.github-changelog ul li:last-child {
   border-bottom: none;
 }
-.changelog-wrapper ul li .label {
+.github-changelog ul li .github-changelog-label {
   float: left;
   font-size: .75em;
   font-weight: bold;
@@ -170,9 +169,9 @@ body {
   text-align: center;
   background-color: #428bca;
   color: #ffffff;
-  -webkit-border-radius: 0.3em;
-  -moz-border-radius: 0.3em;
-  border-radius: 0.3em;
+  -webkit-border-radius: 0.4em;
+  -moz-border-radius: 0.4em;
+  border-radius: 0.4em;
   -ms-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -180,27 +179,22 @@ body {
   width: 30%;
   margin-top: .4em;
 }
-.changelog-wrapper ul li .label.square {
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
-}
-.changelog-wrapper ul li .label.bug {
+.github-changelog ul li .github-changelog-label.bug {
   background-color: #d9534f;
   color: #ffffff;
 }
-.changelog-wrapper ul li .label.feature {
+.github-changelog ul li .github-changelog-label.feature {
   background-color: #5cb85c;
   color: #ffffff;
 }
-.changelog-wrapper ul li .label.enhancement {
+.github-changelog ul li .github-changelog-label.enhancement {
   background-color: #5bc0de;
   color: #ffffff;
 }
-.changelog-wrapper ul li .label + p {
+.github-changelog ul li .github-changelog-label + p {
   margin-left: 30%;
 }
-.changelog-wrapper ul li p {
+.github-changelog ul li p {
   text-align: left;
   padding-left: 1em;
   -ms-box-sizing: border-box;
@@ -208,16 +202,23 @@ body {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.changelog-wrapper ul::-webkit-scrollbar {
+.github-changelog ul::-webkit-scrollbar {
   width: 9px;
+  background-color: #d3d3d3;
 }
-.changelog-wrapper ul::-webkit-scrollbar-thumb {
-  background-color: #0099cc;
+.github-changelog ul::-webkit-scrollbar-thumb {
+  background-color: #000000;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
 }
-.changelog-wrapper.top .changelog {
+.github-changelog.closed .github-changelog-list {
+  display: none;
+}
+.github-changelog.closed .github-changelog-btn:before {
+  display: none;
+}
+.github-changelog.top .github-changelog-list {
   bottom: 100%;
   left: 50%;
   -webkit-transform: translate(-50%, 0);
@@ -227,14 +228,13 @@ body {
   transform: translate(-50%, 0);
   margin-bottom: 1em;
 }
-.changelog-wrapper.top > .btn:before,
-.changelog-wrapper.top > .btn-link:before {
+.github-changelog.top > .github-changelog-btn:before {
   content: '';
   position: absolute;
   width: 0;
   height: 0;
   border: 0.5em solid transparent;
-  border-top: 0.5em solid #003333;
+  border-top: 0.5em solid #000000;
   bottom: 100%;
   left: 50%;
   -webkit-transform: translate(-50%, 0);
@@ -243,19 +243,18 @@ body {
   -ms-transform: translate(-50%, 0);
   transform: translate(-50%, 0);
 }
-.changelog-wrapper.left .changelog {
+.github-changelog.left .github-changelog-list {
   top: 0;
   right: 100%;
   margin-right: 1em;
 }
-.changelog-wrapper.left > .btn:before,
-.changelog-wrapper.left > .btn-link:before {
+.github-changelog.left > .github-changelog-btn:before {
   content: '';
   position: absolute;
   width: 0;
   height: 0;
   border: 0.5em solid transparent;
-  border-left: 0.5em solid #003333;
+  border-left: 0.5em solid #000000;
   right: 100%;
   top: 50%;
   -webkit-transform: translate(0, -50%);
@@ -264,19 +263,18 @@ body {
   -ms-transform: translate(0, -50%);
   transform: translate(0, -50%);
 }
-.changelog-wrapper.right .changelog {
+.github-changelog.right .github-changelog-list {
   top: 0;
   left: 100%;
   margin-left: 1em;
 }
-.changelog-wrapper.right > .btn:before,
-.changelog-wrapper.right > .btn-link:before {
+.github-changelog.right > .github-changelog-btn:before {
   content: '';
   position: absolute;
   width: 0;
   height: 0;
   border: 0.5em solid transparent;
-  border-right: 0.5em solid #003333;
+  border-right: 0.5em solid #000000;
   left: 100%;
   top: 50%;
   -webkit-transform: translate(0, -50%);
@@ -285,7 +283,7 @@ body {
   -ms-transform: translate(0, -50%);
   transform: translate(0, -50%);
 }
-.changelog-wrapper.bottom .changelog {
+.github-changelog.bottom .github-changelog-list {
   top: 100%;
   left: 50%;
   -webkit-transform: translate(-50%, 0);
@@ -295,14 +293,13 @@ body {
   transform: translate(-50%, 0);
   margin-top: 1em;
 }
-.changelog-wrapper.bottom > .btn:before,
-.changelog-wrapper.bottom > .btn-link:before {
+.github-changelog.bottom > .github-changelog-btn:before {
   content: '';
   position: absolute;
   width: 0;
   height: 0;
   border: 0.5em solid transparent;
-  border-bottom: 0.5em solid #003333;
+  border-bottom: 0.5em solid #000000;
   top: 100%;
   left: 50%;
   -webkit-transform: translate(-50%, 0);
@@ -311,11 +308,11 @@ body {
   -ms-transform: translate(-50%, 0);
   transform: translate(-50%, 0);
 }
-.changelog-wrapper.pull-top .changelog {
+.github-changelog.pull-top .github-changelog-list {
   top: auto;
   bottom: 0;
 }
-.changelog-wrapper.pull-right .changelog {
+.github-changelog.pull-right .github-changelog-list {
   right: auto;
   left: 0;
   -webkit-transform: translate(0, 0);
@@ -324,7 +321,7 @@ body {
   -ms-transform: translate(0, 0);
   transform: translate(0, 0);
 }
-.changelog-wrapper.pull-left .changelog {
+.github-changelog.pull-left .github-changelog-list {
   left: auto;
   right: 0;
   -webkit-transform: translate(0, 0);

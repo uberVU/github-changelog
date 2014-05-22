@@ -1,4 +1,4 @@
-.btn {
+.github-changelog-btn {
   display: inline-block;
   position: relative;
   padding: @default-padding;
@@ -6,22 +6,13 @@
   color: @default-color;
   font-size: 1em;
   line-height: 1;
+  border: @button-border;
   .rounded(.4em);
   .text-none();
   &:hover {
     background: darken(@default-bg-color, 3%)
   }
-  //button sizes
-  &.small {
-    font-size: .7em;
-  }
-  &.medium {
-    font-size: 1em;
-  }
-  &.large {
-    font-size: 1.4em;
-  }
-  .badge {
+  .github-changelog-badge {
     position: absolute;
     background: @badge-bg-color;
     color: @badge-color;
@@ -34,13 +25,12 @@
     height: @badge-size * 2;
     line-height: @badge-size * 2;
     padding: 0 @badge-size / 1.5;
+    border: @badge-border;
     .translate(-50%, 50%);
-    .rounded(@badge-size);
+    .rounded(@badge-border-radius);
   }
-}
-.btn-link {
-  &:extend(.btn all);
-  background-color: transparent;
-  color: @default-color-dark;
-  padding: 0.3em 0.8em;
+  &.github-changelog-btn-reload {
+    float: right;
+    padding: @button-reload-padding;
+  }
 }
