@@ -69,8 +69,6 @@ An item from the update list corresponds to a closed GitHub issues. It's compose
 - Text: Issue title
 
 
-**See the HTML Structure [wiki page](https://github.com/uberVU/github-changelog/wiki/HTML-Structure) to get an idea of how these elements will look in HTML**
-
 ## Customization options ##
 We use LESS to generate the CSS files for the widget. The styles can be easily changed to match your design by tweaking `less/variables.less` and re-generating the CSS. [Grunt](http://gruntjs.com/) can help with [this](https://github.com/gruntjs/grunt-contrib-less).
 
