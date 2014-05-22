@@ -7,7 +7,7 @@
     owner: 'facebook',
     repo: 'react',
     state: 'closed',
-    labels: 'build/tooling',
+    label: 'build/tooling',
     sort: 'updated'
   };
 
@@ -23,29 +23,38 @@
   };
 
   Changelog.prototype.checkForUpdates = function(){
+    var self = this;
     var options = {
-      state: this.options.state,
-      labels: this.options.labels,
-      sort: this.options.sort,
+      state: self.options.state,
+      labels: self.options.label,
+      sort: self.options.sort,
       since: new Date(2014, 0)
     };
-    var self = this;
     $.get(self.endPoint, options)
       .done(function(data){
         if(data.length !== 0){
           self.buildList(data.length);
         }
+        $(data).each(function(key, value){
+          if(value.labels.length > 1){
+            value.labels = value.labels.filter(function( obj ) {
+              return obj.name !== self.options.label;
+            });
+          }
+          self.addListItem(value.title, value.labels[0].name, value.labels[0].color);    
+        });
       });
   }
 
   Changelog.prototype.addListItem = function(title, label, labelColor){
     var list = this.$element.find('ul');
+    console.log(labelColor);
     list.append(
       $('<li></li>')
         .append(
           $('<span class="label"></span>')
             .text(label)
-            .css({'background-color': labelColor})
+            .css({'background-color': '#' + labelColor})
         )
         .append(
           $('<p></p>').text(title)
@@ -73,7 +82,7 @@
             )
         );    
     // add widget to selector
-    this.$element.html(' ').append(widget);
+    this.$element.html('').append(widget);
   };
 
   $.fn.changelog = function(options){
