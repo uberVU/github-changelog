@@ -15,7 +15,31 @@ A configurable jQuery plugin is wired to a GitHub project. The plugin notifies a
 
 The jQuery plugin generates all the DOM elements, you just need a DOM container to place them in. All DOM elements generated have specific CSS classes and can be targeted to customize their styling.
 
+
+```html
+<div class="github-changelog">
+  <a class="changelog-btn" href="#">
+    New updates!
+    <span class="badge">2</span>
+  </a>
+
+  <div class="changelog-list">
+    <ul>
+      <li>
+        <span class="changelog-label"> ... </span>
+        <p> issue title </p>
+      </li>
+    </ul>
+    <div class="changelog-footer">
+      <a class="changelog-btn changelog-reload">Reload</a>
+    </div>
+  </div>
+</div>
+```
+
 ### Button
+
+![changelog button](https://dl.dropboxusercontent.com/u/42934143/images/changelog-btn.png)
 
 Opens up the list of updates when clicked. The button is hidden by default and won't be shown until updates are available.
 
@@ -27,13 +51,15 @@ An update counter is displayed along with the button when updates arrive. The nu
 
 ### Update list
 
+![update list](https://dl.dropboxusercontent.com/u/42934143/images/changelog-list.png)
+
 The list is shown when the user clicks on the [button](#button) (which is only visibile when updates are available) and hidden when clicking outside.
 
 The list can be positioned in 10 ways around the button, by combining 4 available CSS classes: `top`, `bottom`, `left` and `right`. The CSS class for the list will be set using the `listClass` jQuery option.
 
 The list is positioned around the button and can be placed on any side, using the `listPosition` jQuery option. It supports the following values: `top, top-left, top-right, bottom, bottom-left, bottom-right, left-top, left-bottom, right-top, right-bottom`
 
-![list positioning](https://cloud.githubusercontent.com/assets/3300066/2999278/1407e078-dd14-11e3-941c-3cce9f10377c.png)
+![list positioning](https://dl.dropboxusercontent.com/u/42934143/images/list-positioning.png)
 
 ### Update entry
 
