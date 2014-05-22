@@ -20,7 +20,7 @@ The jQuery plugin generates all the DOM elements, you just need a DOM container 
 <div class="github-changelog">
   <a class="changelog-btn" href="#">
     New updates!
-    <span class="badge">2</span>
+    <span class="changelog-badge">2</span>
   </a>
 
   <div class="changelog-list">
@@ -31,7 +31,7 @@ The jQuery plugin generates all the DOM elements, you just need a DOM container 
       </li>
     </ul>
     <div class="changelog-footer">
-      <a class="changelog-btn changelog-reload">Reload</a>
+      <a class="changelog-btn changelog-btn-reload">Reload</a>
     </div>
   </div>
 </div>
