@@ -13,7 +13,7 @@
     border: @list-border;
     border-top: none;
     padding: @list-footer-padding;
-    .border-radius(0, .4em, .4em, 0);
+    .border-radius(0, @default-border-radius, @default-border-radius, 0);
     .drop-shadow(1px, 3px, 7px, 0.1);
     .clearfix();
   }
@@ -25,12 +25,12 @@
     color: @default-color;
     border: @list-border;
     overflow-y: auto;
-    .border-radius(.4em, 0, 0, .4em);
+    .border-radius(@default-border-radius, 0, 0, @default-border-radius);
     .drop-shadow(1px, 3px, 7px, 0.1);
 
     // rounded corners when no footer is present
     &:only-child{
-      .rounded(.4em);
+      .rounded(@default-border-radius);
     }
 
     li {
@@ -49,7 +49,7 @@
         text-align: center;
         background-color: @label-bg-color;
         color: @label-color;
-        .rounded(.3em);
+        .rounded(@default-border-radius);
         .box-sizing();
         width: @label-width;
         margin-top: .4em;
