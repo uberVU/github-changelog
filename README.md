@@ -18,20 +18,20 @@ The jQuery plugin generates all the DOM elements, you just need a DOM container 
 
 ```html
 <div class="github-changelog">
-  <a class="changelog-btn" href="#">
+  <a class="github-changelog-btn" href="#">
     New updates!
-    <span class="changelog-badge">2</span>
+    <span class="github-changelog-badge">2</span>
   </a>
 
-  <div class="changelog-list">
+  <div class="github-changelog-list">
     <ul>
       <li>
-        <span class="changelog-label"> issue label </span>
+        <span class="github-changelog-label"> issue label </span>
         <p> issue title </p>
       </li>
     </ul>
-    <div class="changelog-footer">
-      <a class="changelog-btn changelog-btn-reload">Reload</a>
+    <div class="github-changelog-footer">
+      <a class="github-changelog-btn github-changelog-btn-reload">Reload</a>
     </div>
   </div>
 </div>
