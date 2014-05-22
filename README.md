@@ -3,36 +3,46 @@ github-changelog
 
 Use GitHub issues to communicate app updates directly to your customers.
 
-## Interface elements ##
-
 ![changelog wireframe](https://dl.dropboxusercontent.com/u/42934143/images/changelog2.png)
 
-### Notification icon ###
-This is what shows up by default, before the user has had a chance to interact with the widget.
+## How does it work?
 
-**Behaviour**
-- The icon won't be shown until updates are available.
-- In addition to the visible icon, a small counter will also pop up when updates arrive, displaying their count.
+A configurable jQuery plugin is wired to a GitHub project. The plugin notifies active users with app updates whenever issues are closed. 
 
-### Notification list ###
-This list shows the notification area, it will contain number of notification items.
+**Important:** This assumes your app is updated whenever closing a GitHub issue. This can be achived by using commit hooks to deploy changes to your app.
 
-**Behaviour**
-- Hidden by default, it can be shown or hidden by pressing the *notification icon*.
-- If it's visible, it will become hidden if the user interacts with any other part of the page
-- It can be positioned according with 4 main positions: `top`, `bottom`, `left` and `right`. Each of these positions can be modified by providing a second class: `pull-left` and `pull-right` for vertical positions and `pull-top` for horizontal positions. The purpose here is to make the list usable in any positioning scenario.
+## DOM structure
 
-**List Positioning**
+The jQuery plugin generates all the DOM elements, you just need a DOM container to place them in. All DOM elements generated have specific CSS classes and can be targeted to customize their styling.
+
+### Button
+
+Opens up the list of updates when clicked. The button is hidden by default and won't be shown until updates are available.
+
+The text of the button defaults to "New updates!" can be changed using the `buttonText` option. You can use HTML to insert an icon or any other child DOM elements.
+
+### Update counter
+
+An update counter is displayed along with the button when updates arrive. The number is incremented with each update.
+
+### Update list
+
+The list is shown when the user clicks on the [button](#button) (which is only visibile when updates are available) and hidden when clicking outside.
+
+The list can be positioned in 10 ways around the button, by combining 4 available CSS classes: `top`, `bottom`, `left` and `right`. The CSS class for the list will be set using the `listClass` jQuery option.
+
+The list is positioned around the button and can be placed on any side, using the `listPosition` jQuery option. It supports the following values: `top, top-left, top-right, bottom, bottom-left, bottom-right, left-top, left-bottom, right-top, right-bottom`
+
 ![list positioning](https://cloud.githubusercontent.com/assets/3300066/2999278/1407e078-dd14-11e3-941c-3cce9f10377c.png)
 
-### Notification item ###
-One element of the notification list.
+### Update entry
 
-**Behaviour**
-- Composed of two elements, a label and text content.
-- The label can have different coloring according to the label colors set on Github.
+An item from the update list corresponds to a closed GitHub issues. It's composed of two elements:
 
-### HTML ###
+- Label: `feature` `enhancement` or `bug`, issues that don't have any of these labels are ignored.
+- Text: Issue title
+
+
 **See the HTML Structure [wiki page](https://github.com/uberVU/github-changelog/wiki/HTML-Structure) to get an idea of how these elements will look in HTML**
 
 ## Customization options ##
