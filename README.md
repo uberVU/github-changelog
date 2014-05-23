@@ -11,7 +11,7 @@ A configurable jQuery plugin is wired to a GitHub project. The plugin notifies a
 
 **Important:** This assumes your app is updated whenever closing a GitHub issue. This can be achived by using commit hooks to deploy changes to your app.
 
-### Call the plugin
+### Options
 
 ```js
 // Checks GitHub for new updates since last fetch
@@ -41,14 +41,13 @@ $('.changelog-container').changelog({
   }
 });
 ```
-Call the plugin on any DOM node to get started and pass in an object with the desired configuration options.
+Call the plugin on any DOM node to get started. The button will show up when updates arrive. Either by calling `checkForUpdates` manually or automatically if you enabled the `autoRefresh` option.
 
 ### checkForUpdates
 
 ```js
 $('.changelog-container').changelog('checkForUpdates');
 ```
-
 Checks GitHub for new updates since last fetch. Generates and updates the DOM strucuture when updates are available.  This is useful when the `autoRefresh` option is disabled.
 
 ### destroy
@@ -62,7 +61,6 @@ Removes the list entirely from the DOM and unbinds it's event listeners.
 ## DOM structure
 
 The jQuery plugin generates all the DOM elements, you just need a DOM container to place them in. All DOM elements generated have specific CSS classes and can be targeted to customize their styling.
-
 
 ```html
 <div class="github-changelog">
