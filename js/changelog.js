@@ -29,9 +29,6 @@
   var GITHUB_API_URL = 'https://api.github.com';
 
   var CHANGELOG = function(element, options) {
-    /**
-     * TODO: Add click events
-     */
     this.$element = $(element);
     this.options = $.extend(true, {}, defaults, options);
     this.since = now();
@@ -73,6 +70,7 @@
 
       if (!this.$element.find('.github-changelog').length) {
         this.createDomStructure();
+        this.bindEventListeners();
       }
       for (i = 0; i < issues.length; i++) {
         this.addUpdateToList(issues[i]);
@@ -101,7 +99,10 @@
                   $list.append($listContainer)
                        .append($listFooter.append($reloadButton))));
 
-      // We'll use this references to push new updates
+      // We'll use these references to bind events
+      this.$wrapper = $wrapper;
+      this.$button = $button;
+      // We'll use these references to push new updates
       this.$listContainer = $listContainer;
       this.$badge = $badge;
     },
@@ -134,6 +135,30 @@
       }
       return relevantIssues;
     },
+    bindEventListeners: function() {
+      this._onButtonClick = bind(this.onButtonClick, this);
+      this._onWrapperClick = bind(this.onWrapperClick, this);
+      this._onBodyClick = bind(this.onBodyClick, this);
+
+      this.$button.on('click', this._onButtonClick);
+      this.$wrapper.on('click', this._onWrapperClick);
+      $('html,body').on('click', this._onBodyClick);
+    },
+    unbindEventListeners: function() {
+      this.$button.off('click', this._onButtonClick);
+      this.$wrapper.off('click', this._onWrapperClick);
+      $('html,body').off('click', this._onBodyClick);
+    },
+    onButtonClick: function(e) {
+      e.preventDefault();
+      this.$wrapper.toggleClass('closed');
+    },
+    onWrapperClick: function(e) {
+      e.stopPropagation();
+    },
+    onBodyClick: function(e) {
+      this.$wrapper.addClass('closed');
+    },
     getGitHubIssuesUrl: function() {
       return GITHUB_API_URL + '/repos/' + this.options.githubRepo + '/issues';
     },
@@ -153,6 +178,16 @@
       return null;
     }
   });
+
+  var bind = function(fn, obj) {
+    /**
+     * Bind prototype method to instance scope (similar to CoffeeScript's fat
+     * arrow)
+     */
+    return function() {
+      return fn.apply(obj, arguments);
+    };
+  };
 
   var now = function() {
     return new Date().toISOString();
