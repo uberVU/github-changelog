@@ -81,7 +81,8 @@
     },
     createDomStructure: function() {
       var positionClass = LIST_POSITION_CLASSES[this.options.listPosition],
-          $wrapper = $('<div>', {class: CSS_PREFIX + ' ' + positionClass}),
+          $wrapper = $('<div>', {class: CSS_PREFIX + ' ' +
+                                        positionClass + ' closed'}),
           $button = $('<a>', {class: CSS_PREFIX + '-btn',
                               html: this.options.buttonText,
                               href: '#show-notifications'}),
