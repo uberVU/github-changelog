@@ -7,14 +7,60 @@ Use GitHub issues to communicate app updates directly to your customers.
 
 ## How does it work?
 
-A configurable jQuery plugin is wired to a GitHub project. The plugin notifies active users with app updates whenever issues are closed. 
+A configurable jQuery plugin is wired to a GitHub project. The plugin notifies active users with app updates whenever issues are closed.
 
 **Important:** This assumes your app is updated whenever closing a GitHub issue. This can be achived by using commit hooks to deploy changes to your app.
+
+### Options
+
+```js
+// Checks GitHub for new updates since last fetch
+$('.changelog-container').changelog({
+  // Label for the button the appears when you got updates, supports HTML
+  buttonText: 'Click me, I got updates!',
+  // Label for the reload button shown below the list, supports HTML
+  reloadButtonText: 'Reload',
+  // Position of the list around the button. E.g. if the button is placed 
+  // on the bottom-right corner, you probably want the list to be positioned 
+  // top-left or left-top
+  listPosition: 'top-left',
+  // Poll GitHub for new updates at every set number of seconds
+  // Set to false to disable auto-refresh
+  autoRefresh: 2,
+  // GitHub repository to fetch issues from
+  githubRepo: 'facebook/react',
+  // Only show updates that have one of these labels
+  githubLabels: ['bug', 'enhancement', 'feature'],
+  // Payload for the GitHub issues endpoint 
+  // https://developer.github.com/v3/issues/#list-issues
+  githubParams: {
+    // Only get issues from GitHub that have ALL of these labels
+    // It's best to set a single label here, e.g. 'release', that's common
+    // to all issues. For deeper filtering 'githubLabels' can be used
+    labels: 'release'
+  }
+});
+```
+Call the plugin on any DOM node to get started. The button will show up when updates arrive. Either by calling `checkForUpdates` manually or automatically if you enabled the `autoRefresh` option.
+
+### checkForUpdates
+
+```js
+$('.changelog-container').changelog('checkForUpdates');
+```
+Checks GitHub for new updates since last fetch. Generates and updates the DOM strucuture when updates are available.  This is useful when the `autoRefresh` option is disabled.
+
+### destroy
+
+```js
+$('.changelog-container').changelog('destroy');
+```
+Removes the list entirely from the DOM and unbinds it's event listeners.
+
 
 ## DOM structure
 
 The jQuery plugin generates all the DOM elements, you just need a DOM container to place them in. All DOM elements generated have specific CSS classes and can be targeted to customize their styling.
-
 
 ```html
 <div class="github-changelog">
@@ -69,9 +115,3 @@ An item from the update list corresponds to a closed GitHub issues. It's compose
 
 ## Customization
 We use LESS to generate the CSS files for the widget. The styles can be easily changed to match your design by tweaking `less/variables.less` and re-generating the CSS. [Grunt](http://gruntjs.com/) can help with [this](https://github.com/gruntjs/grunt-contrib-less).
-
-
-
-
-
-
