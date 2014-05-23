@@ -2,6 +2,7 @@
 
   var defaults = {
     buttonText: 'New updates!',
+    reloadButtonText: 'Reload',
     listPosition: 'bottom',
     autoRefresh: false,
     githubRepo: 'uberVU/github-changelog',
@@ -99,7 +100,7 @@
           $listFooter = $('<div>', {class: CSS_PREFIX + '-footer'}),
           $reloadButton = $('<a>', {class: CSS_PREFIX + '-btn ' +
                                            CSS_PREFIX + '-btn-reload',
-                                    text: 'Reload',
+                                    html: this.options.reloadButtonText,
                                     href: '#reload-for-updates'});
 
       this.$element.append(
