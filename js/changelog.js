@@ -5,7 +5,6 @@
     listPosition: 'bottom',
     autoRefresh: false,
     githubRepo: 'uberVU/github-changelog',
-    githubMilestone: null,
     githubLabels: ['bug', 'enhancement', 'feature'],
     githubParams: {
       labels: 'release'
@@ -123,7 +122,6 @@
       var relevantIssues = [],
           i,
           issue,
-          milestone,
           label;
       for (i = 0; i < issues.length; i++) {
         issue = issues[i];
@@ -131,21 +129,12 @@
         if (!label) {
           continue;
         }
-        if (this.options.githubMilestone) {
-          milestone = this.getGitHubIssueMilestone(issue);
-          if (this.options.githubMilestone != milestone) {
-            continue;
-          }
-        }
         relevantIssues.push(issue);
       }
       return relevantIssues;
     },
     getGitHubIssuesUrl: function() {
       return GITHUB_API_URL + '/repos/' + this.options.githubRepo + '/issues';
-    },
-    getGitHubIssueMilestone: function(issue) {
-      return issue.milestone ? issue.milestone.title : null;
     },
     getExpectedGitHubIssueLabel: function(issue) {
       if (!issue.labels || !issue.labels.length) {

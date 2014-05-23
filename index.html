@@ -10,7 +10,9 @@
     $(function() {
       $('.main').changelog({
         autoRefresh: 5,
-        githubMilestone: 'Demo issues',
+        githubParams: {
+          labels: 'demo'
+        }
       });
     })
   </script>
