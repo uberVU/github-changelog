@@ -3,6 +3,7 @@
   var defaults = {
     buttonText: 'New updates!',
     listPosition: 'bottom',
+    autoRefresh: false,
     githubRepo: 'uberVU/github-changelog',
     githubMilestone: null,
     githubLabels: ['bug', 'enhancement', 'feature'],
@@ -31,7 +32,6 @@
   var CHANGELOG = function(element, options) {
     /**
      * TODO: Add click events
-     * TODO: Auto-refresh
      */
     this.$element = $(element);
     this.options = $.extend(true, {}, defaults, options);
@@ -42,6 +42,9 @@
 
   $.extend(CHANGELOG.prototype, {
     checkForUpdates: function() {
+      if (this._interval) {
+        clearInterval(this._interval);
+      }
       var _this = this,
           payload = $.extend({
             since: this.since,
@@ -51,6 +54,13 @@
       $.get(this.getGitHubIssuesUrl(), payload)
         .done(function(issues) {
           _this.addUpdatesToList(_this.filterGitHubIssues(issues));
+
+          if (_this.options.autoRefresh) {
+            _this._interval = setTimeout(function() {
+              _this.checkForUpdates();
+            },
+            _this.options.autoRefresh * 1000);
+          }
         });
     },
     addUpdatesToList: function(issues) {
