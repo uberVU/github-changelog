@@ -43,13 +43,13 @@
         this.unbindEventListeners();
       }
       if (this.options.autoRefresh) {
-        clearInterval(this._interval);
+        clearTimeout(this._interval);
       }
       this.$wrapper.remove();
     },
     checkForUpdates: function() {
       if (this._interval) {
-        clearInterval(this._interval);
+        clearTimeout(this._interval);
       }
       var _this = this,
           payload = $.extend({
