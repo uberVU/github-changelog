@@ -102,6 +102,7 @@
       // We'll use these references to bind events
       this.$wrapper = $wrapper;
       this.$button = $button;
+      this.$reloadButton = $reloadButton;
       // We'll use these references to push new updates
       this.$listContainer = $listContainer;
       this.$badge = $badge;
@@ -137,21 +138,28 @@
     },
     bindEventListeners: function() {
       this._onButtonClick = bind(this.onButtonClick, this);
+      this._onReloadButtonClick = bind(this.onReloadButtonClick, this);
       this._onWrapperClick = bind(this.onWrapperClick, this);
       this._onBodyClick = bind(this.onBodyClick, this);
 
       this.$button.on('click', this._onButtonClick);
+      this.$reloadButton.on('click', this._onReloadButtonClick);
       this.$wrapper.on('click', this._onWrapperClick);
       $('html,body').on('click', this._onBodyClick);
     },
     unbindEventListeners: function() {
       this.$button.off('click', this._onButtonClick);
+      this.$reloadButton.off('click', this._onReloadButtonClick);
       this.$wrapper.off('click', this._onWrapperClick);
       $('html,body').off('click', this._onBodyClick);
     },
     onButtonClick: function(e) {
       e.preventDefault();
       this.$wrapper.toggleClass('closed');
+    },
+    onReloadButtonClick: function(e) {
+      e.preventDefault();
+      window.location.reload(true);
     },
     onWrapperClick: function(e) {
       e.stopPropagation();
