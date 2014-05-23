@@ -7,40 +7,16 @@
   <script src="js/jquery-1.11.1.min.js"></script>
   <script src="js/changelog.js"></script>
   <script>
-    // Call jQuery plugin here
+    $(function() {
+      $('.main').changelog({
+        githubMilestone: 'Demo issues'
+      });
+    })
   </script>
 </head>
 <body>
 <div class="main">
-  <div class="github-changelog bottom">
-    <a class="github-changelog-btn" href="#">
-      Link
-      <span class="github-changelog-badge">2</span>
-    </a>
-    <div class="github-changelog-list">
-      <ul>
-        <li>
-          <span class="github-changelog-label">other</span>
-          <p>Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur.</p>
-        </li>
-        <li>
-          <span class="github-changelog-label bug">bug</span>
-          <p>Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur.</p>
-        </li>
-        <li>
-          <span class="github-changelog-label feature">feature</span>
-          <p>Lorem ipsum dolor sit amet, consectetur.</p>
-        </li>
-        <li>
-          <span class="github-changelog-label enhancement">enhancement</span>
-          <p>Lorem ipsum dolor sit amet, consectetur.</p>
-        </li>
-      </ul>
-      <div class="github-changelog-footer">
-        <a href="#" class="github-changelog-btn github-changelog-btn-reload">Reload</a>
-      </div>
-    </div>
-  </div>
+
 </div>
 </body>
 </html>

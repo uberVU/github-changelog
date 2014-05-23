@@ -1,107 +1,178 @@
 ;(function($, window, document, undefined){
 
   var defaults = {
-    reloadText: 'Reload',
-    iconText: 'Link',
-    footerTitle: 'Changelog',
-    owner: 'facebook',
-    repo: 'react',
-    state: 'closed',
-    label: 'build/tooling',
-    sort: 'updated'
+    buttonText: 'New updates!',
+    listPosition: 'bottom',
+    githubRepo: 'uberVU/github-changelog',
+    githubMilestone: null,
+    githubLabels: ['bug', 'enhancement', 'feature'],
+    githubParams: {
+      labels: 'release'
+    }
   };
 
-  var Changelog = function(element, options){
-    this.element = element;
+  var CSS_PREFIX = 'github-changelog';
+
+  var LIST_POSITION_CLASSES = {
+    'top': 'top',
+    'top-left': 'top pull-left',
+    'top-right': 'top pull-right',
+    'bottom': 'bottom',
+    'bottom-left': 'bottom pull-left',
+    'bottom-right': 'bottom pull-right',
+    'left-top': 'left pull-top',
+    'left-bottom': 'left',
+    'right-top': 'right pull-top',
+    'right-bottom': 'right',
+  };
+
+  var GITHUB_API_URL = 'https://api.github.com';
+
+  var CHANGELOG = function(element, options) {
+    /**
+     * TODO: Add click events
+     * TODO: Auto-refresh
+     */
     this.$element = $(element);
-    this.options = $.extend({}, defaults, options)
-
-    //GitHub
-    this.since = Date.now();
-    this.apiBase = 'https://api.github.com';
-    this.endPoint = this.apiBase + '/repos/' + this.options.owner + '/' + this.options.repo + '/issues';
+    this.options = $.extend(true, {}, defaults, options);
+    this.since = now();
+    this.updateCount = 0;
+    this.checkForUpdates();
   };
 
-  Changelog.prototype.checkForUpdates = function(){
-    var self = this;
-    var options = {
-      state: self.options.state,
-      labels: self.options.label,
-      sort: self.options.sort,
-      since: new Date(2014, 0)
-    };
-    $.get(self.endPoint, options)
-      .done(function(data){
-        if(data.length !== 0){
-          self.buildList(data.length);
-        }
-        $(data).each(function(key, value){
-          if(value.labels.length > 1){
-            value.labels = value.labels.filter(function( obj ) {
-              return obj.name !== self.options.label;
-            });
-          }
-          self.addListItem(value.title, value.labels[0].name, value.labels[0].color);    
+  $.extend(CHANGELOG.prototype, {
+    checkForUpdates: function() {
+      var _this = this,
+          payload = $.extend({
+            since: this.since,
+            state: 'closed',
+            sort: 'updated'
+          }, this.options.githubParams);
+      $.get(this.getGitHubIssuesUrl(), payload)
+        .done(function(issues) {
+          _this.addUpdatesToList(_this.filterGitHubIssues(issues));
         });
-      });
-  }
-
-  Changelog.prototype.addListItem = function(title, label, labelColor){
-    var list = this.$element.find('ul');
-    console.log(labelColor);
-    list.append(
-      $('<li></li>')
-        .append(
-          $('<span class="label"></span>')
-            .text(label)
-            .css({'background-color': '#' + labelColor})
-        )
-        .append(
-          $('<p></p>').text(title)
-        )
-    );
-  };
-  Changelog.prototype.buildList = function(notificationNum){
-    var widget = 
-      $('<div class="changelog-wrapper bottom"></div>')
-        .append(
-          $('<a class="btn" href="#"></a>')
-            .text(this.options.iconText)
-            .append($('<span class="badge"></span>')
-              .text(notificationNum)
-            )
-          )
-        .append(
-          $('<div class="changelog"></div>')
-            .append($('<ul></ul>'))
-            .append($('<div class="changelog-footer"></div>')
-              .text(this.options.footerTitle + ' (' + notificationNum + ')')
-              .append($('<a class="btn" href="#"></a>')
-                .text(this.options.reloadText)
-              )
-            )
-        );    
-    // add widget to selector
-    this.$element.html('').append(widget);
-  };
-
-  $.fn.changelog = function(options){
-    
-    var args = arguments;
-    
-    return this.each(function(){
-      var instance = $(this).data('changelog');
-
-      if(instance && instance[options]){
-        return instance[options].apply(instance, Array.prototype.slice.call(args, 1));
-
-      }else if(typeof options === 'object' || !options){
-        instance = new Changelog(this, options);
-        $(this).data('changelog', instance );
-      }else{
-        $.error('Method ' +  options + ' does not exist');
+    },
+    addUpdatesToList: function(issues) {
+      if (!issues.length) {
+        return;
       }
-    });    
+      var i;
+
+      this.since = now();
+      this.updateCount += issues.length;
+
+      if (!this.$element.find('.github-changelog').length) {
+        this.createDomStructure();
+      }
+      for (i = 0; i < issues.length; i++) {
+        this.addUpdateToList(issues[i]);
+      }
+      this.$badge.text(this.updateCount);
+    },
+    createDomStructure: function() {
+      var positionClass = LIST_POSITION_CLASSES[this.options.listPosition],
+          $wrapper = $('<div>', {class: CSS_PREFIX + ' ' + positionClass}),
+          $button = $('<a>', {class: CSS_PREFIX + '-btn',
+                              html: this.options.buttonText,
+                              href: '#show-notifications'}),
+          $badge = $('<span>', {class: CSS_PREFIX + '-badge'}),
+          $list = $('<div>', {class: CSS_PREFIX + '-list'}),
+          $listContainer = $('<ul>'),
+          $listFooter = $('<div>', {class: CSS_PREFIX + '-footer'}),
+          $reloadButton = $('<a>', {class: CSS_PREFIX + '-btn ' +
+                                           CSS_PREFIX + '-btn-reload',
+                                    text: 'Reload',
+                                    href: '#reload-for-updates'});
+
+      this.$element.append(
+        $wrapper.append($button.append($badge))
+                .append(
+                  $list.append($listContainer)
+                       .append($listFooter.append($reloadButton))));
+
+      // We'll use this references to push new updates
+      this.$listContainer = $listContainer;
+      this.$badge = $badge;
+    },
+    addUpdateToList: function(issue) {
+      var featuredLabel = this.getExpectedGitHubIssueLabel(issue),
+          $update = $('<li>'),
+          $label = $('<span>', {class: CSS_PREFIX + '-label',
+                                text: featuredLabel.name,
+                                css: {
+                                  backgroundColor: '#' + featuredLabel.color
+                                }}),
+          $title = $('<p>', {text: issue.title});
+
+      this.$listContainer.prepend(
+        $update.append($label)
+               .append($title));
+    },
+    filterGitHubIssues: function(issues) {
+      var relevantIssues = [],
+          i,
+          issue,
+          milestone,
+          label;
+      for (i = 0; i < issues.length; i++) {
+        issue = issues[i];
+        label = this.getExpectedGitHubIssueLabel(issue);
+        if (!label) {
+          continue;
+        }
+        if (this.options.githubMilestone) {
+          milestone = this.getGitHubIssueMilestone(issue);
+          if (this.options.githubMilestone != milestone) {
+            continue;
+          }
+        }
+        relevantIssues.push(issue);
+      }
+      return relevantIssues;
+    },
+    getGitHubIssuesUrl: function() {
+      return GITHUB_API_URL + '/repos/' + this.options.githubRepo + '/issues';
+    },
+    getGitHubIssueMilestone: function(issue) {
+      return issue.milestone ? issue.milestone.title : null;
+    },
+    getExpectedGitHubIssueLabel: function(issue) {
+      if (!issue.labels || !issue.labels.length) {
+        return null;
+      }
+      var i,
+          label;
+      for (i = 0; i < issue.labels.length; i++) {
+        label = issue.labels[i];
+        if (this.options.githubLabels.indexOf(label.name) != -1) {
+          return label;
+        }
+      }
+      // At this point we found the issue to have none of the expected labels
+      return null;
+    }
+  });
+
+  var now = function() {
+    return new Date().toISOString();
+  };
+
+  $.fn.changelog = function(method, options) {
+    if (typeof(method) !== 'string') {
+      options = method;
+      method = null;
+    }
+    var instance;
+    return this.each(function() {
+      instance = $(this).data('changelog');
+      if (!instance) {
+        instance = new CHANGELOG(this, options);
+        $(this).data('changelog', instance);
+      } else if (method) {
+        instance[method](instance);
+      }
+    });
   };
 
 })(jQuery, window, document);
