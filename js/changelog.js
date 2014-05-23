@@ -37,6 +37,15 @@
   };
 
   $.extend(CHANGELOG.prototype, {
+    destroy: function() {
+      if (this.$wrapper) {
+        this.unbindEventListeners();
+      }
+      if (this.options.autoRefresh) {
+        clearInterval(this._interval);
+      }
+      this.$wrapper.remove();
+    },
     checkForUpdates: function() {
       if (this._interval) {
         clearInterval(this._interval);
@@ -68,7 +77,7 @@
       this.since = now();
       this.updateCount += issues.length;
 
-      if (!this.$element.find('.github-changelog').length) {
+      if (!this.$wrapper) {
         this.createDomStructure();
         this.bindEventListeners();
       }
