@@ -26,7 +26,7 @@ body {
 }
 a {
   color: #1abc9c;
-  text-decoration: underline;
+  text-decoration: none;
   -webkit-transition: all 0.25s ease-out;
   -moz-transition: all 0.25s ease-out;
   -o-transition: all 0.25s ease-out;
@@ -34,7 +34,6 @@ a {
 }
 a:hover {
   color: #2ecc71;
-  text-decoration: none;
 }
 .main {
   width: 100%;
@@ -92,7 +91,7 @@ a:hover {
 }
 .main .demo-changelog {
   text-align: center;
-  padding-top: 20px;
+  padding-top: 15px;
 }
 .main .demo-footer {
   position: absolute;
@@ -100,7 +99,7 @@ a:hover {
   left: 0;
   text-align: center;
   width: 100%;
-  padding: 5px;
+  padding: 5px 0 15px 0;
 }
 .github-ribbon {
   position: absolute;
