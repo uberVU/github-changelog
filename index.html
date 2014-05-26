@@ -15,7 +15,12 @@
     $(function() {
       var $demoChangelog = $('.demo-changelog');
       $demoChangelog.changelog({
-        githubRepo: 'uberVU/github-changelog-playground'
+        githubRepo: 'uberVU/github-changelog-playground',
+        githubParams: {
+          // Please use different access token when integrating this for your
+          // own repository
+          access_token: 'b0251cd6c7c53245eaf9752db877ea96376c4b63'
+        }
       });
       $('.demo-button').on('click', function(e) {
         e.stopPropagation();
