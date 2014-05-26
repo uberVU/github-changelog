@@ -3,7 +3,7 @@ github-changelog
 
 Use GitHub issues to communicate app updates directly to your customers.
 
-![changelog wireframe](https://dl.dropboxusercontent.com/u/42934143/images/changelog2.png)
+[![changelog wireframe](https://dl.dropboxusercontent.com/u/42934143/images/changelog2.png)](http://ubervu.github.io/github-changelog/)
 
 ## How does it work?
 
