@@ -17,7 +17,8 @@
       $demoChangelog.changelog({
         githubRepo: 'uberVU/github-changelog-playground'
       });
-      $('.demo-button').on('click', function(){
+      $('.demo-button').on('click', function(e) {
+        e.stopPropagation();
         $demoChangelog.changelog('checkForUpdates');
       });
     });
