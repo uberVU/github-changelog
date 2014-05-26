@@ -39,11 +39,11 @@
     destroy: function() {
       if (this.$wrapper) {
         this.unbindEventListeners();
+        this.$wrapper.remove();
       }
       if (this.options.autoRefresh) {
         clearTimeout(this._interval);
       }
-      this.$wrapper.remove();
     },
     checkForUpdates: function() {
       if (this._interval) {
