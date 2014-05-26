@@ -1,0 +1,76 @@
+// Mixins
+@import "components/variables.less";
+@import "components/mixins.less";
+
+// Fonts
+@import url("http://fonts.googleapis.com/css?family=Lato:400,700");
+
+// Base
+*, *:after, *:before{
+  .box-sizing();
+}
+body {
+  font: 16px/1.5em normal 'Lato', Arial, sans-serif;
+  color: #34495e;
+}
+a {
+  color: #1abc9c;
+  text-decoration: underline;
+  .transition(0.25s);
+}
+a:hover {
+  color: #2ecc71;
+  text-decoration: none;
+}
+
+// Main
+.main {
+  width: 100%;
+  max-width: 960px;
+  margin: 10% auto;
+}
+.main h1 {
+  text-align: center;
+}
+.main h1, .main h3 {
+  margin-bottom: 1em;
+}
+.main h2 {
+  margin-bottom: 0.4em;
+}
+.main button {
+  cursor: pointer;
+}
+.main .steps {
+  float: left;
+  width: 50%;
+  padding-right: 2%;
+}
+.main .steps ul{
+  list-style: none;
+}
+.main .steps ul li{
+  margin-bottom: 1em;
+}
+.main .steps .step-label{
+  margin-right: .2em;
+}
+.main .demo {
+  position: relative;
+  float: left;
+  width: 50%;
+  height: 22em;
+  background-color: #ecf0f5;
+}
+.main .demo-changelog {
+  text-align: center;
+  padding-top: 20px;
+}
+.main .demo-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  padding: 5px;
+}

@@ -3,24 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <title>GitHub CHANGELOG</title>
+
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/demo.css" />
+
   <script src="js/jquery-1.11.1.min.js"></script>
   <script src="js/changelog.js"></script>
   <script>
     $(function() {
-      $('.main').changelog({
-        autoRefresh: 5,
+      var demoChangelog = $('.demo-changelog');
+      demoChangelog.changelog({
+        autoRefresh: false,
         githubParams: {
           access_token: 'b0251cd6c7c53245eaf9752db877ea96376c4b63',
           labels: 'demo'
         }
       });
-    })
+      $('.demo-button').on('click', function(){
+        demoChangelog.changelog('checkForUpdates');
+      });
+    });
   </script>
 </head>
 <body>
-<div class="main">
-
-</div>
+<!-- GitHub Ribbon -->
+<a href="https://github.com/uberVU/github-changelog"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+<!-- Demo -->
+  <div class="main">
+    <h1>github-changelog</h1>
+    <div class="steps">
+      <h2>See it in action</h2>
+      <h3>Just follow these simple steps!</h3>
+      <ul>
+        <li><strong class="step-label">Step 1:</strong> Go to <a href="https://github.com/uberVU/github-changelog/issues?labels=demo" target="_blank">GitHub</a> and create a dummy issue.</li>
+        <li><strong class="step-label">Step 2:</strong> Give the issue a label called <strong>demo</strong> and another one either <strong>bug</strong>, <strong>feature</strong> or <strong>enhancement</strong>.</li>
+        <li><strong class="step-label">Step 3:</strong> Close the issue.</li>
+        <li><strong class="step-label">Step 4:</strong> Return here and press the <strong>Check For Updates</strong> button.</li>
+      </ul>
+    </div>
+    <div class="demo">
+      <div class="demo-changelog"></div>
+      <div class="demo-footer">
+        <button class="github-changelog-btn demo-button">Check For Updates</button>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
