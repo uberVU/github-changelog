@@ -5,11 +5,9 @@
     reloadButtonText: 'Reload',
     listPosition: 'bottom',
     autoRefresh: false,
-    githubRepo: 'uberVU/github-changelog',
+    githubRepo: 'uberVU/github-changelog-playground',
     githubLabels: ['bug', 'enhancement', 'feature'],
-    githubParams: {
-      labels: 'release'
-    }
+    githubParams: {}
   };
 
   var CSS_PREFIX = 'github-changelog';
