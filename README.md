@@ -1,4 +1,4 @@
-github-changelog
+GitHub CHANGELOG
 ====
 
 Use GitHub issues to communicate app updates directly to your customers.
