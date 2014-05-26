@@ -40,11 +40,25 @@ a:hover {
   width: 100%;
   max-width: 960px;
   margin: 10% auto;
+  padding: 0 10px 10px;
+  zoom: 1;
 }
-.main h1 {
+.main:before {
+  content: '';
+  display: block;
+}
+.main:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+.main header {
   text-align: center;
+  margin-bottom: 2em;
 }
-.main h1,
+.main header h1 {
+  margin-bottom: .3em;
+}
 .main h3 {
   margin-bottom: 1em;
 }
@@ -86,4 +100,28 @@ a:hover {
   text-align: center;
   width: 100%;
   padding: 5px;
+}
+.github-ribbon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+}
+@media (max-width: 768px) {
+  .main .steps,
+  .main .demo {
+    width: 100%;
+    float: none;
+  }
+  .github-ribbon {
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    -o-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    transform: scale(0.8);
+    -webkit-transform-origin: right top;
+    -moz-transform-origin: right top;
+    -ms-transform-origin: right top;
+    -o-transform-origin: right top;
+  }
 }
