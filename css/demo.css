@@ -67,6 +67,7 @@ a:hover {
 }
 .main button {
   cursor: pointer;
+  outline: none;
 }
 .main .steps {
   float: left;
