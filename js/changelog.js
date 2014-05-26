@@ -53,7 +53,9 @@
           payload = $.extend({
             since: this.since,
             state: 'closed',
-            sort: 'updated'
+            sort: 'updated',
+            // Prevent browser caching
+            random: Math.random()
           }, this.options.githubParams);
       $.get(this.getGitHubIssuesUrl(), payload)
         .done(function(issues) {
