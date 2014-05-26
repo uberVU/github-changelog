@@ -44,6 +44,8 @@
       if (this.options.autoRefresh) {
         clearTimeout(this._interval);
       }
+      // Clear instance from the DOM element after destroying it
+      this.$element.removeData('changelog');
     },
     checkForUpdates: function() {
       if (this._interval) {
