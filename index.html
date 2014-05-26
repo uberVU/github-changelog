@@ -13,16 +13,12 @@
   <script src="js/changelog.js"></script>
   <script>
     $(function() {
-      var demoChangelog = $('.demo-changelog');
-      demoChangelog.changelog({
-        autoRefresh: false,
-        githubParams: {
-          access_token: 'b0251cd6c7c53245eaf9752db877ea96376c4b63',
-          labels: 'demo'
-        }
+      var $demoChangelog = $('.demo-changelog');
+      $demoChangelog.changelog({
+        githubRepo: 'uberVU/github-changelog-playground'
       });
       $('.demo-button').on('click', function(){
-        demoChangelog.changelog('checkForUpdates');
+        $demoChangelog.changelog('checkForUpdates');
       });
     });
   </script>
