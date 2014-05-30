@@ -7,7 +7,6 @@
     autoRefresh: false,
     githubRepo: 'uberVU/github-changelog-playground',
     githubLabels: ['bug', 'enhancement', 'feature'],
-    showIssuesWithoutLabel: false,
     githubParams: {}
   };
 
@@ -144,7 +143,7 @@
       for (i = 0; i < issues.length; i++) {
         issue = issues[i];
         label = this.getExpectedGitHubIssueLabel(issue);
-        if (!label && !this.options.showIssuesWithoutLabel) {
+        if (!label) {
           continue;
         }
         relevantIssues.push(issue);
