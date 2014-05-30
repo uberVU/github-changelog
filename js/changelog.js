@@ -143,7 +143,7 @@
       for (i = 0; i < issues.length; i++) {
         issue = issues[i];
         label = this.getExpectedGitHubIssueLabel(issue);
-        if (!label) {
+        if (!label && this.options.githubLabels.length > 0) {
           continue;
         }
         relevantIssues.push(issue);
