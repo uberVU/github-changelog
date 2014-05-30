@@ -7,6 +7,7 @@
     autoRefresh: false,
     githubRepo: 'uberVU/github-changelog-playground',
     githubLabels: ['bug', 'enhancement', 'feature'],
+    showIssuesWithouLabel: false,
     githubParams: {}
   };
 
@@ -122,16 +123,18 @@
     addUpdateToList: function(issue) {
       var featuredLabel = this.getExpectedGitHubIssueLabel(issue),
           $update = $('<li>'),
-          $label = $('<span>', {class: CSS_PREFIX + '-label',
-                                text: featuredLabel.name,
-                                css: {
-                                  backgroundColor: '#' + featuredLabel.color
-                                }}),
+          $label,
           $title = $('<p>', {text: issue.title});
-
+      if(featuredLabel){
+          $label = $('<span>', {class: CSS_PREFIX + '-label',
+                        text: featuredLabel.name,
+                        css: {
+                          backgroundColor: '#' + featuredLabel.color
+                        }});
+          $update.append($label);
+      }
       this.$listContainer.prepend(
-        $update.append($label)
-               .append($title));
+        $update.append($title));
     },
     filterGitHubIssues: function(issues) {
       var relevantIssues = [],
@@ -141,7 +144,7 @@
       for (i = 0; i < issues.length; i++) {
         issue = issues[i];
         label = this.getExpectedGitHubIssueLabel(issue);
-        if (!label) {
+        if (!label && !this.options.showIssuesWithouLabel) {
           continue;
         }
         relevantIssues.push(issue);
