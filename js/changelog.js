@@ -6,7 +6,7 @@
     listPosition: 'bottom',
     autoRefresh: false,
     githubRepo: 'uberVU/github-changelog-playground',
-    githubLabels: ['bug', 'enhancement', 'feature'],
+    githubLabels: [],
     githubParams: {}
   };
 
