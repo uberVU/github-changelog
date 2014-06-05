@@ -60,8 +60,7 @@
             since: this.since,
             state: 'closed',
             sort: 'updated',
-            // Prevent browser caching
-            random: Math.random()
+            random: Math.random() // prevent browser caching
           }, this.options.githubParams);
 
       $.get(this.getGitHubIssuesUrl(), payload)
