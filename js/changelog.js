@@ -41,16 +41,20 @@
         this.unbindEventListeners();
         this.$wrapper.remove();
       }
+
       if (this.options.autoRefresh) {
         clearTimeout(this._interval);
       }
+
       // Clear instance from the DOM element after destroying it
       this.$element.removeData('changelog');
     },
+
     checkForUpdates: function() {
       if (this._interval) {
         clearTimeout(this._interval);
       }
+
       var _this = this,
           payload = $.extend({
             since: this.since,
@@ -59,6 +63,7 @@
             // Prevent browser caching
             random: Math.random()
           }, this.options.githubParams);
+
       $.get(this.getGitHubIssuesUrl(), payload)
         .done(function(issues) {
           _this.addUpdatesToList(_this.filterGitHubIssues(issues));
@@ -71,6 +76,7 @@
           }
         });
     },
+
     addUpdatesToList: function(issues) {
       if (!issues.length) {
         return;
@@ -83,11 +89,14 @@
         this.createDomStructure();
         this.bindEventListeners();
       }
+
       for (var i = 0, l = issues.length; i < l; i++) {
         this.addUpdateToList(issues[i]);
       }
+
       this.$badge.text(this.updateCount);
     },
+
     createDomStructure: function() {
       var positionClass = LIST_POSITION_CLASSES[this.options.listPosition],
           $wrapper = $('<div>', {class: CSS_PREFIX + ' ' +
@@ -118,10 +127,12 @@
       this.$wrapper = $wrapper;
       this.$button = $button;
       this.$reloadButton = $reloadButton;
+
       // We'll use these references to push new updates
       this.$listContainer = $listContainer;
       this.$badge = $badge;
     },
+
     addUpdateToList: function(issue) {
       var featuredLabel = this.getExpectedGitHubIssueLabel(issue),
           $update = $('<li>'),
@@ -135,6 +146,7 @@
       $update.append($label).append($title);
       this.$listContainer.prepend($update);
     },
+
     filterGitHubIssues: function(issues) {
       var relevantIssues = [];
 
@@ -150,6 +162,7 @@
 
       return relevantIssues;
     },
+
     bindEventListeners: function() {
       this._onButtonClick = bind(this.onButtonClick, this);
       this._onReloadButtonClick = bind(this.onReloadButtonClick, this);
@@ -159,31 +172,40 @@
       this.$button.on('click', this._onButtonClick);
       this.$reloadButton.on('click', this._onReloadButtonClick);
       this.$wrapper.on('click', this._onWrapperClick);
+
       $('html,body').on('click', this._onBodyClick);
     },
+
     unbindEventListeners: function() {
       this.$button.off('click', this._onButtonClick);
       this.$reloadButton.off('click', this._onReloadButtonClick);
       this.$wrapper.off('click', this._onWrapperClick);
+
       $('html,body').off('click', this._onBodyClick);
     },
+
     onButtonClick: function(e) {
       e.preventDefault();
       this.$wrapper.toggleClass('closed');
     },
+
     onReloadButtonClick: function(e) {
       e.preventDefault();
       window.location.reload(true);
     },
+
     onWrapperClick: function(e) {
       e.stopPropagation();
     },
+
     onBodyClick: function(e) {
       this.$wrapper.addClass('closed');
     },
+
     getGitHubIssuesUrl: function() {
       return GITHUB_API_URL + '/repos/' + this.options.githubRepo + '/issues';
     },
+
     getExpectedGitHubIssueLabel: function(issue) {
       if (!issue.labels || !issue.labels.length) {
         return null;
@@ -223,6 +245,7 @@
 
     return this.each(function() {
       var instance = $(this).data('changelog');
+
       if (!instance) {
         instance = new Changelog(this, options);
         $(this).data('changelog', instance);
@@ -233,3 +256,4 @@
   };
 
 })(jQuery, window, document);
+
