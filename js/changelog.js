@@ -122,13 +122,9 @@
           });
 
       $button.append($badge);
-
       $listFooter.append($reloadButton);
-
-      $list.append($listContainer).$list.append($listFooter);
-
+      $list.append($listContainer).append($listFooter);
       $wrapper.append($button).append($list);
-
       this.$element.append($wrapper);
 
       // We'll use these references to bind events
