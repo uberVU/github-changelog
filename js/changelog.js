@@ -104,11 +104,15 @@
                                     html: this.options.reloadButtonText,
                                     href: '#reload-for-updates'});
 
-      this.$element.append(
-        $wrapper.append($button.append($badge))
-                .append(
-                  $list.append($listContainer)
-                       .append($listFooter.append($reloadButton))));
+      $button.append($badge);
+
+      $listFooter.append($reloadButton);
+
+      $list.append($listContainer).$list.append($listFooter);
+
+      $wrapper.append($button).append($list);
+
+      this.$element.append($wrapper);
 
       // We'll use these references to bind events
       this.$wrapper = $wrapper;
