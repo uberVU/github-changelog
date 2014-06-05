@@ -27,7 +27,7 @@
 
   var GITHUB_API_URL = 'https://api.github.com';
 
-  var CHANGELOG = function(element, options) {
+  var Changelog = function(element, options) {
     this.$element = $(element);
     this.options = $.extend(true, {}, defaults, options);
     this.since = now();
@@ -35,7 +35,7 @@
     this.checkForUpdates();
   };
 
-  $.extend(CHANGELOG.prototype, {
+  $.extend(Changelog.prototype, {
     destroy: function() {
       if (this.$wrapper) {
         this.unbindEventListeners();
@@ -222,7 +222,7 @@
     return this.each(function() {
       instance = $(this).data('changelog');
       if (!instance) {
-        instance = new CHANGELOG(this, options);
+        instance = new Changelog(this, options);
         $(this).data('changelog', instance);
       } else if (method) {
         instance[method](instance);
