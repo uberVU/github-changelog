@@ -188,14 +188,14 @@
       if (!issue.labels || !issue.labels.length) {
         return null;
       }
-      var i,
-          label;
-      for (i = 0; i < issue.labels.length; i++) {
-        label = issue.labels[i];
+
+      for (var i = 0, l = issues.labels.length; i < l; i++) {
+        var label = issue.labels[i];
         if (this.options.githubLabels.indexOf(label.name) != -1) {
           return label;
         }
       }
+
       // At this point we found the issue to have none of the expected labels
       return null;
     }
