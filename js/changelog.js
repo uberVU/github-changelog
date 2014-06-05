@@ -55,7 +55,7 @@
         clearTimeout(this._interval);
       }
 
-      var _this = this,
+      var that = this,
           payload = $.extend({
             since: this.since,
             state: 'closed',
@@ -65,12 +65,12 @@
 
       $.get(this.getGitHubIssuesUrl(), payload)
         .done(function(issues) {
-          _this.addUpdatesToList(_this.filterGitHubIssues(issues));
+          that.addUpdatesToList(that.filterGitHubIssues(issues));
 
-          if (_this.options.autoRefresh) {
-            _this._interval = setTimeout(function() {
-              _this.checkForUpdates();
-            }, _this.options.autoRefresh * 1000);
+          if (that.options.autoRefresh) {
+            that._interval = setTimeout(function() {
+              that.checkForUpdates();
+            }, that.options.autoRefresh * 1000);
           }
         });
     },
