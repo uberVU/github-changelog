@@ -75,7 +75,6 @@
       if (!issues.length) {
         return;
       }
-      var i;
 
       this.since = now();
       this.updateCount += issues.length;
@@ -84,7 +83,7 @@
         this.createDomStructure();
         this.bindEventListeners();
       }
-      for (i = 0; i < issues.length; i++) {
+      for (var i = 0, l = issues.length; i < l; i++) {
         this.addUpdateToList(issues[i]);
       }
       this.$badge.text(this.updateCount);
