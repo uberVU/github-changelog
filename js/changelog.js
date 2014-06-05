@@ -97,19 +97,29 @@
 
     createDomStructure: function() {
       var positionClass = LIST_POSITION_CLASSES[this.options.listPosition],
-          $wrapper = $('<div>', {class: CSS_PREFIX + ' ' +
-                                        positionClass + ' closed'}),
-          $button = $('<a>', {class: CSS_PREFIX + '-btn',
-                              html: this.options.buttonText,
-                              href: '#show-notifications'}),
-          $badge = $('<span>', {class: CSS_PREFIX + '-badge'}),
-          $list = $('<div>', {class: CSS_PREFIX + '-list'}),
-          $listContainer = $('<ul>'),
-          $listFooter = $('<div>', {class: CSS_PREFIX + '-footer'}),
-          $reloadButton = $('<a>', {class: CSS_PREFIX + '-btn ' +
-                                           CSS_PREFIX + '-btn-reload',
-                                    html: this.options.reloadButtonText,
-                                    href: '#reload-for-updates'});
+          $wrapper = $('<div></div>', {
+              "class": CSS_PREFIX + ' ' + positionClass + ' closed'
+          }),
+          $button = $('<a>', {
+              "class": CSS_PREFIX + '-btn',
+              "html": this.options.buttonText,
+              "href": '#show-notifications'
+          }),
+          $badge = $('<span></span>', {
+              "class": CSS_PREFIX + '-badge'
+          }),
+          $list = $('<div></div>', {
+              "class": CSS_PREFIX + '-list'
+          }),
+          $listContainer = $('<ul></ul>'),
+          $listFooter = $('<div></div>', {
+              "class": CSS_PREFIX + '-footer'
+          }),
+          $reloadButton = $('<a>', {
+              "class": CSS_PREFIX + '-btn ' + CSS_PREFIX + '-btn-reload',
+              "html": this.options.reloadButtonText,
+              "href": '#reload-for-updates'
+          });
 
       $button.append($badge);
 
