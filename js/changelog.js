@@ -70,8 +70,7 @@
           if (_this.options.autoRefresh) {
             _this._interval = setTimeout(function() {
               _this.checkForUpdates();
-            },
-            _this.options.autoRefresh * 1000);
+            }, _this.options.autoRefresh * 1000);
           }
         });
     },
