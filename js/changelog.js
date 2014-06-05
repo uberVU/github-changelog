@@ -215,7 +215,7 @@
         return null;
       }
 
-      for (var i = 0, l = issues.labels.length; i < l; i++) {
+      for (var i = 0, l = issue.labels.length; i < l; i++) {
         var label = issue.labels[i];
         if (this.options.githubLabels.indexOf(label.name) != -1) {
           return label;
