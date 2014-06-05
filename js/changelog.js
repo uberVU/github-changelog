@@ -220,9 +220,9 @@
       options = method;
       method = null;
     }
-    var instance;
+
     return this.each(function() {
-      instance = $(this).data('changelog');
+      var instance = $(this).data('changelog');
       if (!instance) {
         instance = new Changelog(this, options);
         $(this).data('changelog', instance);
