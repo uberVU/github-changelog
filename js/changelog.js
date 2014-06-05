@@ -136,18 +136,18 @@
       this.$listContainer.prepend($update);
     },
     filterGitHubIssues: function(issues) {
-      var relevantIssues = [],
-          i,
-          issue,
-          label;
-      for (i = 0; i < issues.length; i++) {
-        issue = issues[i];
-        label = this.getExpectedGitHubIssueLabel(issue);
+      var relevantIssues = [];
+
+      for (var i = 0, l = issues.length; i < l; i++) {
+        var issue = issues[i],
+            label = this.getExpectedGitHubIssueLabel(issue);
         if (!label) {
           continue;
         }
+
         relevantIssues.push(issue);
       }
+
       return relevantIssues;
     },
     bindEventListeners: function() {
