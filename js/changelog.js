@@ -132,9 +132,8 @@
                                 }}),
           $title = $('<p>', {text: issue.title});
 
-      this.$listContainer.prepend(
-        $update.append($label)
-               .append($title));
+      $update.append($label).append($title);
+      this.$listContainer.prepend($update);
     },
     filterGitHubIssues: function(issues) {
       var relevantIssues = [],
