@@ -100,7 +100,7 @@
           $wrapper = $('<div></div>', {
               'class': CSS_PREFIX + ' ' + positionClass + ' closed'
           }),
-          $button = $('<a>', {
+          $button = $('<a></a>', {
               'class': CSS_PREFIX + '-btn',
               'html': this.options.buttonText,
               'href': '#show-notifications'
@@ -115,7 +115,7 @@
           $listFooter = $('<div></div>', {
               'class': CSS_PREFIX + '-footer'
           }),
-          $reloadButton = $('<a>', {
+          $reloadButton = $('<a></a>', {
               'class': CSS_PREFIX + '-btn ' + CSS_PREFIX + '-btn-reload',
               'html': this.options.reloadButtonText,
               'href': '#reload-for-updates'
