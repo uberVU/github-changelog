@@ -29,7 +29,7 @@
 
   var CHANGELOG = function(element, options) {
     this.$element = $(element);
-    this.options = $.extend(true, {}, defaults, options);
+    this.options = $.extend({}, defaults, options);
     this.since = now();
     this.updateCount = 0;
     this.checkForUpdates();
