@@ -121,15 +121,17 @@
     },
     addUpdateToList: function(issue) {
       var featuredLabel = this.getExpectedGitHubIssueLabel(issue),
-          $update = $('<li>'),
+          $update = $('<li></li>'),
           $label,
-          $title = $('<p>', {text: issue.title});
+          $title = $('<p></p>', {'text': issue.title});
       if(featuredLabel){
-          $label = $('<span>', {class: CSS_PREFIX + '-label',
-                        text: featuredLabel.name,
-                        css: {
-                          backgroundColor: '#' + featuredLabel.color
-                        }});
+          $label = $('<span></span>', {
+            'class': CSS_PREFIX + '-label',
+            'text': featuredLabel.name,
+            'css': {
+              'background-color': '#' + featuredLabel.color
+            }
+          });
           $update.append($label);
       }
       this.$listContainer.prepend(
