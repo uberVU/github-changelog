@@ -139,15 +139,15 @@
 
     addUpdateToList: function(issue) {
       var featuredLabel = this.getExpectedGitHubIssueLabel(issue),
-          $update = $('<li>'),
-          $title = $('<p>', {text: issue.title});
+          $update = $('<li></li>'),
+          $title = $('<p></p>', {'text': issue.title});
       // Labels are optional for updates
       if (featuredLabel) {
-        $update.append($('<span>', {
-          class: CSS_PREFIX + '-label',
-          text: featuredLabel.name,
-          css: {
-            backgroundColor: '#' + featuredLabel.color
+        $update.append($('<span></span>', {
+          'class': CSS_PREFIX + '-label',
+          'text': featuredLabel.name,
+          'css': {
+            'background-color': '#' + featuredLabel.color
           }
         }));
       }
