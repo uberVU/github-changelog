@@ -27,7 +27,7 @@
 
   var GITHUB_API_URL = 'https://api.github.com';
 
-  var CHANGELOG = function(element, options) {
+  var Changelog = function(element, options) {
     this.$element = $(element);
     this.options = $.extend({}, defaults, options);
     this.since = now();
@@ -35,47 +35,50 @@
     this.checkForUpdates();
   };
 
-  $.extend(CHANGELOG.prototype, {
+  $.extend(Changelog.prototype, {
     destroy: function() {
       if (this.$wrapper) {
         this.unbindEventListeners();
         this.$wrapper.remove();
       }
+
       if (this.options.autoRefresh) {
         clearTimeout(this._interval);
       }
+
       // Clear instance from the DOM element after destroying it
       this.$element.removeData('changelog');
     },
+
     checkForUpdates: function() {
       if (this._interval) {
         clearTimeout(this._interval);
       }
-      var _this = this,
+
+      var that = this,
           payload = $.extend({
             since: this.since,
             state: 'closed',
             sort: 'updated',
-            // Prevent browser caching
-            random: Math.random()
+            random: Math.random() // prevent browser caching
           }, this.options.githubParams);
+
       $.get(this.getGitHubIssuesUrl(), payload)
         .done(function(issues) {
-          _this.addUpdatesToList(_this.filterGitHubIssues(issues));
+          that.addUpdatesToList(that.filterGitHubIssues(issues));
 
-          if (_this.options.autoRefresh) {
-            _this._interval = setTimeout(function() {
-              _this.checkForUpdates();
-            },
-            _this.options.autoRefresh * 1000);
+          if (that.options.autoRefresh) {
+            that._interval = setTimeout(function() {
+              that.checkForUpdates();
+            }, that.options.autoRefresh * 1000);
           }
         });
     },
+
     addUpdatesToList: function(issues) {
       if (!issues.length) {
         return;
       }
-      var i;
 
       this.since = now();
       this.updateCount += issues.length;
@@ -84,67 +87,79 @@
         this.createDomStructure();
         this.bindEventListeners();
       }
-      for (i = 0; i < issues.length; i++) {
+
+      for (var i = 0, l = issues.length; i < l; i++) {
         this.addUpdateToList(issues[i]);
       }
+
       this.$badge.text(this.updateCount);
     },
+
     createDomStructure: function() {
       var positionClass = LIST_POSITION_CLASSES[this.options.listPosition],
-          $wrapper = $('<div>', {class: CSS_PREFIX + ' ' +
-                                        positionClass + ' closed'}),
-          $button = $('<a>', {class: CSS_PREFIX + '-btn',
-                              html: this.options.buttonText,
-                              href: '#show-notifications'}),
-          $badge = $('<span>', {class: CSS_PREFIX + '-badge'}),
-          $list = $('<div>', {class: CSS_PREFIX + '-list'}),
-          $listContainer = $('<ul>'),
-          $listFooter = $('<div>', {class: CSS_PREFIX + '-footer'}),
-          $reloadButton = $('<a>', {class: CSS_PREFIX + '-btn ' +
-                                           CSS_PREFIX + '-btn-reload',
-                                    html: this.options.reloadButtonText,
-                                    href: '#reload-for-updates'});
+          $wrapper = $('<div></div>', {
+              'class': CSS_PREFIX + ' ' + positionClass + ' closed'
+          }),
+          $button = $('<a></a>', {
+              'class': CSS_PREFIX + '-btn',
+              'html': this.options.buttonText,
+              'href': '#show-notifications'
+          }),
+          $badge = $('<span></span>', {
+              'class': CSS_PREFIX + '-badge'
+          }),
+          $list = $('<div></div>', {
+              'class': CSS_PREFIX + '-list'
+          }),
+          $listContainer = $('<ul></ul>'),
+          $listFooter = $('<div></div>', {
+              'class': CSS_PREFIX + '-footer'
+          }),
+          $reloadButton = $('<a></a>', {
+              'class': CSS_PREFIX + '-btn ' + CSS_PREFIX + '-btn-reload',
+              'html': this.options.reloadButtonText,
+              'href': '#reload-for-updates'
+          });
 
-      this.$element.append(
-        $wrapper.append($button.append($badge))
-                .append(
-                  $list.append($listContainer)
-                       .append($listFooter.append($reloadButton))));
+      $button.append($badge);
+      $listFooter.append($reloadButton);
+      $list.append($listContainer).append($listFooter);
+      $wrapper.append($button).append($list);
+      this.$element.append($wrapper);
 
       // We'll use these references to bind events
       this.$wrapper = $wrapper;
       this.$button = $button;
       this.$reloadButton = $reloadButton;
+
       // We'll use these references to push new updates
       this.$listContainer = $listContainer;
       this.$badge = $badge;
     },
+
     addUpdateToList: function(issue) {
       var featuredLabel = this.getExpectedGitHubIssueLabel(issue),
-          $update = $('<li></li>'),
-          $label,
-          $title = $('<p></p>', {'text': issue.title});
-      if(featuredLabel){
-          $label = $('<span></span>', {
-            'class': CSS_PREFIX + '-label',
-            'text': featuredLabel.name,
-            'css': {
-              'background-color': '#' + featuredLabel.color
-            }
-          });
-          $update.append($label);
+          $update = $('<li>'),
+          $label = $('<span>', {class: CSS_PREFIX + '-label',
+                                text: featuredLabel.name,
+                                css: {
+                                  backgroundColor: '#' + featuredLabel.color
+                                }}),
+          $title = $('<p>', {text: issue.title});
+      // Labels are optional for updates
+      if (featuredLabel) {
+        $update.append($label);
       }
-      this.$listContainer.prepend(
-        $update.append($title));
+      $update.append($title);
+      this.$listContainer.prepend($update);
     },
+
     filterGitHubIssues: function(issues) {
-      var relevantIssues = [],
-          i,
-          issue,
-          label;
-      for (i = 0; i < issues.length; i++) {
-        issue = issues[i];
-        label = this.getExpectedGitHubIssueLabel(issue);
+      var relevantIssues = [];
+
+      for (var i = 0, l = issues.length; i < l; i++) {
+        var issue = issues[i],
+            label = this.getExpectedGitHubIssueLabel(issue);
         if (!label && this.options.githubLabels.length > 0) {
           continue;
         }
@@ -152,6 +167,7 @@
       }
       return relevantIssues;
     },
+
     bindEventListeners: function() {
       this._onButtonClick = bind(this.onButtonClick, this);
       this._onReloadButtonClick = bind(this.onReloadButtonClick, this);
@@ -161,43 +177,52 @@
       this.$button.on('click', this._onButtonClick);
       this.$reloadButton.on('click', this._onReloadButtonClick);
       this.$wrapper.on('click', this._onWrapperClick);
+
       $('html,body').on('click', this._onBodyClick);
     },
+
     unbindEventListeners: function() {
       this.$button.off('click', this._onButtonClick);
       this.$reloadButton.off('click', this._onReloadButtonClick);
       this.$wrapper.off('click', this._onWrapperClick);
+
       $('html,body').off('click', this._onBodyClick);
     },
+
     onButtonClick: function(e) {
       e.preventDefault();
       this.$wrapper.toggleClass('closed');
     },
+
     onReloadButtonClick: function(e) {
       e.preventDefault();
       window.location.reload(true);
     },
+
     onWrapperClick: function(e) {
       e.stopPropagation();
     },
+
     onBodyClick: function(e) {
       this.$wrapper.addClass('closed');
     },
+
     getGitHubIssuesUrl: function() {
       return GITHUB_API_URL + '/repos/' + this.options.githubRepo + '/issues';
     },
+
     getExpectedGitHubIssueLabel: function(issue) {
       if (!issue.labels || !issue.labels.length) {
         return null;
       }
-      var i,
-          label;
-      for (i = 0; i < issue.labels.length; i++) {
-        label = issue.labels[i];
+
+      for (var i = 0, l = issue.labels.length; i < l; i++) {
+        var label = issue.labels[i];
         if (this.options.githubLabels.indexOf(label.name) != -1) {
           return label;
         }
       }
+
       // At this point we found the issue to have none of the expected labels
       return null;
     }
@@ -222,11 +247,12 @@
       options = method;
       method = null;
     }
-    var instance;
+
     return this.each(function() {
-      instance = $(this).data('changelog');
+      var instance = $(this).data('changelog');
+
       if (!instance) {
-        instance = new CHANGELOG(this, options);
+        instance = new Changelog(this, options);
         $(this).data('changelog', instance);
       } else if (method) {
         instance[method](instance);
