@@ -15,7 +15,8 @@
     $(function() {
       var $demoChangelog = $('.demo-changelog');
       $demoChangelog.changelog({
-        githubRepo: 'uberVU/github-changelog-playground'
+        githubRepo: 'uberVU/github-changelog-playground',
+        githubLabels: []
       });
       $('.demo-button').on('click', function(e) {
         e.stopPropagation();
@@ -40,9 +41,8 @@
       <h3>Just follow these simple steps!</h3>
       <ul>
         <li><strong class="step-label">Step 1:</strong> Go to <a href="https://github.com/uberVU/github-changelog-playground/issues" target="_blank">GitHub</a> and create a dummy issue.</li>
-        <li><strong class="step-label">Step 2:</strong> Label the issue as either a <strong>bug</strong>, <strong>feature</strong> or <strong>enhancement</strong>.</li>
-        <li><strong class="step-label">Step 3:</strong> Close the issue.</li>
-        <li><strong class="step-label">Step 4:</strong> Return here and press the <strong>Check For Updates</strong> button.</li>
+        <li><strong class="step-label">Step 2:</strong> Close the issue.</li>
+        <li><strong class="step-label">Step 3:</strong> Return here and press the <strong>Check For Updates</strong> button.</li>
       </ul>
     </div>
     <div class="demo">
@@ -50,6 +50,11 @@
       <div class="demo-footer">
         <button class="github-changelog-btn demo-button">Check For Updates</button>
       </div>
+    </div>
+    <div class="demo-image">
+      <h2>See the flow</h2>
+      <h3>This is how will look when you have everything set up</h3>
+      <img src="https://dl.dropboxusercontent.com/u/42934143/images/demos/changelog-demo4-gif.gif" />
     </div>
   </div>
 </body>

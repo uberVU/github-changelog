@@ -29,7 +29,7 @@
 
   var Changelog = function(element, options) {
     this.$element = $(element);
-    this.options = $.extend(true, {}, defaults, options);
+    this.options = $.extend({}, defaults, options);
     this.since = now();
     this.updateCount = 0;
     this.checkForUpdates();
@@ -140,14 +140,18 @@
     addUpdateToList: function(issue) {
       var featuredLabel = this.getExpectedGitHubIssueLabel(issue),
           $update = $('<li>'),
-          $label = $('<span>', {class: CSS_PREFIX + '-label',
-                                text: featuredLabel.name,
-                                css: {
-                                  backgroundColor: '#' + featuredLabel.color
-                                }}),
           $title = $('<p>', {text: issue.title});
-
-      $update.append($label).append($title);
+      // Labels are optional for updates
+      if (featuredLabel) {
+        $update.append($('<span>', {
+          class: CSS_PREFIX + '-label',
+          text: featuredLabel.name,
+          css: {
+            backgroundColor: '#' + featuredLabel.color
+          }
+        }));
+      }
+      $update.append($title);
       this.$listContainer.prepend($update);
     },
 
@@ -157,13 +161,11 @@
       for (var i = 0, l = issues.length; i < l; i++) {
         var issue = issues[i],
             label = this.getExpectedGitHubIssueLabel(issue);
-        if (!label) {
+        if (!label && this.options.githubLabels.length > 0) {
           continue;
         }
-
         relevantIssues.push(issue);
       }
-
       return relevantIssues;
     },
 
@@ -260,4 +262,3 @@
   };
 
 })(jQuery, window, document);
-
