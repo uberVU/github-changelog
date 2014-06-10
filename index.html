@@ -15,7 +15,8 @@
     $(function() {
       var $demoChangelog = $('.demo-changelog');
       $demoChangelog.changelog({
-        githubRepo: 'uberVU/github-changelog-playground'
+        githubRepo: 'uberVU/github-changelog-playground',
+        githubLabels: []
       });
       $('.demo-button').on('click', function(e) {
         e.stopPropagation();
