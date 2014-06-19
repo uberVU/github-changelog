@@ -5,6 +5,7 @@
     reloadButtonText: 'Reload',
     listPosition: 'bottom',
     autoRefresh: false,
+    customApiUrl: null,
     githubRepo: 'uberVU/github-changelog-playground',
     githubLabels: ['bug', 'enhancement', 'feature'],
     githubParams: {}
@@ -209,7 +210,11 @@
     },
 
     getGitHubIssuesUrl: function() {
-      return GITHUB_API_URL + '/repos/' + this.options.githubRepo + '/issues';
+      if (this.options.customApiUrl) {
+        return this.options.customApiUrl;
+      } else {
+        return GITHUB_API_URL + '/repos/' + this.options.githubRepo + '/issues';
+      }
     },
 
     getExpectedGitHubIssueLabel: function(issue) {
